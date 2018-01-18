@@ -1,0 +1,25 @@
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
+ENTITY frequencies IS
+PORT(clk:IN std_logic;
+q:OUT std_logic);
+END frequencies;
+ARCHITECTURE behav OF frequencies IS
+	BEGIN
+	PROCESS(clk)
+	VARIABLE time:integer RANGE 0 TO 50000000;
+	BEGIN
+	IF rising_edge(clk) THEN
+		time:=time+1;
+		IF time<=500000 THEN
+			q<='1';
+		ELSE 
+			IF time<1000000 THEN
+				q<='0';
+			else
+				time:=0;   
+			END IF;
+		END IF;
+	END IF;
+	END PROCESS;
+END BEHAV;
