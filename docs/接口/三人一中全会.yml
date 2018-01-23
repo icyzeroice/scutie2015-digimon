@@ -1,0 +1,18 @@
+# 程序分为：
+#    控制器       - controller
+#    按键模块     - keys_in
+#    时间模块     - time_set
+#    宠物状态     - pet_status
+#    VGA 显示模块 - vga_out
+#    互动        - interaction
+#    游戏        - game
+#    喂食        - feed
+#    内存划分     - reg_manager
+
+- pet_status: # 存储宠物的各种状态信息
+  - level: integer range 1 to 4 # 等级
+  - joy: integer range 1 to 10 # 欢乐度
+  - stomach: integer range 1 to 10 # 饱腹度
+
+- vga_out: # VGA 视频媒体传输接口
+  - 
