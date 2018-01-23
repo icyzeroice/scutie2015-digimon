@@ -9,10 +9,25 @@
 #    喂食        - feed
 #    内存划分     - reg_manager
 
-- pet_status: # 存储宠物的各种状态信息
-  - level: integer range 1 to 4 # 等级
-  - joy: integer range 1 to 10 # 欢乐度
-  - stomach: integer range 1 to 10 # 饱腹度
+# 存储宠物的各种状态信息
+pet_status:
+  reg: # 寄存器需要存储的
+    level: integer range 1 to 4 # 等级
+    joy: integer range 1 to 10 # 欢乐度
+    stomach: integer range 1 to 10 # 饱腹度
 
-- vga_out: # VGA 视频媒体传输接口
-  - 
+
+# Altera IP ---- RAM:PORT1
+ip_ram:
+  
+  
+
+# VGA 视频媒体传输接口
+vga_out:
+  in: 
+    clk: std_logic
+    rst: std_logic
+  out: 
+    vga_rgb: std_logic_vector( 7 downto 0 ) # 单个像素的颜色
+    vga_vsync: std_logic # 行同步
+    vga_hsync: std_logic # 场同步

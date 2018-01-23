@@ -27,22 +27,50 @@ use ieee.std_logic_unsigned.all;
 
 entity vga_out is
    port (
-      -- INPUT:
-      --   Clock & Reset
-      clk, rst: in std_logic;
+      clk          : in std_logic;
+      rst          : in std_logic;
 
-      -- OUTPUT:
-      --   VGA pin
-      vga_rgb: out std_logic_vector( 7 downto 0 ); -- R2, R1, R0, G2, G1, G0, B1, B0
-		vga_vsync, vga_hsync: out std_logic
+      vga_rgb      : out std_logic_vector (7 downto 0); -- R2, R1, R0, G2, G1, G0, B1, B0
+		vga_vsync    : out std_logic;
+      vga_hsync    : out std_logic
    );
 end entity;
 
 architecture behave of vga_out is
+   component ip_ram is
+      port (
+         address  : in std_logic_vector (4 downto 0);
+         clock    : in std_logic;
+         data     : in std_logic_vector (7 downto 0);
+         rden     : in std_logic;
+         wren     : in std_logic;
+
+         q        : out std_logic_vector (7 downto 0)
+      );
+   end component;
+
    type state is (present_state, next_state);
-   signal vga_hsync_state, vga_vsync_state :state;
-   signal vga_hsync_cnt, vga_vsync_cnt :std_logic_vector( 7 downto 0 ) := "0000000000000000";
+   signal vga_hsync_state  : state;
+   signal vga_vsync_state  : state;
+   signal vga_hsync_cnt    : std_logic_vector (7 downto 0);
+   signal vga_vsync_cnt    : std_logic_vector (7 downto 0);
+
+   signal ram_address      : std_logic_vector (4 downto 0);
+   signal ram_data         : std_logic_vector (7 downto 0);
+   signal ram_rden         : std_logic;
+   signal ram_wren         : std_logic;
+   signal ram_q            : std_logic_vector (7 downto 0);
 begin
+
+-- instance of ip_ram --
+ip_ram_inst: ip_ram port map(
+   ram_address,
+   clk,
+   ram_data,
+   ram_rden,
+   ram_wren,
+   ram_q
+);
 
 -- Reset --
 reset: process(clk, rst)
