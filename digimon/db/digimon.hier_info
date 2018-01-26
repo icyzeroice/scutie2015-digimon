@@ -1,0 +1,15 @@
+|vga_out
+clk => ~NO_FANOUT~
+rst => ~NO_FANOUT~
+vga_rgb[0] <= vga_rgb[0].DB_MAX_OUTPUT_PORT_TYPE
+vga_rgb[1] <= vga_rgb[1].DB_MAX_OUTPUT_PORT_TYPE
+vga_rgb[2] <= vga_rgb[2].DB_MAX_OUTPUT_PORT_TYPE
+vga_rgb[3] <= vga_rgb[3].DB_MAX_OUTPUT_PORT_TYPE
+vga_rgb[4] <= vga_rgb[4].DB_MAX_OUTPUT_PORT_TYPE
+vga_rgb[5] <= vga_rgb[5].DB_MAX_OUTPUT_PORT_TYPE
+vga_rgb[6] <= vga_rgb[6].DB_MAX_OUTPUT_PORT_TYPE
+vga_rgb[7] <= vga_rgb[7].DB_MAX_OUTPUT_PORT_TYPE
+vga_vsync <= vga_vsync.DB_MAX_OUTPUT_PORT_TYPE
+vga_hsync <= comb.DB_MAX_OUTPUT_PORT_TYPE
+
+
