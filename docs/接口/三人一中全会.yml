@@ -9,24 +9,34 @@
 #    喂食        - feed
 #    内存划分     - reg_manager
 
-# 存储宠物的各种状态信息
+# timer
+time_set:
+  in:
+    clk: std_logic
+  out:
+    clk_50Hz: std_logic
+    clk_min: std_logic
+
+
+# 存储宠物的各种状态信息 (未完成)
 pet_status:
   reg: # 寄存器需要存储的
     level: integer range 1 to 4 # 等级
     joy: integer range 1 to 10 # 欢乐度
     stomach: integer range 1 to 10 # 饱腹度
+  # ...... 
 
 
 # Altera IP ---- RAM:PORT1
-ip_ram:
-  
-  
+# ip_ram:
+
 
 # VGA 视频媒体传输接口
-vga_out:
+vga_init:
   in: 
     clk: std_logic
     rst: std_logic
+    rgb_data: std_logic_vector( 7 downto 0 ) # 预计从这里读取每次脉冲的一个像素数据
   out: 
     vga_rgb: std_logic_vector( 7 downto 0 ) # 单个像素的颜色
     vga_vsync: std_logic # 行同步

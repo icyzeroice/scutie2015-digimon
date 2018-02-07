@@ -4,6 +4,14 @@ The curriculum design of digital system design.
 
 ### ATTENTION
 
+##### 风格
+
+* **缩进请使用 3 个空格！**
+* 保留字一律小写！
+* 信号开头大写，使用下划线命名方式！
+
+##### 规格
+
 * 开发环境：Quartus II 13.1
 * FPGA 芯片型号：EP4CE6F17C8N
 
