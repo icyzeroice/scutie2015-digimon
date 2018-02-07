@@ -1,5 +1,5 @@
 Analysis & Synthesis report for digimon
-Mon Jan 22 20:15:46 2018
+Wed Feb 07 17:35:25 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
 
 
@@ -13,9 +13,12 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  8. State Machine - |vga_init|vga_vsync_state
+  9. State Machine - |vga_init|vga_hsync_state
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Elapsed Time Per Partition
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -41,16 +44,16 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Jan 22 20:15:46 2018       ;
+; Analysis & Synthesis Status        ; Successful - Wed Feb 07 17:35:25 2018       ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
 ; Revision Name                      ; digimon                                     ;
-; Top-level Entity Name              ; vga_out                                     ;
+; Top-level Entity Name              ; vga_init                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 0                                           ;
-;     Total combinational functions  ; 0                                           ;
-;     Dedicated logic registers      ; 0                                           ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 12                                          ;
+; Total logic elements               ; 82                                          ;
+;     Total combinational functions  ; 74                                          ;
+;     Dedicated logic registers      ; 40                                          ;
+; Total registers                    ; 40                                          ;
+; Total pins                         ; 20                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -64,7 +67,7 @@ applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP4CE6F17C8        ;                    ;
-; Top-level entity name                                                      ; vga_out            ; digimon            ;
+; Top-level entity name                                                      ; vga_init           ; digimon            ;
 ; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -162,42 +165,43 @@ applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                         ; Library ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------------+---------+
-; vga_out.vhd                      ; yes             ; User VHDL File  ; C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/vga_out.vhd ;         ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                       ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
+; vga_init.vhd                     ; yes             ; User VHDL File  ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/vga_init.vhd ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-;                                             ;       ;
-; Total combinational functions               ; 0     ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 0     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
-;     -- arithmetic mode                      ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 0     ;
-;     -- Dedicated logic registers            ; 0     ;
-;     -- I/O registers                        ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 12    ;
-; Embedded Multiplier 9-bit elements          ; 0     ;
-; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 12    ;
-; Average fan-out                             ; 0.50  ;
-+---------------------------------------------+-------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 82        ;
+;                                             ;           ;
+; Total combinational functions               ; 74        ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 23        ;
+;     -- 3 input functions                    ; 26        ;
+;     -- <=2 input functions                  ; 25        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 57        ;
+;     -- arithmetic mode                      ; 17        ;
+;                                             ;           ;
+; Total registers                             ; 40        ;
+;     -- Dedicated logic registers            ; 40        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 20        ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 40        ;
+; Total fan-out                               ; 366       ;
+; Average fan-out                             ; 2.38      ;
++---------------------------------------------+-----------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -205,9 +209,37 @@ applicable agreement for further details.
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |vga_out                   ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 12   ; 0            ; |vga_out            ; work         ;
+; |vga_init                  ; 74 (74)           ; 40 (40)      ; 0           ; 0            ; 0       ; 0         ; 20   ; 0            ; |vga_init           ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |vga_init|vga_vsync_state                                                                                                                                                               ;
++-----------------------------------+-----------------------------------+------------------------------+----------------------------------+----------------------------------+----------------------------+
+; Name                              ; vga_vsync_state.front_porch_state ; vga_vsync_state.active_state ; vga_vsync_state.back_porch_state ; vga_vsync_state.sync_pulse_state ; vga_vsync_state.zero_state ;
++-----------------------------------+-----------------------------------+------------------------------+----------------------------------+----------------------------------+----------------------------+
+; vga_vsync_state.zero_state        ; 0                                 ; 0                            ; 0                                ; 0                                ; 0                          ;
+; vga_vsync_state.sync_pulse_state  ; 0                                 ; 0                            ; 0                                ; 1                                ; 1                          ;
+; vga_vsync_state.back_porch_state  ; 0                                 ; 0                            ; 1                                ; 0                                ; 1                          ;
+; vga_vsync_state.active_state      ; 0                                 ; 1                            ; 0                                ; 0                                ; 1                          ;
+; vga_vsync_state.front_porch_state ; 1                                 ; 0                            ; 0                                ; 0                                ; 1                          ;
++-----------------------------------+-----------------------------------+------------------------------+----------------------------------+----------------------------------+----------------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |vga_init|vga_hsync_state                                                                                                                                                               ;
++-----------------------------------+-----------------------------------+------------------------------+----------------------------------+----------------------------------+----------------------------+
+; Name                              ; vga_hsync_state.front_porch_state ; vga_hsync_state.active_state ; vga_hsync_state.back_porch_state ; vga_hsync_state.sync_pulse_state ; vga_hsync_state.zero_state ;
++-----------------------------------+-----------------------------------+------------------------------+----------------------------------+----------------------------------+----------------------------+
+; vga_hsync_state.zero_state        ; 0                                 ; 0                            ; 0                                ; 0                                ; 0                          ;
+; vga_hsync_state.sync_pulse_state  ; 0                                 ; 0                            ; 0                                ; 1                                ; 1                          ;
+; vga_hsync_state.back_porch_state  ; 0                                 ; 0                            ; 1                                ; 0                                ; 1                          ;
+; vga_hsync_state.active_state      ; 0                                 ; 1                            ; 0                                ; 0                                ; 1                          ;
+; vga_hsync_state.front_porch_state ; 1                                 ; 0                            ; 0                                ; 0                                ; 1                          ;
++-----------------------------------+-----------------------------------+------------------------------+----------------------------------+----------------------------------+----------------------------+
 
 
 +------------------------------------------------------+
@@ -215,14 +247,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 40    ;
+; Number of registers using Synchronous Clear  ; 2     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 36    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 9:1                ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |vga_init|vga_vsync_cnt[2] ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; No         ; |vga_init|vga_vsync_cnt    ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; No         ; |vga_init|Selector9        ;
+; 10:1               ; 5 bits    ; 30 LEs        ; 10 LEs               ; 20 LEs                 ; No         ; |vga_init|vga_hsync_state  ;
+; 10:1               ; 5 bits    ; 30 LEs        ; 10 LEs               ; 20 LEs                 ; No         ; |vga_init|vga_vsync_state  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +-------------------------------+
@@ -240,39 +285,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
-    Info: Processing started: Mon Jan 22 20:15:44 2018
+    Info: Processing started: Wed Feb 07 17:35:22 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off digimon -c digimon
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
-Info (12021): Found 2 design units, including 1 entities, in source file vga_out.vhd
-    Info (12022): Found design unit 1: vga_out-behave
-    Info (12023): Found entity 1: vga_out
-Info (12127): Elaborating entity "vga_out" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at vga_out.vhd(14): used implicit default value for signal "vga_rgb" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at vga_out.vhd(15): used implicit default value for signal "vga_vsync" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at vga_out.vhd(15): used implicit default value for signal "vga_hsync" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "vga_rgb[0]" is stuck at GND
-    Warning (13410): Pin "vga_rgb[1]" is stuck at GND
-    Warning (13410): Pin "vga_rgb[2]" is stuck at GND
-    Warning (13410): Pin "vga_rgb[3]" is stuck at GND
-    Warning (13410): Pin "vga_rgb[4]" is stuck at GND
-    Warning (13410): Pin "vga_rgb[5]" is stuck at GND
-    Warning (13410): Pin "vga_rgb[6]" is stuck at GND
-    Warning (13410): Pin "vga_rgb[7]" is stuck at GND
-    Warning (13410): Pin "vga_vsync" is stuck at GND
-    Warning (13410): Pin "vga_hsync" is stuck at GND
+Info (12021): Found 2 design units, including 1 entities, in source file vga_init.vhd
+    Info (12022): Found design unit 1: vga_init-behave
+    Info (12023): Found entity 1: vga_init
+Info (12127): Elaborating entity "vga_init" for the top level hierarchy
+Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clk"
-    Warning (15610): No output dependent on input pin "rst"
-Info (21057): Implemented 12 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
+Info (21057): Implemented 102 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
     Info (21059): Implemented 10 output pins
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 17 warnings
-    Info: Peak virtual memory: 590 megabytes
-    Info: Processing ended: Mon Jan 22 20:15:46 2018
-    Info: Elapsed time: 00:00:02
+    Info (21061): Implemented 82 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 595 megabytes
+    Info: Processing ended: Wed Feb 07 17:35:25 2018
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 
 

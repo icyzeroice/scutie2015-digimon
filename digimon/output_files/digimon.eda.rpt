@@ -1,5 +1,5 @@
 EDA Netlist Writer report for digimon
-Mon Jan 22 20:16:09 2018
+Wed Feb 07 17:35:43 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
 
 
@@ -36,50 +36,50 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Mon Jan 22 20:16:09 2018 ;
+; EDA Netlist Writer Status ; Successful - Wed Feb 07 17:35:43 2018 ;
 ; Revision Name             ; digimon                               ;
-; Top-level Entity Name     ; vga_out                               ;
+; Top-level Entity Name     ; vga_init                              ;
 ; Family                    ; Cyclone IV E                          ;
 ; Simulation Files Creation ; Successful                            ;
 +---------------------------+---------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Simulation Settings                                                                                                        ;
-+---------------------------------------------------------------------------------------------------+------------------------+
-; Option                                                                                            ; Setting                ;
-+---------------------------------------------------------------------------------------------------+------------------------+
-; Tool Name                                                                                         ; ModelSim-Altera (VHDL) ;
-; Generate netlist for functional simulation only                                                   ; Off                    ;
-; Time scale                                                                                        ; 1 ps                   ;
-; Truncate long hierarchy paths                                                                     ; Off                    ;
-; Map illegal HDL characters                                                                        ; Off                    ;
-; Flatten buses into individual nodes                                                               ; Off                    ;
-; Maintain hierarchy                                                                                ; Off                    ;
-; Bring out device-wide set/reset signals as ports                                                  ; Off                    ;
-; Enable glitch filtering                                                                           ; Off                    ;
-; Do not write top level VHDL entity                                                                ; Off                    ;
-; Disable detection of setup and hold time violations in the input registers of bi-directional pins ; Off                    ;
-; Architecture name in VHDL output netlist                                                          ; structure              ;
-; Generate third-party EDA tool command script for RTL functional simulation                        ; Off                    ;
-; Generate third-party EDA tool command script for gate-level simulation                            ; Off                    ;
-+---------------------------------------------------------------------------------------------------+------------------------+
++---------------------------------------------------------------------------------------------------------------------+
+; Simulation Settings                                                                                                 ;
++---------------------------------------------------------------------------------------------------+-----------------+
+; Option                                                                                            ; Setting         ;
++---------------------------------------------------------------------------------------------------+-----------------+
+; Tool Name                                                                                         ; ModelSim (VHDL) ;
+; Generate netlist for functional simulation only                                                   ; Off             ;
+; Time scale                                                                                        ; 1 ps            ;
+; Truncate long hierarchy paths                                                                     ; Off             ;
+; Map illegal HDL characters                                                                        ; Off             ;
+; Flatten buses into individual nodes                                                               ; Off             ;
+; Maintain hierarchy                                                                                ; Off             ;
+; Bring out device-wide set/reset signals as ports                                                  ; Off             ;
+; Enable glitch filtering                                                                           ; Off             ;
+; Do not write top level VHDL entity                                                                ; Off             ;
+; Disable detection of setup and hold time violations in the input registers of bi-directional pins ; Off             ;
+; Architecture name in VHDL output netlist                                                          ; structure       ;
+; Generate third-party EDA tool command script for RTL functional simulation                        ; Off             ;
+; Generate third-party EDA tool command script for gate-level simulation                            ; Off             ;
++---------------------------------------------------------------------------------------------------+-----------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                                      ;
-+-----------------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                                 ;
-+-----------------------------------------------------------------------------------------------------------------+
-; C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/digimon_8_1200mv_85c_slow.vho      ;
-; C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/digimon_8_1200mv_0c_slow.vho       ;
-; C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/digimon_min_1200mv_0c_fast.vho     ;
-; C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/digimon.vho                        ;
-; C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/digimon_8_1200mv_85c_vhd_slow.sdo  ;
-; C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/digimon_8_1200mv_0c_vhd_slow.sdo   ;
-; C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/digimon_min_1200mv_0c_vhd_fast.sdo ;
-; C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/digimon_vhd.sdo                    ;
-+-----------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                                            ;
++-----------------------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                                       ;
++-----------------------------------------------------------------------------------------------------------------------+
+; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/digimon_8_1200mv_85c_slow.vho      ;
+; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/digimon_8_1200mv_0c_slow.vho       ;
+; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/digimon_min_1200mv_0c_fast.vho     ;
+; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/digimon.vho                        ;
+; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/digimon_8_1200mv_85c_vhd_slow.sdo  ;
+; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/digimon_8_1200mv_0c_vhd_slow.sdo   ;
+; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/digimon_min_1200mv_0c_vhd_fast.sdo ;
+; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/digimon_vhd.sdo                    ;
++-----------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -88,19 +88,19 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
-    Info: Processing started: Mon Jan 22 20:16:08 2018
+    Info: Processing started: Wed Feb 07 17:35:42 2018
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off digimon -c digimon
-Info (204019): Generated file digimon_8_1200mv_85c_slow.vho in folder "C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digimon_8_1200mv_0c_slow.vho in folder "C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digimon_min_1200mv_0c_fast.vho in folder "C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digimon.vho in folder "C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digimon_8_1200mv_85c_vhd_slow.sdo in folder "C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digimon_8_1200mv_0c_vhd_slow.sdo in folder "C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digimon_min_1200mv_0c_vhd_fast.sdo in folder "C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file digimon_vhd.sdo in folder "C:/Users/ZIV3/Documents/Coder/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digimon_8_1200mv_85c_slow.vho in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digimon_8_1200mv_0c_slow.vho in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digimon_min_1200mv_0c_fast.vho in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digimon.vho in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digimon_8_1200mv_85c_vhd_slow.sdo in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digimon_8_1200mv_0c_vhd_slow.sdo in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digimon_min_1200mv_0c_vhd_fast.sdo in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file digimon_vhd.sdo in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 486 megabytes
-    Info: Processing ended: Mon Jan 22 20:16:09 2018
+    Info: Peak virtual memory: 485 megabytes
+    Info: Processing ended: Wed Feb 07 17:35:43 2018
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
