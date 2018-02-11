@@ -1,0 +1,167 @@
+library ieee;
+use ieee.std_logic_1164.ALL;
+use ieee.std_logic_arith.ALL;
+
+entity controller is
+   port(Clk         :in std_logic;
+      Second        :in std_logic;--用于播放动画的延迟的时钟,1秒钟1正脉冲
+	  Minute        :in std_logic;--用于减少饱食度和欢乐度的时钟,1分钟1正脉冲
+	  Low_sw_an     :in std_logic_vector (2 downto 0 );
+	  
+	  Vga_rgb       : out std_logic_vector (7 downto 0); -- R2, R1, R0, G2, G1, G0, B1, B0
+	  Vga_vsync     : out std_logic;
+      Vga_hsync     : out std_logic);
+end entity;
+
+architecture nan OF controller IS
+
+   component vga_out is
+      port (
+         Clk        : in std_logic;
+		 Vga_choose : in std_logic_vector (3 downto 0);
+         Joy        : in integer range 0 to 10;
+         Stomach    : in integer range 0 TO 10;
+		 
+		 Vga_rgb    : out std_logic_vector (7 downto 0); -- R2, R1, R0, G2, G1, G0, B1, B0
+	     Vga_vsync  : out std_logic;
+         Vga_hsync  : out std_logic
+      );
+   end component;
+
+   --宠物状态
+   signal Joy:integer range 0 to 10;
+   signal Stomach:integer range 0 TO 10;
+   
+   --用于选择输出什么宠物图案
+   signal Vga_choose : std_logic_vector (3 downto 0);
+   
+   --输入
+   signal Reset:std_logic;
+   signal Play:std_logic;
+   signal Feed:std_logic;
+   
+   --控制器状态
+   type con_state is (con_active, con_feed, con_play, con_dead);
+   signal Controller_state : con_state;
+   
+   begin
+	
+   --按键赋值
+   Reset <= Low_sw_an(0);
+   Feed <= Low_sw_an(1);
+   Play <= Low_sw_an(2);
+	
+   --vga显示
+   vga:vga_out port map(Clk, Vga_choose, Joy, Stomach, Vga_rgb, Vga_vsync, Vga_hsync);
+	
+   --游戏初始化
+   process(reset)
+      begin		
+	  if Reset = '0' then 
+		 --参数初始化
+		 Joy <= 10;
+	     Stomach <= 10;
+		 Controller_state <= con_active;
+		 
+	     --播放初始化动画
+		 Vga_choose <= "0000";
+		 
+	  end if;
+   end process;
+	
+	
+	--喂食
+   process(Feed)
+      begin		
+	  if Feed = '0' and Controller_state = con_active THEN 
+			
+		 if Stomach < 10 then
+		    Stomach <= Stomach + 1;
+		 end if;
+			
+		 --播放喂食动画
+		 Controller_state <= con_feed;
+			
+      end if;
+   end process;
+	
+	--播放喂食动画的进程
+   process(Second)
+      variable time:integer range 0 TO 5;
+	  begin		
+	  if rising_edge(Second) and Controller_state = con_feed then
+	     time:=time+1;
+		 
+		 if time = 1 then
+		    Vga_choose <= "0001";
+		 elsif time = 2 then
+			Vga_choose <= "0010";
+		 elsif time = 3 then
+		   	Vga_choose <= "0011";
+		 elsif time = 4 then
+			Vga_choose <= "0100";
+		 else
+		    Vga_choose <= "00000";
+		    time := 0;
+	        Controller_state <= con_active;
+		 end if;
+      end if;
+   end process;
+	
+   --陪玩
+   process(Play)
+	  begin		
+	  if Play = '0' and Controller_state = con_active THEN 
+			
+		 if Joy < 10 then
+		    Joy <= Joy + 1;
+		 end if;
+			
+		 --播放陪玩动画
+		 Controller_state <= con_play;
+			
+	  end if;
+   end process;
+	
+   --播放陪玩动画的进程
+   process(Second)
+      variable time:integer range 0 TO 5;
+      begin		
+	  if rising_edge(Second) and Controller_state = con_play then
+	     time:=time+1;
+		 
+		 if time = 1 then
+		    Vga_choose <= "0101";
+		 elsif time = 2 then
+			Vga_choose <= "0110";
+		 elsif time = 3 then
+		   	Vga_choose <= "0111";
+		 elsif time = 4 then
+			Vga_choose <= "1000";
+		 else
+		    Vga_choose <= "00000";
+		    time := 0;
+	        Controller_state <= con_active;
+		 end if;
+      end if;
+	  
+   end process;
+   
+	
+   --根据时间掉欢乐度和饱食度
+   process(Minute)
+      begin		
+	  if rising_edge(Minute) and  Controller_state = con_active then
+	     if Joy > 0 and Stomach > 0 then 
+		    Joy <= Joy - 1;
+			Stomach <= Stomach - 1;
+		 else 
+			Controller_state <= con_dead;
+			--触发死亡场景
+			--等待reset
+			Vga_choose <= "1001";
+	     end if;
+      end if;
+   end process;
+	
+end nan;
