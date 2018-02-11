@@ -1,16 +1,16 @@
 
-State Machine - |vga_init|vga_vsync_state
-Name vga_vsync_state.front_porch_state vga_vsync_state.active_state vga_vsync_state.back_porch_state vga_vsync_state.sync_pulse_state vga_vsync_state.zero_state 
-vga_vsync_state.zero_state 0 0 0 0 0 
-vga_vsync_state.sync_pulse_state 0 0 0 1 1 
-vga_vsync_state.back_porch_state 0 0 1 0 1 
-vga_vsync_state.active_state 0 1 0 0 1 
-vga_vsync_state.front_porch_state 1 0 0 0 1 
+State Machine - |vga_init|VGA_vsync_state
+Name VGA_vsync_state.front_porch_state VGA_vsync_state.active_state VGA_vsync_state.back_porch_state VGA_vsync_state.sync_pulse_state VGA_vsync_state.zero_state 
+VGA_vsync_state.zero_state 0 0 0 0 0 
+VGA_vsync_state.sync_pulse_state 0 0 0 1 1 
+VGA_vsync_state.back_porch_state 0 0 1 0 1 
+VGA_vsync_state.active_state 0 1 0 0 1 
+VGA_vsync_state.front_porch_state 1 0 0 0 1 
 
-State Machine - |vga_init|vga_hsync_state
-Name vga_hsync_state.front_porch_state vga_hsync_state.active_state vga_hsync_state.back_porch_state vga_hsync_state.sync_pulse_state vga_hsync_state.zero_state 
-vga_hsync_state.zero_state 0 0 0 0 0 
-vga_hsync_state.sync_pulse_state 0 0 0 1 1 
-vga_hsync_state.back_porch_state 0 0 1 0 1 
-vga_hsync_state.active_state 0 1 0 0 1 
-vga_hsync_state.front_porch_state 1 0 0 0 1 
+State Machine - |vga_init|VGA_hsync_state
+Name VGA_hsync_state.front_porch_state VGA_hsync_state.active_state VGA_hsync_state.back_porch_state VGA_hsync_state.sync_pulse_state VGA_hsync_state.zero_state 
+VGA_hsync_state.zero_state 0 0 0 0 0 
+VGA_hsync_state.sync_pulse_state 0 0 0 1 1 
+VGA_hsync_state.back_porch_state 0 0 1 0 1 
+VGA_hsync_state.active_state 0 1 0 0 1 
+VGA_hsync_state.front_porch_state 1 0 0 0 1 
