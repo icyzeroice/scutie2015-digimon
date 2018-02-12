@@ -26,8 +26,9 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 
 entity vga_out is
-   port(Clk          : in std_logic;
+   port(Clk        : in std_logic;
       Rst          : in std_logic;
+	  Vga_choose   : in std_logic_vector (4 downto 0); --用于选择输出什么图案
 	  Vga_rgb      : out std_logic_vector (7 downto 0); -- R2, R1, R0, G2, G1, G0, B1, B0
 	  Vga_vsync    : out std_logic;
       Vga_hsync    : out std_logic);
