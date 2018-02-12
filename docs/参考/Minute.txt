@@ -1,0 +1,30 @@
+library ieee;
+use ieee.std_logic_1164.ALL;
+
+entity minute is
+   port(Second :  in  std_logic;
+        q      :  out std_logic);
+end minute;
+
+architecture behav of minute is
+   begin
+   process(Second)
+   
+      variable time:integer range 0 to 60;
+	  
+      begin
+      if rising_edge(Second) then
+         time:=time+1;
+		 
+	     if time<=30 then
+	        q<='1';
+	     else 
+	        if time < 60 then
+	   	       q<='0';
+	   	    else
+		       time:=0;   
+		    end if;
+	     end if;
+      end if;
+   end process;
+END behav;
