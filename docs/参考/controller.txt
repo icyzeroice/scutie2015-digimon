@@ -5,7 +5,6 @@ use ieee.std_logic_arith.ALL;
 entity controller is
    port(Clk         :in std_logic;
       Second        :in std_logic;--用于播放动画的延迟的时钟,1秒钟1正脉冲
-	  Minute        :in std_logic;--用于减少饱食度和欢乐度的时钟,1分钟1正脉冲
 	  Low_sw_an     :in std_logic_vector (2 downto 0 );
 	  
 	  Vga_rgb       : out std_logic_vector (7 downto 0); -- R2, R1, R0, G2, G1, G0, B1, B0
@@ -70,7 +69,8 @@ architecture nan OF controller IS
    vga:vga_out port map(Clk, '0', Vga_choose, Joy, Stomach, Vga_rgb, Vga_vsync, Vga_hsync);
 	
    --游戏初始化
-   process(reset, Minute, Second)
+   process(reset, Second)
+      variable minute:integer range 0 TO 59;
 	  variable time:integer range 0 TO 5;
       begin		
 	  if Reset = '0' then 
@@ -81,24 +81,12 @@ architecture nan OF controller IS
 		 
 	     --播放初始化动画
 		 Vga_choose <= ACTIVE_ONE;
+		
 	  
 	  elsif Controller_state = con_active then
-	
-	  --根据时间掉欢乐度和饱食度
-	     if Minute = '0' then
-	     
-	        if Joy > 0 and Stomach > 0 then 
-		       Joy <= Joy - 1;
-		   	   Stomach <= Stomach - 1;
-		    else 
-			   Controller_state <= con_dead;
-			   --触发死亡场景
-			   --等待reset
-			   Vga_choose <= DEAD_ONE;
-	        end if;
-	
+
 	    --喂食
-	     elsif Feed = '0' then
+	     if Feed = '0' then
 	        if Stomach < 10 then
 		       Stomach <= Stomach + 1;
 		    end if;
@@ -113,18 +101,40 @@ architecture nan OF controller IS
 			
 		    --播放陪玩动画
 		    Controller_state <= con_play;
+		
+		--根据时间掉欢乐度和饱食度
+		 elsif rising_edge(Second) then
+	        Minute:=Minute+1;
+	
+	        if Minute = 59 then
+	           if Joy > 0 and Stomach > 0 then 
+		          Joy <= Joy - 1;
+		   	      Stomach <= Stomach - 1;
+		       else 
+			      Controller_state <= con_dead;
+			      --触发死亡场景
+			      --等待reset
+			      Vga_choose <= DEAD_ONE;
+	           end if;
+	        Minute := 0;
+	        end if;  
+	 
 	     end if;
 	
 	  elsif Second = '0' and Controller_state = con_feed then
 	     time:=time+1;
 		 
 		 if time = 1 then
+		    Controller_state <= con_feed;
 		    Vga_choose <= FEED_ONE;
 		 elsif time = 2 then
+			Controller_state <= con_feed;
 			Vga_choose <= FEED_TWO;
 		 elsif time = 3 then
+		    Controller_state <= con_feed;
 		   	Vga_choose <= FEED_THREE;
 		 elsif time = 4 then
+			Controller_state <= con_feed;
 			Vga_choose <= FEED_FOUR;
 		 else
 		    Vga_choose <= ACTIVE_ONE;
@@ -134,14 +144,17 @@ architecture nan OF controller IS
 	
 	  elsif Second = '0' and Controller_state = con_play then
 	     time:=time+1;
-		 
 		 if time = 1 then
+		    Controller_state <= con_play;
 		    Vga_choose <= PLAY_ONE;
 		 elsif time = 2 then
+			Controller_state <= con_play;
 			Vga_choose <= PLAY_TWO;
 		 elsif time = 3 then
+		    Controller_state <= con_play;
 		   	Vga_choose <= PLAY_THREE;
 		 elsif time = 4 then
+			Controller_state <= con_play;
 			Vga_choose <= PLAY_FOUR;
 		 else
 		    Vga_choose <= ACTIVE_ONE;
