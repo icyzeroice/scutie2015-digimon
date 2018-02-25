@@ -1,5 +1,5 @@
 EDA Netlist Writer report for digimon
-Thu Feb 08 09:38:58 2018
+Sun Feb 25 20:08:23 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
 
 
@@ -36,9 +36,9 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu Feb 08 09:38:57 2018 ;
+; EDA Netlist Writer Status ; Successful - Sun Feb 25 20:08:23 2018 ;
 ; Revision Name             ; digimon                               ;
-; Top-level Entity Name     ; vga_out                               ;
+; Top-level Entity Name     ; digimon                               ;
 ; Family                    ; Cyclone IV E                          ;
 ; Simulation Files Creation ; Successful                            ;
 +---------------------------+---------------------------------------+
@@ -88,7 +88,7 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
-    Info: Processing started: Thu Feb 08 09:38:57 2018
+    Info: Processing started: Sun Feb 25 20:08:22 2018
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off digimon -c digimon
 Info (204019): Generated file digimon_8_1200mv_85c_slow.vho in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
 Info (204019): Generated file digimon_8_1200mv_0c_slow.vho in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
@@ -99,8 +99,8 @@ Info (204019): Generated file digimon_8_1200mv_0c_vhd_slow.sdo in folder "C:/Use
 Info (204019): Generated file digimon_min_1200mv_0c_vhd_fast.sdo in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
 Info (204019): Generated file digimon_vhd.sdo in folder "C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 487 megabytes
-    Info: Processing ended: Thu Feb 08 09:38:58 2018
+    Info: Peak virtual memory: 478 megabytes
+    Info: Processing ended: Sun Feb 25 20:08:23 2018
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

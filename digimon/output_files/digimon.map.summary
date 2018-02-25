@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Thu Feb 08 09:38:43 2018
+Analysis & Synthesis Status : Successful - Sun Feb 25 20:08:06 2018
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Full Version
 Revision Name : digimon
-Top-level Entity Name : vga_out
+Top-level Entity Name : digimon
 Family : Cyclone IV E
-Total logic elements : 76
-    Total combinational functions : 76
-    Dedicated logic registers : 0
-Total registers : 0
-Total pins : 12
+Total logic elements : 176
+    Total combinational functions : 174
+    Dedicated logic registers : 28
+Total registers : 28
+Total pins : 14
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0
