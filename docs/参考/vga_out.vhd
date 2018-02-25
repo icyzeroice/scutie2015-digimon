@@ -50,7 +50,8 @@ architecture behave of vga_out is
    constant V_ACTIVE_MAX       : integer := 624;
    constant V_MAX              : integer := 625;
    
-   constant PIXEL_LEN          : integer := 10;
+   constant STATE_LEN          : integer := 10;
+   constant PET_LEN            : integer := 20;
 
    signal Vga_hsync_cnt    : integer range 0 to 1056;
    signal Vga_vsync_cnt    : integer range 0 to 625;
@@ -124,15 +125,225 @@ begin
          Vga_vsync_n <= '1';						--如果不在VSYNC_O区域,那么置1
       end if;
    end process;
-
+   
+--Vga_choose
+--Joy
+--Stomach
 --组合电路,用于图案
    process(Vga_hsync_cnt, Vga_vsync_cnt)
    begin
-      if Vga_hsync_cnt >= H_ACTIVE_MIN and Vga_hsync_cnt < H_ACTIVE_MAX and Vga_vsync_cnt >= V_ACTIVE_MIN and Vga_vsync_cnt < V_ACTIVE_MAX then   
-	     Vga_rgb_n <= "10110011";
+      --
+	  --宠物状态栏
+	  --
+	  
+	  --欢乐度图标,为爱心
+	  if Vga_hsync_cnt >= H_ACTIVE_MIN + 3*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 5*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 2*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 3*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 6*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 8*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 2*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 3*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 2*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 9*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 3*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 3*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 8*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 5*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 6*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 4*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 6*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 7*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 5*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 6*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 8*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  
+	  --欢乐度边框
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 11*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 3*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 4*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 11*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 11*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 5*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 6*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  
+	  --Joy
+      elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 12*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 13*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then  
+	     if Joy >= 1 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 13*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 14*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then   
+	     if Joy >= 2 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 14*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 15*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then   
+	     if Joy >= 3 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 15*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 16*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then  
+	     if Joy >= 4 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 16*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 17*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then  
+	     if Joy >= 5 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 17*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 18*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then   
+	     if Joy >= 6 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 18*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 19*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then   
+	     if Joy >= 7 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 19*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 20*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then  
+	     if Joy >= 8 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 20*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 21*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then   
+	     if Joy >= 9 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 21*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 22*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then  
+	     if Joy >= 10 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+		
+
+      --饥饿度图标,为嘴巴
+      elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 4*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 9*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 10*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+		 
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 3*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 10*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 11*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 7*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 8*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 10*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 11*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+		 
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 2*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 3*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 11*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 12*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 4*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 5*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 11*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 12*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 8*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 9*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 11*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 12*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+		 
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 2*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 3*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 6*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 9*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+		 
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 2*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 3*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 13*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 14*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 5*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 6*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 13*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 14*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+		 
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 3*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 14*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 15*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 6*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 14*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 15*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 8*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 10*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 14*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 15*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+		 
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 4*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 15*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 16*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 8*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 10*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 15*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 16*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+      	  
+		  
+	  --饥饿度边框
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 11*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 11*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 12*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 11*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 11*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 13*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 14*STATE_LEN then   
+	     Vga_rgb_n <= "00000000";
+		  
+		  
+	  --Stomach
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 12*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 13*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then  
+	     if Stomach >= 1 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 13*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 14*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then   
+	     if Stomach >= 2 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 14*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 15*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then   
+	     if Stomach >= 3 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 15*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 16*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then  
+	     if Stomach >= 4 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 16*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 17*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then  
+	     if Stomach >= 5 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 17*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 18*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then   
+	     if Stomach >= 6 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 18*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 19*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then   
+	     if Stomach >= 7 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 19*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 20*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then  
+	     if Stomach >= 8 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 20*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 21*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then   
+	     if Stomach >= 9 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 21*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 22*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then  
+	     if Stomach >= 10 then
+	        Vga_rgb_n <= "00000000";
+		 else
+		    Vga_rgb_n <= "10110011";
+		 end if;
+			
+			
+			
+	  --
+	  --宠物显示区
+	  --	
       else
-         Vga_rgb_n <= "00000000";
+         Vga_rgb_n <= "10110011";
       end if;
+	  
    end process;
    
 end behave;
