@@ -1,5 +1,5 @@
 Analysis & Synthesis report for digimon
-Sun Feb 25 12:35:22 2018
+Sun Feb 25 20:08:06 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
 
 
@@ -14,10 +14,11 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Registers Removed During Synthesis
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Elapsed Time Per Partition
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -43,16 +44,16 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Feb 25 12:35:22 2018       ;
+; Analysis & Synthesis Status        ; Successful - Sun Feb 25 20:08:06 2018       ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
 ; Revision Name                      ; digimon                                     ;
 ; Top-level Entity Name              ; digimon                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 59                                          ;
-;     Total combinational functions  ; 57                                          ;
-;     Dedicated logic registers      ; 29                                          ;
-; Total registers                    ; 29                                          ;
-; Total pins                         ; 11                                          ;
+; Total logic elements               ; 176                                         ;
+;     Total combinational functions  ; 174                                         ;
+;     Dedicated logic registers      ; 28                                          ;
+; Total registers                    ; 28                                          ;
+; Total pins                         ; 14                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -164,44 +165,47 @@ applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                         ;
-+----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                               ; Library ;
-+----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
-; vga_out.vhd                      ; yes             ; User VHDL File                     ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/vga_out.vhd ;         ;
-; digimon.bdf                      ; yes             ; User Block Diagram/Schematic File  ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/digimon.bdf ;         ;
-+----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                            ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                  ; Library ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------+---------+
+; vga_out.vhd                      ; yes             ; User VHDL File                     ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/vga_out.vhd    ;         ;
+; controller.vhd                   ; yes             ; User VHDL File                     ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/controller.vhd ;         ;
+; digimon.bdf                      ; yes             ; User Block Diagram/Schematic File  ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/digimon.bdf    ;         ;
+; second.vhd                       ; yes             ; Auto-Found VHDL File               ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/second.vhd     ;         ;
+; key_read.vhd                     ; yes             ; Auto-Found VHDL File               ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/key_read.vhd   ;         ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------+---------+
 
 
-+---------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary             ;
-+---------------------------------------------+-----------+
-; Resource                                    ; Usage     ;
-+---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 59        ;
-;                                             ;           ;
-; Total combinational functions               ; 57        ;
-; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 31        ;
-;     -- 3 input functions                    ; 3         ;
-;     -- <=2 input functions                  ; 23        ;
-;                                             ;           ;
-; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 38        ;
-;     -- arithmetic mode                      ; 19        ;
-;                                             ;           ;
-; Total registers                             ; 29        ;
-;     -- Dedicated logic registers            ; 29        ;
-;     -- I/O registers                        ; 0         ;
-;                                             ;           ;
-; I/O pins                                    ; 11        ;
-; Embedded Multiplier 9-bit elements          ; 0         ;
-; Maximum fan-out node                        ; Clk~input ;
-; Maximum fan-out                             ; 29        ;
-; Total fan-out                               ; 254       ;
-; Average fan-out                             ; 2.35      ;
-+---------------------------------------------+-----------+
++-----------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                 ;
++---------------------------------------------+-------------------------------+
+; Resource                                    ; Usage                         ;
++---------------------------------------------+-------------------------------+
+; Estimated Total logic elements              ; 176                           ;
+;                                             ;                               ;
+; Total combinational functions               ; 174                           ;
+; Logic element usage by number of LUT inputs ;                               ;
+;     -- 4 input functions                    ; 119                           ;
+;     -- 3 input functions                    ; 25                            ;
+;     -- <=2 input functions                  ; 30                            ;
+;                                             ;                               ;
+; Logic elements by mode                      ;                               ;
+;     -- normal mode                          ; 155                           ;
+;     -- arithmetic mode                      ; 19                            ;
+;                                             ;                               ;
+; Total registers                             ; 28                            ;
+;     -- Dedicated logic registers            ; 28                            ;
+;     -- I/O registers                        ; 0                             ;
+;                                             ;                               ;
+; I/O pins                                    ; 14                            ;
+; Embedded Multiplier 9-bit elements          ; 0                             ;
+; Maximum fan-out node                        ; vga_out:inst|Vga_hsync_cnt[6] ;
+; Maximum fan-out                             ; 28                            ;
+; Total fan-out                               ; 684                           ;
+; Average fan-out                             ; 2.97                          ;
++---------------------------------------------+-------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -209,20 +213,47 @@ applicable agreement for further details.
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name   ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
-; |digimon                   ; 57 (0)            ; 29 (0)       ; 0           ; 0            ; 0       ; 0         ; 11   ; 0            ; |digimon              ; work         ;
-;    |vga_out:inst|          ; 57 (57)           ; 29 (29)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|vga_out:inst ; work         ;
+; |digimon                   ; 174 (0)           ; 28 (0)       ; 0           ; 0            ; 0       ; 0         ; 14   ; 0            ; |digimon              ; work         ;
+;    |vga_out:inst|          ; 174 (174)         ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|vga_out:inst ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+--------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                             ;
-+---------------------------------------+----------------------------------------+
-; Register name                         ; Reason for Removal                     ;
-+---------------------------------------+----------------------------------------+
-; vga_out:inst|Vga_rgb[3,6]             ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 2 ;                                        ;
-+---------------------------------------+----------------------------------------+
++--------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                         ;
++----------------------------------------------+---------------------------------------------+
+; Register name                                ; Reason for Removal                          ;
++----------------------------------------------+---------------------------------------------+
+; controller:inst4|Joy[0]                      ; Stuck at VCC due to stuck port preset       ;
+; controller:inst4|Stomach[3]                  ; Stuck at GND due to stuck port clear        ;
+; controller:inst4|Stomach[2]                  ; Stuck at VCC due to stuck port preset       ;
+; controller:inst4|Stomach[1]                  ; Stuck at GND due to stuck port clear        ;
+; controller:inst4|Stomach[0]                  ; Stuck at VCC due to stuck port preset       ;
+; controller:inst4|Controller_state.con_active ; Stuck at VCC due to stuck port preset       ;
+; controller:inst4|Joy[3]                      ; Stuck at GND due to stuck port clear        ;
+; controller:inst4|Joy[2]                      ; Stuck at VCC due to stuck port preset       ;
+; controller:inst4|Joy[1]                      ; Stuck at GND due to stuck port clear        ;
+; controller:inst4|minute[0..5]                ; Stuck at GND due to stuck port clock_enable ;
+; vga_out:inst|Vga_rgb[2..4]                   ; Stuck at GND due to stuck port data_in      ;
+; controller:inst4|Controller_state.con_feed   ; Stuck at GND due to stuck port clear        ;
+; controller:inst4|Controller_state.con_play   ; Stuck at GND due to stuck port clear        ;
+; second:inst3|q                               ; Lost fanout                                 ;
+; second:inst3|time[0..25]                     ; Lost fanout                                 ;
+; Total Number of Removed Registers = 47       ;                                             ;
++----------------------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                   ;
++----------------------------------------------+--------------------------+-------------------------------------------------------------------------------------+
+; Register name                                ; Reason for Removal       ; Registers Removed due to This Register                                              ;
++----------------------------------------------+--------------------------+-------------------------------------------------------------------------------------+
+; controller:inst4|Controller_state.con_active ; Stuck at VCC             ; controller:inst4|Joy[3], controller:inst4|Joy[2], controller:inst4|Joy[1],          ;
+;                                              ; due to stuck port preset ; controller:inst4|minute[4], controller:inst4|minute[3], controller:inst4|minute[2], ;
+;                                              ;                          ; controller:inst4|minute[1], controller:inst4|minute[0]                              ;
+; controller:inst4|Joy[0]                      ; Stuck at VCC             ; second:inst3|q                                                                      ;
+;                                              ; due to stuck port preset ;                                                                                     ;
++----------------------------------------------+--------------------------+-------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -230,7 +261,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 29    ;
+; Total registers                              ; 28    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -254,7 +285,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -264,7 +295,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
-    Info: Processing started: Sun Feb 25 12:35:19 2018
+    Info: Processing started: Sun Feb 25 20:08:04 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off digimon -c digimon
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 2 design units, including 1 entities, in source file vga_out.vhd
@@ -277,22 +308,75 @@ Info (12021): Found 1 design units, including 1 entities, in source file digimon
     Info (12023): Found entity 1: digimon
 Info (12127): Elaborating entity "digimon" for the top level hierarchy
 Info (12128): Elaborating entity "vga_out" for hierarchy "vga_out:inst"
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(99): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(101): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(100): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(102): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(155): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(161): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(167): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(173): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(179): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(185): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(191): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(197): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(203): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(209): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(267): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(273): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(279): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(285): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(291): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(297): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(303): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(309): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(315): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(321): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "controller" for hierarchy "controller:inst4"
+Warning (10492): VHDL Process Statement warning at controller.vhd(75): signal "Controller_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(78): signal "Feed" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(79): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(80): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(86): signal "Play" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(87): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(88): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(113): signal "Controller_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(134): signal "Controller_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at controller.vhd(61): inferring latch(es) for signal or variable "time", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "time[0]" at controller.vhd(65)
+Info (10041): Inferred latch for "time[1]" at controller.vhd(65)
+Info (10041): Inferred latch for "time[2]" at controller.vhd(65)
+Info (10018): Can't recognize finite state machine "Controller_state" because it has a complex reset state
+Warning (12125): Using design file second.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: second-behav
+    Info (12023): Found entity 1: second
+Info (12128): Elaborating entity "second" for hierarchy "second:inst3"
+Warning (12125): Using design file key_read.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: key_read-ked_dec
+    Info (12023): Found entity 1: key_read
+Info (12128): Elaborating entity "key_read" for hierarchy "key_read:inst2"
+Warning (10541): VHDL Signal Declaration warning at key_read.vhd(17): used implicit default value for signal "low_sw_r" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (14025): LATCH primitive "controller:inst4|time[2]" is permanently disabled
+Warning (14025): LATCH primitive "controller:inst4|time[0]" is permanently disabled
+Warning (14025): LATCH primitive "controller:inst4|time[1]" is permanently disabled
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "VGA_RGB_out[6]" is stuck at GND
+    Warning (13410): Pin "VGA_RGB_out[4]" is stuck at GND
     Warning (13410): Pin "VGA_RGB_out[3]" is stuck at GND
+    Warning (13410): Pin "VGA_RGB_out[2]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 27 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 73 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 1 input pins
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "sw1"
+    Warning (15610): No output dependent on input pin "sw2"
+    Warning (15610): No output dependent on input pin "sw3"
+Info (21057): Implemented 191 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
     Info (21059): Implemented 10 output pins
-    Info (21061): Implemented 62 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 593 megabytes
-    Info: Processing ended: Sun Feb 25 12:35:22 2018
-    Info: Elapsed time: 00:00:03
+    Info (21061): Implemented 177 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 46 warnings
+    Info: Peak virtual memory: 585 megabytes
+    Info: Processing ended: Sun Feb 25 20:08:06 2018
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
 
