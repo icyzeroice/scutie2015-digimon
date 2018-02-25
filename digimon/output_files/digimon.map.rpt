@@ -1,5 +1,5 @@
 Analysis & Synthesis report for digimon
-Thu Feb 08 09:38:43 2018
+Sun Feb 25 12:35:22 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
 
 
@@ -13,7 +13,7 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Logic Cells Representing Combinational Loops
+  8. Registers Removed During Synthesis
   9. General Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
  11. Elapsed Time Per Partition
@@ -43,16 +43,16 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Feb 08 09:38:43 2018       ;
+; Analysis & Synthesis Status        ; Successful - Sun Feb 25 12:35:22 2018       ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
 ; Revision Name                      ; digimon                                     ;
-; Top-level Entity Name              ; vga_out                                     ;
+; Top-level Entity Name              ; digimon                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 76                                          ;
-;     Total combinational functions  ; 76                                          ;
-;     Dedicated logic registers      ; 0                                           ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 12                                          ;
+; Total logic elements               ; 59                                          ;
+;     Total combinational functions  ; 57                                          ;
+;     Dedicated logic registers      ; 29                                          ;
+; Total registers                    ; 29                                          ;
+; Total pins                         ; 11                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -66,7 +66,7 @@ applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP4CE6F17C8        ;                    ;
-; Top-level entity name                                                      ; vga_out            ; digimon            ;
+; Top-level entity name                                                      ; digimon            ; digimon            ;
 ; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -164,96 +164,65 @@ applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                      ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                               ; Library ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+---------+
-; vga_out.vhd                      ; yes             ; User VHDL File  ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/vga_out.vhd ;         ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                         ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                               ; Library ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
+; vga_out.vhd                      ; yes             ; User VHDL File                     ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/vga_out.vhd ;         ;
+; digimon.bdf                      ; yes             ; User Block Diagram/Schematic File  ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/digimon.bdf ;         ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                       ;
-+---------------------------------------------+---------------------+
-; Resource                                    ; Usage               ;
-+---------------------------------------------+---------------------+
-; Estimated Total logic elements              ; 76                  ;
-;                                             ;                     ;
-; Total combinational functions               ; 76                  ;
-; Logic element usage by number of LUT inputs ;                     ;
-;     -- 4 input functions                    ; 17                  ;
-;     -- 3 input functions                    ; 22                  ;
-;     -- <=2 input functions                  ; 37                  ;
-;                                             ;                     ;
-; Logic elements by mode                      ;                     ;
-;     -- normal mode                          ; 47                  ;
-;     -- arithmetic mode                      ; 29                  ;
-;                                             ;                     ;
-; Total registers                             ; 0                   ;
-;     -- Dedicated logic registers            ; 0                   ;
-;     -- I/O registers                        ; 0                   ;
-;                                             ;                     ;
-; I/O pins                                    ; 12                  ;
-; Embedded Multiplier 9-bit elements          ; 0                   ;
-; Maximum fan-out node                        ; Vga_vsync_cnt[15]~0 ;
-; Maximum fan-out                             ; 16                  ;
-; Total fan-out                               ; 227                 ;
-; Average fan-out                             ; 2.27                ;
-+---------------------------------------------+---------------------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 59        ;
+;                                             ;           ;
+; Total combinational functions               ; 57        ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 31        ;
+;     -- 3 input functions                    ; 3         ;
+;     -- <=2 input functions                  ; 23        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 38        ;
+;     -- arithmetic mode                      ; 19        ;
+;                                             ;           ;
+; Total registers                             ; 29        ;
+;     -- Dedicated logic registers            ; 29        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 11        ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+; Maximum fan-out node                        ; Clk~input ;
+; Maximum fan-out                             ; 29        ;
+; Total fan-out                               ; 254       ;
+; Average fan-out                             ; 2.35      ;
++---------------------------------------------+-----------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |vga_out                   ; 76 (76)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 12   ; 0            ; |vga_out            ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                           ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name   ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
+; |digimon                   ; 57 (0)            ; 29 (0)       ; 0           ; 0            ; 0       ; 0         ; 11   ; 0            ; |digimon              ; work         ;
+;    |vga_out:inst|          ; 57 (57)           ; 29 (29)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|vga_out:inst ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-------------------------------------------------------------+
-; Logic Cells Representing Combinational Loops                ;
-+--------------------------------------------------------+----+
-; Logic Cell Name                                        ;    ;
-+--------------------------------------------------------+----+
-; Equal0~0                                               ;    ;
-; Equal0~1                                               ;    ;
-; Vga_hsync_cnt_n[3]~0                                   ;    ;
-; Vga_hsync_cnt_n[15]~1                                  ;    ;
-; Vga_hsync_cnt_n[2]~2                                   ;    ;
-; Vga_hsync_cnt_n[1]~3                                   ;    ;
-; Vga_hsync_cnt_n[0]~4                                   ;    ;
-; Vga_hsync_cnt_n[4]~5                                   ;    ;
-; Vga_hsync_cnt_n[9]~6                                   ;    ;
-; Vga_hsync_cnt_n[8]~7                                   ;    ;
-; Vga_hsync_cnt_n[7]~8                                   ;    ;
-; Vga_hsync_cnt_n[6]~9                                   ;    ;
-; Vga_hsync_cnt_n[10]~10                                 ;    ;
-; Vga_hsync_cnt_n[5]~11                                  ;    ;
-; Vga_hsync_cnt_n[13]~12                                 ;    ;
-; Vga_hsync_cnt_n[12]~13                                 ;    ;
-; Vga_hsync_cnt_n[11]~14                                 ;    ;
-; Equal1~0                                               ;    ;
-; Equal1~1                                               ;    ;
-; Equal1~2                                               ;    ;
-; Equal1~3                                               ;    ;
-; Equal1~4                                               ;    ;
-; Equal1~5                                               ;    ;
-; Equal1~6                                               ;    ;
-; Equal1~7                                               ;    ;
-; Equal1~8                                               ;    ;
-; Equal1~9                                               ;    ;
-; Equal1~10                                              ;    ;
-; Equal1~11                                              ;    ;
-; Equal1~12                                              ;    ;
-; Equal1~13                                              ;    ;
-; Equal1~14                                              ;    ;
-; Equal1~15                                              ;    ;
-; Number of logic cells representing combinational loops ; 33 ;
-+--------------------------------------------------------+----+
-Note: All cells listed above may not be present at the end of synthesis due to various synthesis optimizations.
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; vga_out:inst|Vga_rgb[3,6]             ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 2 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -261,7 +230,7 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 29    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -271,14 +240,13 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |vga_out|Vga_hsync_cnt[13] ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |vga_out|Vga_vsync_cnt[15] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |digimon|vga_out:inst|Vga_vsync_cnt[9] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
 
 
 +-------------------------------+
@@ -296,7 +264,7 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
-    Info: Processing started: Thu Feb 08 09:38:41 2018
+    Info: Processing started: Sun Feb 25 12:35:19 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off digimon -c digimon
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 2 design units, including 1 entities, in source file vga_out.vhd
@@ -305,38 +273,26 @@ Info (12021): Found 2 design units, including 1 entities, in source file vga_out
 Info (12021): Found 2 design units, including 1 entities, in source file controller.vhd
     Info (12022): Found design unit 1: controller-nan
     Info (12023): Found entity 1: controller
-Info (12021): Found 2 design units, including 1 entities, in source file vga_init.vhd
-    Info (12022): Found design unit 1: vga_init-behave
-    Info (12023): Found entity 1: vga_init
-Info (12127): Elaborating entity "vga_out" for the top level hierarchy
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(57): signal "Vga_rgb_n" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(58): signal "Vga_hsync_n" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(59): signal "Vga_vsync_n" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(60): signal "Vga_hsync_cnt_n" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(61): signal "Vga_vsync_cnt_n" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(68): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(71): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(79): signal "Vga_vsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(79): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(81): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(82): signal "Vga_vsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(84): signal "Vga_vsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(91): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(101): signal "Vga_vsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(111): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12021): Found 1 design units, including 1 entities, in source file digimon.bdf
+    Info (12023): Found entity 1: digimon
+Info (12127): Elaborating entity "digimon" for the top level hierarchy
+Info (12128): Elaborating entity "vga_out" for hierarchy "vga_out:inst"
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(99): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(101): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "VGA_RGB_out[6]" is stuck at GND
+    Warning (13410): Pin "VGA_RGB_out[3]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "Clk"
-Info (21057): Implemented 88 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
+Info (21057): Implemented 73 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
     Info (21059): Implemented 10 output pins
-    Info (21061): Implemented 76 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 17 warnings
-    Info: Peak virtual memory: 589 megabytes
-    Info: Processing ended: Thu Feb 08 09:38:43 2018
-    Info: Elapsed time: 00:00:02
+    Info (21061): Implemented 62 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 593 megabytes
+    Info: Processing ended: Sun Feb 25 12:35:22 2018
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 
 
