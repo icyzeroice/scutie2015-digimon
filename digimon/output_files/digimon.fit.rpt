@@ -1,5 +1,5 @@
 Fitter report for digimon
-Mon Feb 26 20:45:49 2018
+Mon Feb 26 21:30:26 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
 
 
@@ -68,15 +68,15 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Mon Feb 26 20:45:49 2018       ;
+; Fitter Status                      ; Successful - Mon Feb 26 21:30:26 2018       ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
 ; Revision Name                      ; digimon                                     ;
 ; Top-level Entity Name              ; digimon                                     ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE6F17C8                                 ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 1,259 / 6,272 ( 20 % )                      ;
-;     Total combinational functions  ; 1,256 / 6,272 ( 20 % )                      ;
+; Total logic elements               ; 1,255 / 6,272 ( 20 % )                      ;
+;     Total combinational functions  ; 1,252 / 6,272 ( 20 % )                      ;
 ;     Dedicated logic registers      ; 77 / 6,272 ( 1 % )                          ;
 ; Total registers                    ; 77                                          ;
 ; Total pins                         ; 14 / 180 ( 8 % )                            ;
@@ -155,12 +155,12 @@ applicable agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.30        ;
+; Average used               ; 2.36        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;  10.0%      ;
+;     Processors 2-4         ;  45.5%      ;
 ;     Processors 5-8         ;   0.0%      ;
 +----------------------------+-------------+
 
@@ -189,8 +189,8 @@ applicable agreement for further details.
 ; Type                ; Total [A + B]       ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+---------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                     ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 1376 ) ; 0.00 % ( 0 / 1376 )        ; 0.00 % ( 0 / 1376 )      ;
-;     -- Achieved     ; 0.00 % ( 0 / 1376 ) ; 0.00 % ( 0 / 1376 )        ; 0.00 % ( 0 / 1376 )      ;
+;     -- Requested    ; 0.00 % ( 0 / 1372 ) ; 0.00 % ( 0 / 1372 )        ; 0.00 % ( 0 / 1372 )      ;
+;     -- Achieved     ; 0.00 % ( 0 / 1372 ) ; 0.00 % ( 0 / 1372 )        ; 0.00 % ( 0 / 1372 )      ;
 ;                     ;                     ;                            ;                          ;
 ; Routing (by net)    ;                     ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )    ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -213,7 +213,7 @@ applicable agreement for further details.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 1366 )   ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 1362 )   ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 10 )     ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -229,26 +229,26 @@ The pin-out file can be found in C:/Users/ZIV3/Documents/Programming/scutie2015-
 +---------------------------------------------+------------------------+
 ; Resource                                    ; Usage                  ;
 +---------------------------------------------+------------------------+
-; Total logic elements                        ; 1,259 / 6,272 ( 20 % ) ;
-;     -- Combinational with no register       ; 1182                   ;
+; Total logic elements                        ; 1,255 / 6,272 ( 20 % ) ;
+;     -- Combinational with no register       ; 1178                   ;
 ;     -- Register only                        ; 3                      ;
 ;     -- Combinational with a register        ; 74                     ;
 ;                                             ;                        ;
 ; Logic element usage by number of LUT inputs ;                        ;
-;     -- 4 input functions                    ; 575                    ;
+;     -- 4 input functions                    ; 572                    ;
 ;     -- 3 input functions                    ; 374                    ;
-;     -- <=2 input functions                  ; 307                    ;
+;     -- <=2 input functions                  ; 306                    ;
 ;     -- Register only                        ; 3                      ;
 ;                                             ;                        ;
 ; Logic elements by mode                      ;                        ;
-;     -- normal mode                          ; 876                    ;
+;     -- normal mode                          ; 872                    ;
 ;     -- arithmetic mode                      ; 380                    ;
 ;                                             ;                        ;
 ; Total registers*                            ; 77 / 7,124 ( 1 % )     ;
 ;     -- Dedicated logic registers            ; 77 / 6,272 ( 1 % )     ;
 ;     -- I/O registers                        ; 0 / 852 ( 0 % )        ;
 ;                                             ;                        ;
-; Total LABs:  partially or completely used   ; 95 / 392 ( 24 % )      ;
+; Total LABs:  partially or completely used   ; 93 / 392 ( 24 % )      ;
 ; Virtual pins                                ; 0                      ;
 ; I/O pins                                    ; 14 / 180 ( 8 % )       ;
 ;     -- Clock pins                           ; 2 / 3 ( 67 % )         ;
@@ -266,10 +266,10 @@ The pin-out file can be found in C:/Users/ZIV3/Documents/Programming/scutie2015-
 ; ASMI blocks                                 ; 0 / 1 ( 0 % )          ;
 ; Impedance control blocks                    ; 0 / 4 ( 0 % )          ;
 ; Average interconnect usage (total/H/V)      ; 4% / 4% / 4%           ;
-; Peak interconnect usage (total/H/V)         ; 15% / 15% / 14%        ;
+; Peak interconnect usage (total/H/V)         ; 11% / 11% / 12%        ;
 ; Maximum fan-out                             ; 117                    ;
 ; Highest non-global fan-out                  ; 117                    ;
-; Total fan-out                               ; 4228                   ;
+; Total fan-out                               ; 4220                   ;
 ; Average fan-out                             ; 3.07                   ;
 +---------------------------------------------+------------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
@@ -283,26 +283,26 @@ The pin-out file can be found in C:/Users/ZIV3/Documents/Programming/scutie2015-
 +---------------------------------------------+----------------------+--------------------------------+
 ; Difficulty Clustering Region                ; Low                  ; Low                            ;
 ;                                             ;                      ;                                ;
-; Total logic elements                        ; 1259 / 6272 ( 20 % ) ; 0 / 6272 ( 0 % )               ;
-;     -- Combinational with no register       ; 1182                 ; 0                              ;
+; Total logic elements                        ; 1255 / 6272 ( 20 % ) ; 0 / 6272 ( 0 % )               ;
+;     -- Combinational with no register       ; 1178                 ; 0                              ;
 ;     -- Register only                        ; 3                    ; 0                              ;
 ;     -- Combinational with a register        ; 74                   ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Logic element usage by number of LUT inputs ;                      ;                                ;
-;     -- 4 input functions                    ; 575                  ; 0                              ;
+;     -- 4 input functions                    ; 572                  ; 0                              ;
 ;     -- 3 input functions                    ; 374                  ; 0                              ;
-;     -- <=2 input functions                  ; 307                  ; 0                              ;
+;     -- <=2 input functions                  ; 306                  ; 0                              ;
 ;     -- Register only                        ; 3                    ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Logic elements by mode                      ;                      ;                                ;
-;     -- normal mode                          ; 876                  ; 0                              ;
+;     -- normal mode                          ; 872                  ; 0                              ;
 ;     -- arithmetic mode                      ; 380                  ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Total registers                             ; 77                   ; 0                              ;
 ;     -- Dedicated logic registers            ; 77 / 6272 ( 1 % )    ; 0 / 6272 ( 0 % )               ;
 ;     -- I/O registers                        ; 0                    ; 0                              ;
 ;                                             ;                      ;                                ;
-; Total LABs:  partially or completely used   ; 95 / 392 ( 24 % )    ; 0 / 392 ( 0 % )                ;
+; Total LABs:  partially or completely used   ; 93 / 392 ( 24 % )    ; 0 / 392 ( 0 % )                ;
 ;                                             ;                      ;                                ;
 ; Virtual pins                                ; 0                    ; 0                              ;
 ; I/O pins                                    ; 14                   ; 0                              ;
@@ -318,7 +318,7 @@ The pin-out file can be found in C:/Users/ZIV3/Documents/Programming/scutie2015-
 ;     -- Registered Output Connections        ; 0                    ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Internal Connections                        ;                      ;                                ;
-;     -- Total Connections                    ; 4223                 ; 5                              ;
+;     -- Total Connections                    ; 4215                 ; 5                              ;
 ;     -- Registered Connections               ; 1123                 ; 0                              ;
 ;                                             ;                      ;                                ;
 ; External Connections                        ;                      ;                                ;
@@ -352,9 +352,9 @@ The pin-out file can be found in C:/Users/ZIV3/Documents/Programming/scutie2015-
 ; Name         ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; Power Up High ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination Control Block ; Location assigned by ;
 +--------------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+
 ; Clk          ; E1    ; 1        ; 0            ; 11           ; 7            ; 55                    ; 0                  ; yes    ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
-; Low_sw_an[0] ; M1    ; 2        ; 0            ; 11           ; 21           ; 31                    ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
+; Low_sw_an[0] ; M1    ; 2        ; 0            ; 11           ; 21           ; 37                    ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
 ; Low_sw_an[1] ; M2    ; 2        ; 0            ; 11           ; 14           ; 7                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
-; Low_sw_an[2] ; L4    ; 2        ; 0            ; 6            ; 21           ; 6                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
+; Low_sw_an[2] ; L4    ; 2        ; 0            ; 6            ; 21           ; 5                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
 +--------------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+
 
 
@@ -684,10 +684,10 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+--------------------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M9Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name      ; Library Name ;
 +----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+--------------------------+--------------+
-; |digimon                   ; 1259 (0)    ; 77 (0)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 14   ; 0            ; 1182 (0)     ; 3 (0)             ; 74 (0)           ; |digimon                 ; work         ;
-;    |controller:inst|       ; 87 (87)     ; 22 (22)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 65 (65)      ; 0 (0)             ; 22 (22)          ; |digimon|controller:inst ; work         ;
+; |digimon                   ; 1255 (0)    ; 77 (0)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 14   ; 0            ; 1178 (0)     ; 3 (0)             ; 74 (0)           ; |digimon                 ; work         ;
+;    |controller:inst|       ; 86 (86)     ; 22 (22)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 64 (64)      ; 0 (0)             ; 22 (22)          ; |digimon|controller:inst ; work         ;
 ;    |second:inst2|          ; 65 (65)     ; 27 (27)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 38 (38)      ; 0 (0)             ; 27 (27)          ; |digimon|second:inst2    ; work         ;
-;    |vga_out:inst7|         ; 1107 (1107) ; 28 (28)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 1079 (1079)  ; 3 (3)             ; 25 (25)          ; |digimon|vga_out:inst7   ; work         ;
+;    |vga_out:inst7|         ; 1104 (1104) ; 28 (28)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 1076 (1076)  ; 3 (3)             ; 25 (25)          ; |digimon|vga_out:inst7   ; work         ;
 +----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -722,12 +722,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Clk                                                  ;                   ;         ;
 ; Low_sw_an[0]                                         ;                   ;         ;
 ; Low_sw_an[2]                                         ;                   ;         ;
-;      - controller:inst|Vga_choose[0]~2               ; 1                 ; 6       ;
-;      - controller:inst|Joy[3]~52                     ; 1                 ; 6       ;
 ;      - controller:inst|minute[0]~0                   ; 1                 ; 6       ;
+;      - controller:inst|Joy[3]~50                     ; 1                 ; 6       ;
+;      - controller:inst|Stomach[3]~49                 ; 1                 ; 6       ;
 ;      - controller:inst|Controller_state.con_active~6 ; 1                 ; 6       ;
 ;      - controller:inst|Controller_state.con_feed~6   ; 1                 ; 6       ;
-;      - controller:inst|Stomach[3]~52                 ; 1                 ; 6       ;
 ; Low_sw_an[1]                                         ;                   ;         ;
 +------------------------------------------------------+-------------------+---------+
 
@@ -738,35 +737,34 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Name                                          ; Location           ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +-----------------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 ; Clk                                           ; PIN_E1             ; 55      ; Clock        ; yes    ; Global Clock         ; GCLK2            ; --                        ;
-; Low_sw_an[0]                                  ; PIN_M1             ; 31      ; Async. clear ; no     ; --                   ; --               ; --                        ;
-; controller:inst|Controller_state.con_active~0 ; LCCOMB_X1_Y11_N6   ; 1       ; Async. clear ; no     ; --                   ; --               ; --                        ;
-; controller:inst|Controller_state.con_active~2 ; LCCOMB_X9_Y11_N12  ; 18      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; controller:inst|Controller_state.con_feed~0   ; LCCOMB_X5_Y11_N8   ; 1       ; Async. clear ; no     ; --                   ; --               ; --                        ;
-; controller:inst|Controller_state.con_play~0   ; LCCOMB_X1_Y11_N8   ; 1       ; Async. clear ; no     ; --                   ; --               ; --                        ;
-; controller:inst|Joy[3]~0                      ; LCCOMB_X7_Y11_N12  ; 4       ; Async. clear ; no     ; --                   ; --               ; --                        ;
-; controller:inst|Joy[3]~52                     ; LCCOMB_X9_Y11_N20  ; 4       ; Latch enable ; yes    ; Global Clock         ; GCLK3            ; --                        ;
-; controller:inst|Joy[3]~53                     ; LCCOMB_X10_Y11_N26 ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; controller:inst|Stomach[3]~0                  ; LCCOMB_X7_Y11_N18  ; 4       ; Async. clear ; no     ; --                   ; --               ; --                        ;
-; controller:inst|Stomach[3]~51                 ; LCCOMB_X9_Y11_N26  ; 4       ; Latch enable ; yes    ; Global Clock         ; GCLK1            ; --                        ;
-; controller:inst|Stomach[3]~52                 ; LCCOMB_X8_Y11_N6   ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; controller:inst|Vga_choose[0]~3               ; LCCOMB_X6_Y11_N2   ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; controller:inst|minute[0]~0                   ; LCCOMB_X1_Y11_N30  ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; controller:inst|time[2]~0                     ; LCCOMB_X5_Y11_N12  ; 3       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; second:inst2|q                                ; FF_X7_Y9_N3        ; 3       ; Clock        ; no     ; --                   ; --               ; --                        ;
-; second:inst2|q                                ; FF_X7_Y9_N3        ; 21      ; Clock        ; yes    ; Global Clock         ; GCLK4            ; --                        ;
+; Low_sw_an[0]                                  ; PIN_M1             ; 37      ; Async. clear ; no     ; --                   ; --               ; --                        ;
+; controller:inst|Controller_state.con_active~0 ; LCCOMB_X12_Y11_N20 ; 1       ; Async. clear ; no     ; --                   ; --               ; --                        ;
+; controller:inst|Controller_state.con_feed~0   ; LCCOMB_X12_Y11_N16 ; 1       ; Async. clear ; no     ; --                   ; --               ; --                        ;
+; controller:inst|Controller_state.con_play~0   ; LCCOMB_X12_Y11_N26 ; 1       ; Async. clear ; no     ; --                   ; --               ; --                        ;
+; controller:inst|Joy[3]~0                      ; LCCOMB_X12_Y14_N0  ; 4       ; Async. clear ; no     ; --                   ; --               ; --                        ;
+; controller:inst|Joy[3]~49                     ; LCCOMB_X12_Y14_N22 ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; controller:inst|Joy[3]~50                     ; LCCOMB_X13_Y14_N16 ; 4       ; Latch enable ; yes    ; Global Clock         ; GCLK0            ; --                        ;
+; controller:inst|Stomach[3]~0                  ; LCCOMB_X14_Y14_N12 ; 4       ; Async. clear ; no     ; --                   ; --               ; --                        ;
+; controller:inst|Stomach[3]~49                 ; LCCOMB_X14_Y14_N26 ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; controller:inst|Stomach[3]~50                 ; LCCOMB_X13_Y14_N24 ; 4       ; Latch enable ; yes    ; Global Clock         ; GCLK4            ; --                        ;
+; controller:inst|Vga_choose[0]~2               ; LCCOMB_X14_Y15_N2  ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; controller:inst|minute[0]~0                   ; LCCOMB_X12_Y13_N14 ; 5       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; controller:inst|time[2]~0                     ; LCCOMB_X14_Y15_N26 ; 5       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; second:inst2|q                                ; FF_X6_Y19_N31      ; 3       ; Clock        ; no     ; --                   ; --               ; --                        ;
+; second:inst2|q                                ; FF_X6_Y19_N31      ; 21      ; Clock        ; yes    ; Global Clock         ; GCLK1            ; --                        ;
 +-----------------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Global & Other Fast Signals                                                                                                                                              ;
-+-------------------------------+-------------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; Name                          ; Location          ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+-------------------------------+-------------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; Clk                           ; PIN_E1            ; 55      ; 8                                    ; Global Clock         ; GCLK2            ; --                        ;
-; controller:inst|Joy[3]~52     ; LCCOMB_X9_Y11_N20 ; 4       ; 0                                    ; Global Clock         ; GCLK3            ; --                        ;
-; controller:inst|Stomach[3]~51 ; LCCOMB_X9_Y11_N26 ; 4       ; 0                                    ; Global Clock         ; GCLK1            ; --                        ;
-; second:inst2|q                ; FF_X7_Y9_N3       ; 21      ; 0                                    ; Global Clock         ; GCLK4            ; --                        ;
-+-------------------------------+-------------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Global & Other Fast Signals                                                                                                                                               ;
++-------------------------------+--------------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; Name                          ; Location           ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++-------------------------------+--------------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; Clk                           ; PIN_E1             ; 55      ; 0                                    ; Global Clock         ; GCLK2            ; --                        ;
+; controller:inst|Joy[3]~50     ; LCCOMB_X13_Y14_N16 ; 4       ; 0                                    ; Global Clock         ; GCLK0            ; --                        ;
+; controller:inst|Stomach[3]~50 ; LCCOMB_X13_Y14_N24 ; 4       ; 0                                    ; Global Clock         ; GCLK4            ; --                        ;
+; second:inst2|q                ; FF_X6_Y19_N31      ; 21      ; 0                                    ; Global Clock         ; GCLK1            ; --                        ;
++-------------------------------+--------------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
 
 
 +-----------------------------------------------------------------+
@@ -793,63 +791,62 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|offset[3]                               ; 41      ;
 ; vga_out:inst7|Vga_vsync_cnt[8]                        ; 40      ;
 ; vga_out:inst7|offset[2]                               ; 39      ;
+; Low_sw_an[0]~input                                    ; 37      ;
 ; vga_out:inst7|offset[1]                               ; 36      ;
 ; vga_out:inst7|Vga_hsync_cnt[1]                        ; 35      ;
 ; vga_out:inst7|Vga_vsync_cnt[4]                        ; 33      ;
-; Low_sw_an[0]~input                                    ; 31      ;
 ; vga_out:inst7|Vga_vsync_cnt[3]                        ; 31      ;
 ; second:inst2|Add0~50                                  ; 28      ;
 ; second:inst2|time~0                                   ; 26      ;
 ; vga_out:inst7|Vga_vsync_cnt[2]                        ; 24      ;
 ; vga_out:inst7|LessThan168~0                           ; 22      ;
-; controller:inst|Controller_state.con_active~2         ; 18      ;
-; controller:inst|Joy[1]~12                             ; 17      ;
+; controller:inst|Controller_state.con_active~2         ; 17      ;
 ; vga_out:inst7|LessThan162~1                           ; 17      ;
 ; vga_out:inst7|LessThan250~3                           ; 17      ;
-; vga_out:inst7|process_5~39                            ; 17      ;
-; controller:inst|Joy[3]~2                              ; 15      ;
-; controller:inst|Joy[2]~7                              ; 15      ;
-; vga_out:inst7|process_5~56                            ; 15      ;
+; vga_out:inst7|process_5~39                            ; 16      ;
+; controller:inst|Joy[1]~12                             ; 15      ;
+; vga_out:inst7|process_5~54                            ; 15      ;
+; controller:inst|Joy[3]~2                              ; 14      ;
+; controller:inst|Joy[2]~7                              ; 14      ;
 ; vga_out:inst7|Equal0~5                                ; 14      ;
 ; controller:inst|Stomach[1]~12                         ; 13      ;
 ; controller:inst|Stomach[2]~7                          ; 13      ;
 ; controller:inst|Stomach[3]~2                          ; 13      ;
-; controller:inst|Joy[0]~17                             ; 13      ;
 ; controller:inst|Stomach[0]~17                         ; 12      ;
+; controller:inst|Joy[0]~17                             ; 12      ;
 ; vga_out:inst7|LessThan201~0                           ; 12      ;
 ; vga_out:inst7|Vga_vsync_cnt[1]                        ; 11      ;
 ; vga_out:inst7|Vga_vsync_cnt[9]~0                      ; 10      ;
+; controller:inst|Vga_choose[2]                         ; 10      ;
 ; controller:inst|Vga_choose[3]                         ; 10      ;
 ; controller:inst|Vga_choose[0]                         ; 10      ;
 ; vga_out:inst7|LessThan270~0                           ; 10      ;
-; controller:inst|Vga_choose[2]                         ; 10      ;
-; controller:inst|time[2]                               ; 9       ;
 ; vga_out:inst7|LessThan194~0                           ; 9       ;
 ; vga_out:inst7|Equal8~1                                ; 9       ;
 ; vga_out:inst7|LessThan151~1                           ; 9       ;
 ; vga_out:inst7|LessThan162~0                           ; 9       ;
 ; controller:inst|Vga_choose[1]                         ; 9       ;
-; vga_out:inst7|process_5~45                            ; 9       ;
+; vga_out:inst7|process_5~44                            ; 9       ;
 ; vga_out:inst7|LessThan112~0                           ; 9       ;
 ; vga_out:inst7|LessThan281~0                           ; 9       ;
 ; vga_out:inst7|LessThan205~4                           ; 8       ;
-; controller:inst|Stomach[3]~51                         ; 8       ;
-; controller:inst|Joy[3]~52                             ; 8       ;
+; controller:inst|Stomach[3]~50                         ; 8       ;
+; controller:inst|Joy[3]~50                             ; 8       ;
+; controller:inst|time[2]                               ; 8       ;
 ; controller:inst|process_0~0                           ; 8       ;
+; controller:inst|Equal0~0                              ; 8       ;
 ; vga_out:inst7|Add23~2                                 ; 8       ;
 ; vga_out:inst7|LessThan269~1                           ; 8       ;
 ; vga_out:inst7|LessThan150~1                           ; 8       ;
 ; vga_out:inst7|LessThan162~4                           ; 8       ;
-; vga_out:inst7|LessThan276~0                           ; 8       ;
 ; vga_out:inst7|process_2~1                             ; 8       ;
+; vga_out:inst7|LessThan276~0                           ; 8       ;
 ; vga_out:inst7|LessThan286~0                           ; 8       ;
 ; vga_out:inst7|Equal0~1                                ; 8       ;
 ; Low_sw_an[1]~input                                    ; 7       ;
-; controller:inst|Controller_state.con_feed~2           ; 7       ;
 ; vga_out:inst7|LessThan169~0                           ; 7       ;
-; vga_out:inst7|process_5~55                            ; 7       ;
-; vga_out:inst7|process_5~52                            ; 7       ;
-; vga_out:inst7|process_5~43                            ; 7       ;
+; vga_out:inst7|process_5~59                            ; 7       ;
+; vga_out:inst7|process_5~51                            ; 7       ;
 ; vga_out:inst7|LessThan201~1                           ; 7       ;
 ; vga_out:inst7|Equal0~2                                ; 7       ;
 ; vga_out:inst7|LessThan255~0                           ; 7       ;
@@ -859,103 +856,104 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|LessThan250~1                           ; 7       ;
 ; vga_out:inst7|LessThan250~0                           ; 7       ;
 ; vga_out:inst7|LessThan167~0                           ; 7       ;
-; Low_sw_an[2]~input                                    ; 6       ;
 ; controller:inst|time[0]                               ; 6       ;
-; controller:inst|Equal0~0                              ; 6       ;
-; vga_out:inst7|process_5~99                            ; 6       ;
+; vga_out:inst7|LessThan58~0                            ; 6       ;
+; vga_out:inst7|process_5~96                            ; 6       ;
+; vga_out:inst7|LessThan274~1                           ; 6       ;
+; vga_out:inst7|LessThan240~0                           ; 6       ;
 ; vga_out:inst7|LessThan288~1                           ; 6       ;
 ; vga_out:inst7|LessThan209~0                           ; 6       ;
 ; vga_out:inst7|LessThan288~0                           ; 6       ;
-; vga_out:inst7|LessThan240~0                           ; 6       ;
-; vga_out:inst7|LessThan274~1                           ; 6       ;
-; vga_out:inst7|process_5~61                            ; 6       ;
-; vga_out:inst7|LessThan58~0                            ; 6       ;
-; vga_out:inst7|process_5~57                            ; 6       ;
+; vga_out:inst7|process_5~60                            ; 6       ;
+; vga_out:inst7|process_5~58                            ; 6       ;
 ; vga_out:inst7|LessThan1~2                             ; 6       ;
 ; vga_out:inst7|process_5~53                            ; 6       ;
 ; vga_out:inst7|process_5~47                            ; 6       ;
+; vga_out:inst7|process_5~43                            ; 6       ;
 ; vga_out:inst7|LessThan12~0                            ; 6       ;
 ; vga_out:inst7|LessThan119~0                           ; 6       ;
 ; vga_out:inst7|process_2~0                             ; 6       ;
 ; vga_out:inst7|LessThan282~0                           ; 6       ;
 ; vga_out:inst7|LessThan285~0                           ; 6       ;
+; Low_sw_an[2]~input                                    ; 5       ;
 ; vga_out:inst7|LessThan133~2                           ; 5       ;
-; controller:inst|Controller_state.con_play~2           ; 5       ;
+; controller:inst|Controller_state.con_feed~2           ; 5       ;
+; controller:inst|time[1]                               ; 5       ;
+; controller:inst|minute[0]~0                           ; 5       ;
+; controller:inst|time[2]~0                             ; 5       ;
 ; controller:inst|minute[0]                             ; 5       ;
 ; vga_out:inst7|LessThan106~0                           ; 5       ;
-; vga_out:inst7|process_5~138                           ; 5       ;
-; vga_out:inst7|process_5~119                           ; 5       ;
+; vga_out:inst7|process_5~135                           ; 5       ;
+; vga_out:inst7|process_5~116                           ; 5       ;
 ; vga_out:inst7|Add2~1                                  ; 5       ;
 ; vga_out:inst7|LessThan234~2                           ; 5       ;
 ; vga_out:inst7|LessThan276~1                           ; 5       ;
+; vga_out:inst7|LessThan244~2                           ; 5       ;
 ; vga_out:inst7|LessThan213~0                           ; 5       ;
 ; vga_out:inst7|LessThan201~3                           ; 5       ;
 ; vga_out:inst7|LessThan201~2                           ; 5       ;
 ; vga_out:inst7|LessThan143~1                           ; 5       ;
 ; vga_out:inst7|LessThan162~3                           ; 5       ;
 ; vga_out:inst7|LessThan162~2                           ; 5       ;
-; vga_out:inst7|process_5~69                            ; 5       ;
+; vga_out:inst7|process_5~64                            ; 5       ;
 ; vga_out:inst7|LessThan155~0                           ; 5       ;
-; vga_out:inst7|LessThan244~2                           ; 5       ;
 ; vga_out:inst7|LessThan242~0                           ; 5       ;
 ; vga_out:inst7|LessThan237~1                           ; 5       ;
-; vga_out:inst7|process_5~50                            ; 5       ;
+; vga_out:inst7|process_5~52                            ; 5       ;
 ; vga_out:inst7|LessThan167~1                           ; 5       ;
 ; vga_out:inst7|LessThan120~0                           ; 5       ;
-; vga_out:inst7|process_5~44                            ; 5       ;
 ; vga_out:inst7|process_5~33                            ; 5       ;
 ; vga_out:inst7|LessThan262~4                           ; 5       ;
 ; vga_out:inst7|LessThan165~1                           ; 5       ;
 ; vga_out:inst7|LessThan129~0                           ; 5       ;
 ; vga_out:inst7|LessThan272~0                           ; 5       ;
 ; vga_out:inst7|Add14~18                                ; 5       ;
-; controller:inst|Stomach[3]~52                         ; 4       ;
-; controller:inst|Joy[3]~53                             ; 4       ;
 ; vga_out:inst7|LessThan229~3                           ; 4       ;
-; vga_out:inst7|Vga_rgb_n~270                           ; 4       ;
+; vga_out:inst7|Vga_rgb_n~265                           ; 4       ;
 ; vga_out:inst7|process_5~192                           ; 4       ;
 ; vga_out:inst7|LessThan27~4                            ; 4       ;
-; controller:inst|Controller_state.con_play~6           ; 4       ;
-; controller:inst|minute[0]~0                           ; 4       ;
 ; controller:inst|Stomach[3]~0                          ; 4       ;
+; controller:inst|Stomach[3]~49                         ; 4       ;
+; controller:inst|Controller_state.con_play~2           ; 4       ;
+; controller:inst|Joy[3]~49                             ; 4       ;
 ; controller:inst|Joy[3]~0                              ; 4       ;
-; controller:inst|time[1]                               ; 4       ;
-; controller:inst|Vga_choose[0]~3                       ; 4       ;
+; controller:inst|Vga_choose[0]~2                       ; 4       ;
 ; controller:inst|minute[1]                             ; 4       ;
 ; controller:inst|minute[2]                             ; 4       ;
 ; controller:inst|minute[3]                             ; 4       ;
+; vga_out:inst7|LessThan29~0                            ; 4       ;
 ; vga_out:inst7|Add3~1                                  ; 4       ;
-; vga_out:inst7|process_5~115                           ; 4       ;
+; vga_out:inst7|process_5~112                           ; 4       ;
 ; vga_out:inst7|Add2~0                                  ; 4       ;
 ; vga_out:inst7|Add3~0                                  ; 4       ;
+; vga_out:inst7|LessThan217~0                           ; 4       ;
 ; vga_out:inst7|LessThan214~0                           ; 4       ;
 ; vga_out:inst7|Add26~1                                 ; 4       ;
 ; vga_out:inst7|Add26~0                                 ; 4       ;
 ; vga_out:inst7|LessThan272~1                           ; 4       ;
+; vga_out:inst7|process_5~90                            ; 4       ;
 ; vga_out:inst7|LessThan286~2                           ; 4       ;
 ; vga_out:inst7|LessThan265~2                           ; 4       ;
 ; vga_out:inst7|LessThan278~1                           ; 4       ;
+; vga_out:inst7|LessThan237~2                           ; 4       ;
 ; vga_out:inst7|LessThan281~2                           ; 4       ;
-; vga_out:inst7|process_5~86                            ; 4       ;
+; vga_out:inst7|LessThan270~1                           ; 4       ;
+; vga_out:inst7|process_5~81                            ; 4       ;
 ; vga_out:inst7|LessThan159~0                           ; 4       ;
 ; vga_out:inst7|LessThan158~0                           ; 4       ;
-; vga_out:inst7|process_5~82                            ; 4       ;
 ; vga_out:inst7|process_5~77                            ; 4       ;
-; vga_out:inst7|process_5~68                            ; 4       ;
-; vga_out:inst7|process_5~67                            ; 4       ;
-; vga_out:inst7|LessThan270~1                           ; 4       ;
-; vga_out:inst7|process_5~62                            ; 4       ;
-; vga_out:inst7|LessThan29~0                            ; 4       ;
-; vga_out:inst7|LessThan217~0                           ; 4       ;
-; vga_out:inst7|LessThan237~2                           ; 4       ;
-; vga_out:inst7|process_5~60                            ; 4       ;
+; vga_out:inst7|process_5~72                            ; 4       ;
+; vga_out:inst7|process_5~63                            ; 4       ;
+; vga_out:inst7|process_5~61                            ; 4       ;
+; vga_out:inst7|process_5~57                            ; 4       ;
 ; vga_out:inst7|LessThan96~0                            ; 4       ;
 ; vga_out:inst7|LessThan121~0                           ; 4       ;
 ; vga_out:inst7|process_5~49                            ; 4       ;
 ; vga_out:inst7|process_5~48                            ; 4       ;
 ; vga_out:inst7|LessThan265~0                           ; 4       ;
-; vga_out:inst7|Vga_rgb_n~33                            ; 4       ;
+; vga_out:inst7|Vga_rgb_n~30                            ; 4       ;
 ; vga_out:inst7|process_5~46                            ; 4       ;
+; vga_out:inst7|process_5~45                            ; 4       ;
 ; vga_out:inst7|LessThan143~0                           ; 4       ;
 ; vga_out:inst7|process_5~41                            ; 4       ;
 ; vga_out:inst7|LessThan266~0                           ; 4       ;
@@ -983,54 +981,52 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|LessThan225~3                           ; 3       ;
 ; vga_out:inst7|LessThan262~5                           ; 3       ;
 ; vga_out:inst7|LessThan24~5                            ; 3       ;
+; controller:inst|Controller_state.con_play~6           ; 3       ;
 ; controller:inst|Controller_state.con_feed~6           ; 3       ;
 ; controller:inst|Controller_state.con_active~6         ; 3       ;
-; controller:inst|time[2]~0                             ; 3       ;
-; controller:inst|Vga_choose[3]~4                       ; 3       ;
-; controller:inst|Joy[3]~51                             ; 3       ;
-; vga_out:inst7|Vga_rgb_n~250                           ; 3       ;
-; vga_out:inst7|Vga_rgb_n[7]~237                        ; 3       ;
-; vga_out:inst7|process_5~176                           ; 3       ;
-; vga_out:inst7|process_5~172                           ; 3       ;
+; vga_out:inst7|Vga_rgb_n~247                           ; 3       ;
+; vga_out:inst7|Vga_rgb_n[7]~234                        ; 3       ;
+; vga_out:inst7|LessThan10~0                            ; 3       ;
+; vga_out:inst7|LessThan53~0                            ; 3       ;
+; vga_out:inst7|process_5~189                           ; 3       ;
+; vga_out:inst7|process_5~173                           ; 3       ;
+; vga_out:inst7|process_5~169                           ; 3       ;
 ; vga_out:inst7|LessThan110~0                           ; 3       ;
-; vga_out:inst7|process_5~150                           ; 3       ;
+; vga_out:inst7|process_5~147                           ; 3       ;
 ; vga_out:inst7|LessThan107~1                           ; 3       ;
 ; vga_out:inst7|LessThan114~1                           ; 3       ;
 ; vga_out:inst7|LessThan113~0                           ; 3       ;
 ; vga_out:inst7|LessThan119~1                           ; 3       ;
 ; vga_out:inst7|LessThan118~0                           ; 3       ;
 ; vga_out:inst7|LessThan85~0                            ; 3       ;
-; vga_out:inst7|process_5~131                           ; 3       ;
-; vga_out:inst7|process_5~118                           ; 3       ;
-; vga_out:inst7|process_5~110                           ; 3       ;
+; vga_out:inst7|process_5~128                           ; 3       ;
+; vga_out:inst7|process_5~115                           ; 3       ;
+; vga_out:inst7|process_5~107                           ; 3       ;
 ; vga_out:inst7|LessThan210~0                           ; 3       ;
 ; vga_out:inst7|LessThan213~1                           ; 3       ;
 ; vga_out:inst7|LessThan203~1                           ; 3       ;
 ; vga_out:inst7|LessThan204~0                           ; 3       ;
-; vga_out:inst7|process_5~98                            ; 3       ;
+; vga_out:inst7|process_5~95                            ; 3       ;
 ; vga_out:inst7|LessThan264~1                           ; 3       ;
 ; vga_out:inst7|LessThan252~0                           ; 3       ;
 ; vga_out:inst7|LessThan285~2                           ; 3       ;
+; vga_out:inst7|LessThan248~0                           ; 3       ;
+; vga_out:inst7|LessThan274~0                           ; 3       ;
 ; vga_out:inst7|LessThan167~3                           ; 3       ;
 ; vga_out:inst7|LessThan166~3                           ; 3       ;
 ; vga_out:inst7|LessThan168~1                           ; 3       ;
-; vga_out:inst7|process_5~83                            ; 3       ;
-; vga_out:inst7|process_5~80                            ; 3       ;
+; vga_out:inst7|process_5~78                            ; 3       ;
 ; vga_out:inst7|process_5~75                            ; 3       ;
-; vga_out:inst7|process_5~71                            ; 3       ;
+; vga_out:inst7|process_5~70                            ; 3       ;
+; vga_out:inst7|process_5~66                            ; 3       ;
 ; vga_out:inst7|LessThan197~0                           ; 3       ;
 ; vga_out:inst7|LessThan1~3                             ; 3       ;
 ; vga_out:inst7|LessThan142~0                           ; 3       ;
 ; vga_out:inst7|LessThan280~0                           ; 3       ;
-; vga_out:inst7|process_5~66                            ; 3       ;
-; vga_out:inst7|LessThan248~0                           ; 3       ;
-; vga_out:inst7|LessThan274~0                           ; 3       ;
-; vga_out:inst7|Vga_rgb_n~46                            ; 3       ;
-; vga_out:inst7|LessThan53~0                            ; 3       ;
-; vga_out:inst7|process_5~58                            ; 3       ;
+; vga_out:inst7|process_5~62                            ; 3       ;
+; vga_out:inst7|Vga_rgb_n~36                            ; 3       ;
+; vga_out:inst7|process_5~56                            ; 3       ;
 ; vga_out:inst7|LessThan237~0                           ; 3       ;
-; vga_out:inst7|process_5~54                            ; 3       ;
-; vga_out:inst7|LessThan10~0                            ; 3       ;
 ; vga_out:inst7|LessThan166~0                           ; 3       ;
 ; vga_out:inst7|LessThan287~0                           ; 3       ;
 ; vga_out:inst7|LessThan260~1                           ; 3       ;
@@ -1049,38 +1045,48 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|LessThan208~18                          ; 3       ;
 ; vga_out:inst7|Add15~20                                ; 3       ;
 ; vga_out:inst7|LessThan200~18                          ; 3       ;
-; controller:inst|Stomach~56                            ; 2       ;
-; controller:inst|Stomach~55                            ; 2       ;
 ; controller:inst|Stomach~54                            ; 2       ;
-; controller:inst|Joy~57                                ; 2       ;
-; controller:inst|Joy~56                                ; 2       ;
-; controller:inst|Joy~55                                ; 2       ;
 ; controller:inst|Stomach~53                            ; 2       ;
+; controller:inst|Stomach~52                            ; 2       ;
 ; controller:inst|Joy~54                                ; 2       ;
+; controller:inst|Joy~53                                ; 2       ;
+; controller:inst|Joy~52                                ; 2       ;
+; controller:inst|Stomach~51                            ; 2       ;
+; controller:inst|Joy~51                                ; 2       ;
 ; vga_out:inst7|LessThan233~5                           ; 2       ;
 ; vga_out:inst7|LessThan25~4                            ; 2       ;
 ; vga_out:inst7|LessThan24~4                            ; 2       ;
 ; second:inst2|LessThan1~4                              ; 2       ;
 ; second:inst2|LessThan1~1                              ; 2       ;
 ; second:inst2|LessThan1~0                              ; 2       ;
-; controller:inst|Vga_choose[0]~1                       ; 2       ;
+; controller:inst|Controller_state~0                    ; 2       ;
 ; second:inst2|q                                        ; 2       ;
+; controller:inst|Vga_choose[0]~0                       ; 2       ;
 ; vga_out:inst7|Vga_hsync_cnt[0]                        ; 2       ;
-; vga_out:inst7|Vga_rgb_n[1]~267                        ; 2       ;
-; vga_out:inst7|Vga_rgb_n~238                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~234                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~230                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~228                           ; 2       ;
-; vga_out:inst7|process_5~181                           ; 2       ;
-; vga_out:inst7|process_5~180                           ; 2       ;
-; vga_out:inst7|LessThan222~1                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n[1]~264                        ; 2       ;
+; vga_out:inst7|Vga_rgb_n~235                           ; 2       ;
+; vga_out:inst7|LessThan47~0                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~223                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~221                           ; 2       ;
+; vga_out:inst7|LessThan50~0                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~216                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~215                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~213                           ; 2       ;
+; vga_out:inst7|LessThan26~0                            ; 2       ;
+; vga_out:inst7|process_5~187                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~198                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~194                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~192                           ; 2       ;
+; vga_out:inst7|process_5~178                           ; 2       ;
 ; vga_out:inst7|process_5~177                           ; 2       ;
-; vga_out:inst7|process_5~168                           ; 2       ;
+; vga_out:inst7|LessThan222~1                           ; 2       ;
+; vga_out:inst7|process_5~174                           ; 2       ;
+; vga_out:inst7|process_5~165                           ; 2       ;
 ; vga_out:inst7|LessThan221~0                           ; 2       ;
-; vga_out:inst7|process_5~164                           ; 2       ;
-; vga_out:inst7|process_5~160                           ; 2       ;
+; vga_out:inst7|process_5~161                           ; 2       ;
+; vga_out:inst7|process_5~157                           ; 2       ;
 ; vga_out:inst7|LessThan121~1                           ; 2       ;
-; vga_out:inst7|process_5~158                           ; 2       ;
+; vga_out:inst7|process_5~155                           ; 2       ;
 ; vga_out:inst7|LessThan115~0                           ; 2       ;
 ; vga_out:inst7|LessThan111~2                           ; 2       ;
 ; vga_out:inst7|LessThan107~2                           ; 2       ;
@@ -1090,12 +1096,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|LessThan74~1                            ; 2       ;
 ; vga_out:inst7|LessThan74~0                            ; 2       ;
 ; vga_out:inst7|LessThan111~1                           ; 2       ;
-; vga_out:inst7|process_5~144                           ; 2       ;
-; vga_out:inst7|process_5~143                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~184                           ; 2       ;
+; vga_out:inst7|LessThan107~0                           ; 2       ;
 ; vga_out:inst7|process_5~141                           ; 2       ;
+; vga_out:inst7|process_5~140                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~148                           ; 2       ;
+; vga_out:inst7|process_5~138                           ; 2       ;
 ; vga_out:inst7|LessThan71~0                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n~182                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~146                           ; 2       ;
 ; vga_out:inst7|LessThan116~0                           ; 2       ;
 ; vga_out:inst7|LessThan184~1                           ; 2       ;
 ; vga_out:inst7|Add3~2                                  ; 2       ;
@@ -1103,7 +1110,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|Add9~0                                  ; 2       ;
 ; vga_out:inst7|Add2~2                                  ; 2       ;
 ; vga_out:inst7|LessThan179~1                           ; 2       ;
-; vga_out:inst7|process_5~116                           ; 2       ;
+; vga_out:inst7|process_5~113                           ; 2       ;
 ; vga_out:inst7|LessThan175~6                           ; 2       ;
 ; vga_out:inst7|LessThan175~5                           ; 2       ;
 ; vga_out:inst7|LessThan175~4                           ; 2       ;
@@ -1115,60 +1122,52 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|LessThan203~2                           ; 2       ;
 ; vga_out:inst7|LessThan226~0                           ; 2       ;
 ; vga_out:inst7|LessThan203~0                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~142                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~106                           ; 2       ;
 ; vga_out:inst7|LessThan284~1                           ; 2       ;
 ; vga_out:inst7|LessThan273~0                           ; 2       ;
 ; vga_out:inst7|LessThan280~2                           ; 2       ;
-; vga_out:inst7|process_5~100                           ; 2       ;
+; vga_out:inst7|process_5~97                            ; 2       ;
 ; vga_out:inst7|LessThan282~1                           ; 2       ;
 ; vga_out:inst7|LessThan255~1                           ; 2       ;
-; vga_out:inst7|process_5~87                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n~117                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~114                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~107                           ; 2       ;
-; vga_out:inst7|LessThan166~2                           ; 2       ;
-; vga_out:inst7|LessThan146~0                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~104                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~100                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~98                            ; 2       ;
-; vga_out:inst7|process_5~85                            ; 2       ;
-; vga_out:inst7|LessThan165~2                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~97                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n~94                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n~93                            ; 2       ;
-; vga_out:inst7|LessThan150~0                           ; 2       ;
-; vga_out:inst7|LessThan268~0                           ; 2       ;
-; vga_out:inst7|process_5~73                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n~80                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n~76                            ; 2       ;
-; vga_out:inst7|process_5~70                            ; 2       ;
-; vga_out:inst7|LessThan167~2                           ; 2       ;
-; vga_out:inst7|LessThan280~1                           ; 2       ;
-; vga_out:inst7|Vga_rgb_n~73                            ; 2       ;
-; vga_out:inst7|LessThan47~0                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n~67                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n~65                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n~62                            ; 2       ;
-; vga_out:inst7|LessThan26~0                            ; 2       ;
-; vga_out:inst7|process_5~64                            ; 2       ;
-; vga_out:inst7|process_5~63                            ; 2       ;
 ; vga_out:inst7|LessThan234~0                           ; 2       ;
-; vga_out:inst7|LessThan107~0                           ; 2       ;
 ; vga_out:inst7|LessThan244~1                           ; 2       ;
 ; vga_out:inst7|LessThan244~0                           ; 2       ;
-; vga_out:inst7|LessThan50~0                            ; 2       ;
+; vga_out:inst7|process_5~83                            ; 2       ;
+; vga_out:inst7|process_5~82                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~81                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~78                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~71                            ; 2       ;
+; vga_out:inst7|LessThan166~2                           ; 2       ;
+; vga_out:inst7|LessThan146~0                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~68                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~64                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~62                            ; 2       ;
+; vga_out:inst7|process_5~80                            ; 2       ;
+; vga_out:inst7|LessThan165~2                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~61                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~58                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~57                            ; 2       ;
+; vga_out:inst7|LessThan150~0                           ; 2       ;
+; vga_out:inst7|LessThan268~0                           ; 2       ;
+; vga_out:inst7|process_5~68                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~44                            ; 2       ;
 ; vga_out:inst7|Vga_rgb_n~40                            ; 2       ;
-; vga_out:inst7|process_5~51                            ; 2       ;
+; vga_out:inst7|process_5~65                            ; 2       ;
+; vga_out:inst7|LessThan167~2                           ; 2       ;
+; vga_out:inst7|LessThan280~1                           ; 2       ;
+; vga_out:inst7|Vga_rgb_n~37                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~33                            ; 2       ;
+; vga_out:inst7|process_5~50                            ; 2       ;
 ; vga_out:inst7|LessThan8~0                             ; 2       ;
 ; vga_out:inst7|process_5~40                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n[7]~30                         ; 2       ;
+; vga_out:inst7|Vga_rgb_n[7]~28                         ; 2       ;
 ; vga_out:inst7|process_5~38                            ; 2       ;
 ; vga_out:inst7|process_5~36                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n~27                            ; 2       ;
+; vga_out:inst7|Vga_rgb_n~25                            ; 2       ;
 ; vga_out:inst7|process_5~34                            ; 2       ;
 ; vga_out:inst7|LessThan22~0                            ; 2       ;
 ; vga_out:inst7|LessThan20~0                            ; 2       ;
-; vga_out:inst7|Vga_rgb_n[7]~21                         ; 2       ;
+; vga_out:inst7|Vga_rgb_n[7]~19                         ; 2       ;
 ; vga_out:inst7|process_5~31                            ; 2       ;
 ; vga_out:inst7|LessThan111~0                           ; 2       ;
 ; vga_out:inst7|LessThan256~1                           ; 2       ;
@@ -1204,8 +1203,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|Add28~18                                ; 2       ;
 ; vga_out:inst7|Add24~16                                ; 2       ;
 ; controller:inst|minute[0]~4                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n[7]~278                        ; 1       ;
-; vga_out:inst7|Vga_rgb_n[7]~277                        ; 1       ;
+; vga_out:inst7|Vga_rgb_n~274                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~273                           ; 1       ;
 ; vga_out:inst7|comb~14                                 ; 1       ;
 ; vga_out:inst7|comb~12                                 ; 1       ;
 ; vga_out:inst7|process_5~17                            ; 1       ;
@@ -1214,25 +1213,23 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; controller:inst|Joy[1]~14                             ; 1       ;
 ; vga_out:inst7|offset[5]~7                             ; 1       ;
 ; vga_out:inst7|offset[5]~6                             ; 1       ;
-; vga_out:inst7|Vga_rgb_n~276                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~272                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~271                           ; 1       ;
 ; vga_out:inst7|process_5~196                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~275                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~274                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~273                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~270                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~269                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~268                           ; 1       ;
 ; vga_out:inst7|process_5~195                           ; 1       ;
 ; vga_out:inst7|process_5~194                           ; 1       ;
 ; vga_out:inst7|LessThan233~4                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~272                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~267                           ; 1       ;
 ; vga_out:inst7|LessThan224~11                          ; 1       ;
 ; vga_out:inst7|LessThan224~10                          ; 1       ;
-; vga_out:inst7|Vga_rgb_n~271                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~266                           ; 1       ;
 ; vga_out:inst7|process_5~193                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~269                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n[7]~268                        ; 1       ;
 ; vga_out:inst7|process_5~191                           ; 1       ;
 ; controller:inst|Controller_state.con_play~0           ; 1       ;
 ; controller:inst|Controller_state.con_play~3           ; 1       ;
-; controller:inst|Controller_state~5                    ; 1       ;
 ; controller:inst|Controller_state~4                    ; 1       ;
 ; controller:inst|Controller_state.con_feed~0           ; 1       ;
 ; controller:inst|Controller_state.con_feed~3           ; 1       ;
@@ -1267,8 +1264,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; controller:inst|Controller_state.con_active~0         ; 1       ;
 ; controller:inst|Controller_state.con_active~3         ; 1       ;
 ; controller:inst|Controller_state~1                    ; 1       ;
-; controller:inst|Controller_state~0                    ; 1       ;
-; controller:inst|time~1                                ; 1       ;
+; controller:inst|Vga_choose[0]~7                       ; 1       ;
+; controller:inst|Stomach[0]~19                         ; 1       ;
+; controller:inst|Stomach[2]~9                          ; 1       ;
+; vga_out:inst7|LessThan58~1                            ; 1       ;
+; controller:inst|Stomach[3]~4                          ; 1       ;
+; controller:inst|time~2                                ; 1       ;
 ; controller:inst|Controller_state.con_play~_emulated   ; 1       ;
 ; controller:inst|Controller_state.con_feed~_emulated   ; 1       ;
 ; second:inst2|q~6                                      ; 1       ;
@@ -1306,26 +1307,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; second:inst2|time[23]                                 ; 1       ;
 ; second:inst2|time[24]                                 ; 1       ;
 ; second:inst2|time[25]                                 ; 1       ;
-; controller:inst|Vga_choose[0]~9                       ; 1       ;
+; controller:inst|time~1                                ; 1       ;
 ; controller:inst|Controller_state.con_active~_emulated ; 1       ;
 ; controller:inst|minute~3                              ; 1       ;
 ; controller:inst|minute~2                              ; 1       ;
 ; controller:inst|minute~1                              ; 1       ;
-; controller:inst|Stomach[0]~19                         ; 1       ;
-; controller:inst|Stomach[2]~9                          ; 1       ;
-; vga_out:inst7|LessThan58~1                            ; 1       ;
-; controller:inst|Stomach[3]~4                          ; 1       ;
 ; controller:inst|Joy[3]~4                              ; 1       ;
 ; controller:inst|Joy[2]~9                              ; 1       ;
-; vga_out:inst7|LessThan12~1                            ; 1       ;
+; controller:inst|LessThan2~0                           ; 1       ;
 ; controller:inst|Joy[0]~19                             ; 1       ;
 ; vga_out:inst7|Vga_hsync_cnt_n[0]~2                    ; 1       ;
-; controller:inst|Vga_choose[1]~8                       ; 1       ;
-; controller:inst|Vga_choose[2]~7                       ; 1       ;
-; controller:inst|Vga_choose[2]~6                       ; 1       ;
-; controller:inst|Vga_choose[3]~5                       ; 1       ;
-; controller:inst|Vga_choose[0]~2                       ; 1       ;
-; controller:inst|Vga_choose[0]~0                       ; 1       ;
 ; controller:inst|Stomach[0]~18                         ; 1       ;
 ; controller:inst|Stomach[0]~_emulated                  ; 1       ;
 ; controller:inst|Stomach[1]~13                         ; 1       ;
@@ -1334,6 +1325,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; controller:inst|Stomach[2]~_emulated                  ; 1       ;
 ; controller:inst|Stomach[3]~3                          ; 1       ;
 ; controller:inst|Stomach[3]~_emulated                  ; 1       ;
+; controller:inst|Vga_choose[1]~6                       ; 1       ;
+; controller:inst|Vga_choose[2]~5                       ; 1       ;
+; controller:inst|Add5~0                                ; 1       ;
+; controller:inst|Vga_choose[3]~4                       ; 1       ;
+; controller:inst|Vga_choose[3]~3                       ; 1       ;
+; controller:inst|Vga_choose[0]~1                       ; 1       ;
 ; controller:inst|Joy[3]~3                              ; 1       ;
 ; controller:inst|Joy[3]~_emulated                      ; 1       ;
 ; controller:inst|Joy[2]~8                              ; 1       ;
@@ -1358,9 +1355,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|Vga_hsync_cnt_n[10]~0                   ; 1       ;
 ; vga_out:inst7|Equal0~4                                ; 1       ;
 ; vga_out:inst7|Equal0~3                                ; 1       ;
-; vga_out:inst7|Vga_rgb_n~266                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~265                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~264                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~263                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~262                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~261                           ; 1       ;
@@ -1374,156 +1368,188 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|Vga_rgb_n~253                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~252                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~251                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~250                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~249                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~248                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~247                           ; 1       ;
-; vga_out:inst7|process_5~190                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~246                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~245                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~244                           ; 1       ;
+; vga_out:inst7|process_5~190                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~243                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~242                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~241                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~240                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~239                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n[7]~236                        ; 1       ;
-; vga_out:inst7|Vga_rgb_n[7]~235                        ; 1       ;
+; vga_out:inst7|Vga_rgb_n~238                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~237                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~236                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~233                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~232                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~231                           ; 1       ;
-; vga_out:inst7|LessThan289~0                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~230                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~229                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~228                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~227                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~226                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~225                           ; 1       ;
-; vga_out:inst7|process_5~189                           ; 1       ;
-; vga_out:inst7|process_5~188                           ; 1       ;
-; vga_out:inst7|process_5~187                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~224                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~223                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~222                           ; 1       ;
-; vga_out:inst7|process_5~186                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~221                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~220                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~219                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~218                           ; 1       ;
-; vga_out:inst7|process_5~185                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~217                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~216                           ; 1       ;
-; vga_out:inst7|process_5~184                           ; 1       ;
-; vga_out:inst7|process_5~183                           ; 1       ;
-; vga_out:inst7|process_5~182                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~215                           ; 1       ;
-; vga_out:inst7|process_5~179                           ; 1       ;
-; vga_out:inst7|LessThan222~0                           ; 1       ;
-; vga_out:inst7|process_5~178                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~214                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~213                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~212                           ; 1       ;
+; vga_out:inst7|process_5~188                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~211                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~210                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~209                           ; 1       ;
-; vga_out:inst7|process_5~175                           ; 1       ;
-; vga_out:inst7|process_5~174                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~208                           ; 1       ;
-; vga_out:inst7|process_5~173                           ; 1       ;
-; vga_out:inst7|process_5~171                           ; 1       ;
-; vga_out:inst7|process_5~170                           ; 1       ;
-; vga_out:inst7|process_5~169                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~207                           ; 1       ;
-; vga_out:inst7|process_5~167                           ; 1       ;
-; vga_out:inst7|process_5~166                           ; 1       ;
-; vga_out:inst7|LessThan118~1                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~206                           ; 1       ;
-; vga_out:inst7|process_5~165                           ; 1       ;
-; vga_out:inst7|LessThan119~2                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~205                           ; 1       ;
-; vga_out:inst7|process_5~163                           ; 1       ;
-; vga_out:inst7|process_5~162                           ; 1       ;
-; vga_out:inst7|process_5~161                           ; 1       ;
-; vga_out:inst7|LessThan81~1                            ; 1       ;
-; vga_out:inst7|LessThan81~0                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~204                           ; 1       ;
-; vga_out:inst7|process_5~159                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~203                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~202                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~201                           ; 1       ;
-; vga_out:inst7|process_5~157                           ; 1       ;
-; vga_out:inst7|process_5~156                           ; 1       ;
-; vga_out:inst7|LessThan106~1                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~200                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~199                           ; 1       ;
-; vga_out:inst7|process_5~155                           ; 1       ;
-; vga_out:inst7|process_5~154                           ; 1       ;
-; vga_out:inst7|process_5~153                           ; 1       ;
-; vga_out:inst7|process_5~152                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~198                           ; 1       ;
-; vga_out:inst7|process_5~151                           ; 1       ;
-; vga_out:inst7|LessThan102~0                           ; 1       ;
-; vga_out:inst7|process_5~149                           ; 1       ;
-; vga_out:inst7|LessThan78~0                            ; 1       ;
-; vga_out:inst7|process_5~148                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~197                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~196                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~195                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~194                           ; 1       ;
+; vga_out:inst7|LessThan289~0                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~193                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~192                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~191                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~190                           ; 1       ;
-; vga_out:inst7|process_5~147                           ; 1       ;
-; vga_out:inst7|process_5~146                           ; 1       ;
-; vga_out:inst7|process_5~145                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~189                           ; 1       ;
+; vga_out:inst7|process_5~186                           ; 1       ;
+; vga_out:inst7|process_5~185                           ; 1       ;
+; vga_out:inst7|process_5~184                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~188                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~187                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~186                           ; 1       ;
+; vga_out:inst7|process_5~183                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~185                           ; 1       ;
-; vga_out:inst7|LessThan114~0                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~184                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~183                           ; 1       ;
-; vga_out:inst7|process_5~142                           ; 1       ;
-; vga_out:inst7|LessThan113~1                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~182                           ; 1       ;
+; vga_out:inst7|process_5~182                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~181                           ; 1       ;
-; vga_out:inst7|process_5~140                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~180                           ; 1       ;
+; vga_out:inst7|process_5~181                           ; 1       ;
+; vga_out:inst7|process_5~180                           ; 1       ;
+; vga_out:inst7|process_5~179                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~179                           ; 1       ;
+; vga_out:inst7|process_5~176                           ; 1       ;
+; vga_out:inst7|LessThan222~0                           ; 1       ;
+; vga_out:inst7|process_5~175                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~178                           ; 1       ;
-; vga_out:inst7|process_5~139                           ; 1       ;
-; vga_out:inst7|LessThan190~0                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~177                           ; 1       ;
-; vga_out:inst7|process_5~137                           ; 1       ;
-; vga_out:inst7|process_5~136                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~176                           ; 1       ;
-; vga_out:inst7|process_5~135                           ; 1       ;
-; vga_out:inst7|process_5~134                           ; 1       ;
-; vga_out:inst7|process_5~133                           ; 1       ;
-; vga_out:inst7|process_5~132                           ; 1       ;
-; vga_out:inst7|LessThan184~0                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~175                           ; 1       ;
-; vga_out:inst7|process_5~130                           ; 1       ;
-; vga_out:inst7|process_5~129                           ; 1       ;
-; vga_out:inst7|process_5~128                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~174                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~173                           ; 1       ;
+; vga_out:inst7|process_5~172                           ; 1       ;
+; vga_out:inst7|process_5~171                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~172                           ; 1       ;
+; vga_out:inst7|process_5~170                           ; 1       ;
+; vga_out:inst7|process_5~168                           ; 1       ;
+; vga_out:inst7|process_5~167                           ; 1       ;
+; vga_out:inst7|process_5~166                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~171                           ; 1       ;
+; vga_out:inst7|process_5~164                           ; 1       ;
+; vga_out:inst7|process_5~163                           ; 1       ;
+; vga_out:inst7|LessThan118~1                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~170                           ; 1       ;
+; vga_out:inst7|process_5~162                           ; 1       ;
+; vga_out:inst7|LessThan119~2                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~169                           ; 1       ;
+; vga_out:inst7|process_5~160                           ; 1       ;
+; vga_out:inst7|process_5~159                           ; 1       ;
+; vga_out:inst7|process_5~158                           ; 1       ;
+; vga_out:inst7|LessThan81~1                            ; 1       ;
+; vga_out:inst7|LessThan81~0                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n~168                           ; 1       ;
+; vga_out:inst7|process_5~156                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~167                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~166                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~165                           ; 1       ;
+; vga_out:inst7|process_5~154                           ; 1       ;
+; vga_out:inst7|process_5~153                           ; 1       ;
+; vga_out:inst7|LessThan106~1                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~164                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~163                           ; 1       ;
+; vga_out:inst7|process_5~152                           ; 1       ;
+; vga_out:inst7|process_5~151                           ; 1       ;
+; vga_out:inst7|process_5~150                           ; 1       ;
+; vga_out:inst7|process_5~149                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~162                           ; 1       ;
+; vga_out:inst7|process_5~148                           ; 1       ;
+; vga_out:inst7|LessThan102~0                           ; 1       ;
+; vga_out:inst7|process_5~146                           ; 1       ;
+; vga_out:inst7|LessThan78~0                            ; 1       ;
+; vga_out:inst7|process_5~145                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~161                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~160                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~159                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~158                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~157                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~156                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~155                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~154                           ; 1       ;
+; vga_out:inst7|process_5~144                           ; 1       ;
+; vga_out:inst7|process_5~143                           ; 1       ;
+; vga_out:inst7|process_5~142                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~153                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~152                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~151                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~150                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~149                           ; 1       ;
+; vga_out:inst7|LessThan114~0                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~147                           ; 1       ;
+; vga_out:inst7|process_5~139                           ; 1       ;
+; vga_out:inst7|LessThan113~1                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~145                           ; 1       ;
+; vga_out:inst7|process_5~137                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~144                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~143                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~142                           ; 1       ;
+; vga_out:inst7|process_5~136                           ; 1       ;
+; vga_out:inst7|LessThan190~0                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~141                           ; 1       ;
+; vga_out:inst7|process_5~134                           ; 1       ;
+; vga_out:inst7|process_5~133                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~140                           ; 1       ;
+; vga_out:inst7|process_5~132                           ; 1       ;
+; vga_out:inst7|process_5~131                           ; 1       ;
+; vga_out:inst7|process_5~130                           ; 1       ;
+; vga_out:inst7|process_5~129                           ; 1       ;
+; vga_out:inst7|LessThan184~0                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~139                           ; 1       ;
 ; vga_out:inst7|process_5~127                           ; 1       ;
 ; vga_out:inst7|process_5~126                           ; 1       ;
 ; vga_out:inst7|process_5~125                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~138                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~137                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~136                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~135                           ; 1       ;
 ; vga_out:inst7|process_5~124                           ; 1       ;
 ; vga_out:inst7|process_5~123                           ; 1       ;
-; vga_out:inst7|Add9~2                                  ; 1       ;
 ; vga_out:inst7|process_5~122                           ; 1       ;
-; vga_out:inst7|LessThan175~11                          ; 1       ;
 ; vga_out:inst7|process_5~121                           ; 1       ;
 ; vga_out:inst7|process_5~120                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~170                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~169                           ; 1       ;
-; vga_out:inst7|LessThan230~0                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~168                           ; 1       ;
+; vga_out:inst7|Add9~2                                  ; 1       ;
+; vga_out:inst7|process_5~119                           ; 1       ;
+; vga_out:inst7|LessThan175~11                          ; 1       ;
+; vga_out:inst7|process_5~118                           ; 1       ;
 ; vga_out:inst7|process_5~117                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~134                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~133                           ; 1       ;
+; vga_out:inst7|LessThan230~0                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~132                           ; 1       ;
+; vga_out:inst7|process_5~114                           ; 1       ;
 ; vga_out:inst7|LessThan179~0                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~167                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~131                           ; 1       ;
 ; vga_out:inst7|LessThan175~10                          ; 1       ;
 ; vga_out:inst7|LessThan175~9                           ; 1       ;
 ; vga_out:inst7|LessThan175~8                           ; 1       ;
@@ -1532,197 +1558,165 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|LessThan175~2                           ; 1       ;
 ; vga_out:inst7|LessThan175~1                           ; 1       ;
 ; vga_out:inst7|LessThan175~0                           ; 1       ;
-; vga_out:inst7|process_5~114                           ; 1       ;
-; vga_out:inst7|process_5~113                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~166                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~165                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~164                           ; 1       ;
-; vga_out:inst7|process_5~112                           ; 1       ;
-; vga_out:inst7|LessThan234~1                           ; 1       ;
 ; vga_out:inst7|process_5~111                           ; 1       ;
+; vga_out:inst7|process_5~110                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~130                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~129                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~128                           ; 1       ;
+; vga_out:inst7|process_5~109                           ; 1       ;
+; vga_out:inst7|LessThan234~1                           ; 1       ;
+; vga_out:inst7|process_5~108                           ; 1       ;
 ; vga_out:inst7|Add22~0                                 ; 1       ;
 ; vga_out:inst7|Add23~0                                 ; 1       ;
-; vga_out:inst7|process_5~109                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~163                           ; 1       ;
-; vga_out:inst7|process_5~108                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~162                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~161                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~160                           ; 1       ;
+; vga_out:inst7|process_5~106                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~127                           ; 1       ;
+; vga_out:inst7|process_5~105                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~126                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~125                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~124                           ; 1       ;
 ; vga_out:inst7|LessThan204~1                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~159                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~123                           ; 1       ;
 ; vga_out:inst7|LessThan203~3                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~158                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~122                           ; 1       ;
 ; vga_out:inst7|LessThan206~0                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~157                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~121                           ; 1       ;
 ; vga_out:inst7|LessThan153~0                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~156                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~120                           ; 1       ;
 ; vga_out:inst7|Add27~0                                 ; 1       ;
-; vga_out:inst7|Vga_rgb_n~155                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~154                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~153                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~152                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~151                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~150                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~149                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~148                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~119                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~118                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~117                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~116                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~115                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~114                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~113                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~112                           ; 1       ;
 ; vga_out:inst7|LessThan225~2                           ; 1       ;
 ; vga_out:inst7|LessThan224~9                           ; 1       ;
 ; vga_out:inst7|LessThan224~8                           ; 1       ;
 ; vga_out:inst7|LessThan224~7                           ; 1       ;
 ; vga_out:inst7|LessThan224~6                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~147                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~146                           ; 1       ;
-; vga_out:inst7|LessThan202~0                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~145                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~144                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~143                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~141                           ; 1       ;
-; vga_out:inst7|LessThan284~0                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~140                           ; 1       ;
-; vga_out:inst7|process_5~107                           ; 1       ;
-; vga_out:inst7|process_5~106                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~139                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~138                           ; 1       ;
-; vga_out:inst7|LessThan277~1                           ; 1       ;
-; vga_out:inst7|process_5~105                           ; 1       ;
-; vga_out:inst7|process_5~104                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~137                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~136                           ; 1       ;
-; vga_out:inst7|LessThan273~1                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~135                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~134                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~133                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~132                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~131                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~130                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~129                           ; 1       ;
-; vga_out:inst7|process_5~103                           ; 1       ;
-; vga_out:inst7|process_5~102                           ; 1       ;
-; vga_out:inst7|LessThan282~2                           ; 1       ;
-; vga_out:inst7|process_5~101                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~128                           ; 1       ;
-; vga_out:inst7|process_5~97                            ; 1       ;
-; vga_out:inst7|LessThan264~0                           ; 1       ;
-; vga_out:inst7|process_5~96                            ; 1       ;
-; vga_out:inst7|process_5~95                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n~127                           ; 1       ;
-; vga_out:inst7|process_5~94                            ; 1       ;
-; vga_out:inst7|LessThan286~1                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~126                           ; 1       ;
-; vga_out:inst7|process_5~93                            ; 1       ;
-; vga_out:inst7|LessThan265~1                           ; 1       ;
-; vga_out:inst7|process_5~92                            ; 1       ;
-; vga_out:inst7|LessThan285~1                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~125                           ; 1       ;
-; vga_out:inst7|process_5~91                            ; 1       ;
-; vga_out:inst7|process_5~90                            ; 1       ;
-; vga_out:inst7|LessThan278~0                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~124                           ; 1       ;
-; vga_out:inst7|process_5~89                            ; 1       ;
-; vga_out:inst7|process_5~88                            ; 1       ;
-; vga_out:inst7|LessThan281~1                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~123                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~122                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~121                           ; 1       ;
-; vga_out:inst7|LessThan229~2                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~120                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~119                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~118                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~116                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~115                           ; 1       ;
-; vga_out:inst7|LessThan163~0                           ; 1       ;
-; vga_out:inst7|LessThan169~1                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~113                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~112                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~111                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~110                           ; 1       ;
+; vga_out:inst7|LessThan202~0                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~109                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~108                           ; 1       ;
-; vga_out:inst7|LessThan166~1                           ; 1       ;
-; vga_out:inst7|Vga_rgb_n~106                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~107                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~105                           ; 1       ;
+; vga_out:inst7|LessThan284~0                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~104                           ; 1       ;
+; vga_out:inst7|process_5~104                           ; 1       ;
+; vga_out:inst7|process_5~103                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~103                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~102                           ; 1       ;
+; vga_out:inst7|LessThan277~1                           ; 1       ;
+; vga_out:inst7|process_5~102                           ; 1       ;
+; vga_out:inst7|process_5~101                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~101                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~100                           ; 1       ;
+; vga_out:inst7|LessThan273~1                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~99                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n~98                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n~97                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~96                            ; 1       ;
-; vga_out:inst7|process_5~84                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~95                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n~94                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n~93                            ; 1       ;
+; vga_out:inst7|process_5~100                           ; 1       ;
+; vga_out:inst7|process_5~99                            ; 1       ;
+; vga_out:inst7|LessThan282~2                           ; 1       ;
+; vga_out:inst7|process_5~98                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~92                            ; 1       ;
+; vga_out:inst7|process_5~94                            ; 1       ;
+; vga_out:inst7|LessThan264~0                           ; 1       ;
+; vga_out:inst7|process_5~93                            ; 1       ;
+; vga_out:inst7|process_5~92                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~91                            ; 1       ;
+; vga_out:inst7|process_5~91                            ; 1       ;
+; vga_out:inst7|LessThan286~1                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~90                            ; 1       ;
-; vga_out:inst7|process_5~81                            ; 1       ;
+; vga_out:inst7|process_5~89                            ; 1       ;
+; vga_out:inst7|LessThan265~1                           ; 1       ;
+; vga_out:inst7|process_5~88                            ; 1       ;
+; vga_out:inst7|LessThan285~1                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~89                            ; 1       ;
+; vga_out:inst7|process_5~87                            ; 1       ;
+; vga_out:inst7|process_5~86                            ; 1       ;
+; vga_out:inst7|LessThan278~0                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~88                            ; 1       ;
+; vga_out:inst7|process_5~85                            ; 1       ;
+; vga_out:inst7|process_5~84                            ; 1       ;
+; vga_out:inst7|LessThan281~1                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~87                            ; 1       ;
-; vga_out:inst7|process_5~79                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~86                            ; 1       ;
-; vga_out:inst7|process_5~78                            ; 1       ;
-; vga_out:inst7|LessThan151~0                           ; 1       ;
-; vga_out:inst7|process_5~76                            ; 1       ;
-; vga_out:inst7|process_5~74                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~85                            ; 1       ;
+; vga_out:inst7|LessThan229~2                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~84                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~83                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~82                            ; 1       ;
-; vga_out:inst7|process_5~72                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n~81                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n~80                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~79                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n~78                            ; 1       ;
+; vga_out:inst7|LessThan163~0                           ; 1       ;
+; vga_out:inst7|LessThan169~1                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~77                            ; 1       ;
-; vga_out:inst7|LessThan205~2                           ; 1       ;
+; vga_out:inst7|Vga_rgb_n~76                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~75                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~74                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n~73                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~72                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n~71                            ; 1       ;
+; vga_out:inst7|LessThan166~1                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~70                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~69                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n~68                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n~67                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~66                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n~64                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n~65                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~63                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n~61                            ; 1       ;
-; vga_out:inst7|process_5~65                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~60                            ; 1       ;
+; vga_out:inst7|process_5~79                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~59                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n~58                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n~57                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~56                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~55                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~54                            ; 1       ;
+; vga_out:inst7|process_5~76                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~53                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~52                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~51                            ; 1       ;
+; vga_out:inst7|process_5~74                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~50                            ; 1       ;
+; vga_out:inst7|process_5~73                            ; 1       ;
+; vga_out:inst7|LessThan151~0                           ; 1       ;
+; vga_out:inst7|process_5~71                            ; 1       ;
+; vga_out:inst7|process_5~69                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~49                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~48                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~47                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n~46                            ; 1       ;
+; vga_out:inst7|process_5~67                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~45                            ; 1       ;
-; vga_out:inst7|process_5~59                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n~44                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~43                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~42                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~41                            ; 1       ;
+; vga_out:inst7|LessThan205~2                           ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~39                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~38                            ; 1       ;
-; vga_out:inst7|LessThan9~0                             ; 1       ;
-; vga_out:inst7|Vga_rgb_n[7]~37                         ; 1       ;
-; vga_out:inst7|Vga_rgb_n[7]~36                         ; 1       ;
+; vga_out:inst7|process_5~55                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~35                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~34                            ; 1       ;
 ; vga_out:inst7|Vga_rgb_n~32                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n~31                            ; 1       ;
+; vga_out:inst7|LessThan9~0                             ; 1       ;
 ; vga_out:inst7|process_5~42                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n[7]~31                         ; 1       ;
 ; vga_out:inst7|Vga_rgb_n[7]~29                         ; 1       ;
+; vga_out:inst7|Vga_rgb_n[7]~27                         ; 1       ;
 ; vga_out:inst7|process_5~37                            ; 1       ;
-; vga_out:inst7|Vga_rgb_n[7]~28                         ; 1       ;
 ; vga_out:inst7|Vga_rgb_n[7]~26                         ; 1       ;
-; vga_out:inst7|Vga_rgb_n[7]~25                         ; 1       ;
 ; vga_out:inst7|Vga_rgb_n[7]~24                         ; 1       ;
 ; vga_out:inst7|Vga_rgb_n[7]~23                         ; 1       ;
 ; vga_out:inst7|Vga_rgb_n[7]~22                         ; 1       ;
-; vga_out:inst7|process_5~32                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n[7]~21                         ; 1       ;
 ; vga_out:inst7|Vga_rgb_n[7]~20                         ; 1       ;
+; vga_out:inst7|process_5~32                            ; 1       ;
+; vga_out:inst7|Vga_rgb_n[7]~18                         ; 1       ;
 ; vga_out:inst7|LessThan1~1                             ; 1       ;
 ; vga_out:inst7|LessThan1~0                             ; 1       ;
 ; vga_out:inst7|LessThan0~1                             ; 1       ;
@@ -1774,6 +1768,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; vga_out:inst7|Add1~5                                  ; 1       ;
 ; vga_out:inst7|Add1~4                                  ; 1       ;
 ; vga_out:inst7|Add1~3                                  ; 1       ;
+; vga_out:inst7|Add1~2                                  ; 1       ;
+; vga_out:inst7|Add1~1                                  ; 1       ;
+; vga_out:inst7|Add1~0                                  ; 1       ;
+; vga_out:inst7|Add0~20                                 ; 1       ;
 +-------------------------------------------------------+---------+
 
 
@@ -1782,150 +1780,147 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+------------------------+
 ; Routing Resource Type ; Usage                  ;
 +-----------------------+------------------------+
-; Block interconnects   ; 1,942 / 32,401 ( 6 % ) ;
-; C16 interconnects     ; 14 / 1,326 ( 1 % )     ;
-; C4 interconnects      ; 995 / 21,816 ( 5 % )   ;
-; Direct links          ; 188 / 32,401 ( < 1 % ) ;
+; Block interconnects   ; 1,994 / 32,401 ( 6 % ) ;
+; C16 interconnects     ; 11 / 1,326 ( < 1 % )   ;
+; C4 interconnects      ; 1,023 / 21,816 ( 5 % ) ;
+; Direct links          ; 178 / 32,401 ( < 1 % ) ;
 ; Global clocks         ; 4 / 10 ( 40 % )        ;
-; Local interconnects   ; 547 / 10,320 ( 5 % )   ;
+; Local interconnects   ; 524 / 10,320 ( 5 % )   ;
 ; R24 interconnects     ; 24 / 1,289 ( 2 % )     ;
-; R4 interconnects      ; 1,328 / 28,186 ( 5 % ) ;
+; R4 interconnects      ; 1,264 / 28,186 ( 4 % ) ;
 +-----------------------+------------------------+
 
 
 +----------------------------------------------------------------------------+
 ; LAB Logic Elements                                                         ;
 +---------------------------------------------+------------------------------+
-; Number of Logic Elements  (Average = 13.25) ; Number of LABs  (Total = 95) ;
+; Number of Logic Elements  (Average = 13.49) ; Number of LABs  (Total = 93) ;
 +---------------------------------------------+------------------------------+
-; 1                                           ; 2                            ;
-; 2                                           ; 1                            ;
-; 3                                           ; 2                            ;
+; 1                                           ; 0                            ;
+; 2                                           ; 3                            ;
+; 3                                           ; 1                            ;
 ; 4                                           ; 1                            ;
-; 5                                           ; 3                            ;
-; 6                                           ; 1                            ;
-; 7                                           ; 1                            ;
-; 8                                           ; 1                            ;
+; 5                                           ; 0                            ;
+; 6                                           ; 2                            ;
+; 7                                           ; 2                            ;
+; 8                                           ; 0                            ;
 ; 9                                           ; 1                            ;
 ; 10                                          ; 5                            ;
-; 11                                          ; 5                            ;
-; 12                                          ; 4                            ;
-; 13                                          ; 5                            ;
-; 14                                          ; 9                            ;
-; 15                                          ; 8                            ;
-; 16                                          ; 46                           ;
+; 11                                          ; 6                            ;
+; 12                                          ; 7                            ;
+; 13                                          ; 6                            ;
+; 14                                          ; 3                            ;
+; 15                                          ; 9                            ;
+; 16                                          ; 47                           ;
 +---------------------------------------------+------------------------------+
 
 
 +-------------------------------------------------------------------+
 ; LAB-wide Signals                                                  ;
 +------------------------------------+------------------------------+
-; LAB-wide Signals  (Average = 0.29) ; Number of LABs  (Total = 95) ;
+; LAB-wide Signals  (Average = 0.28) ; Number of LABs  (Total = 93) ;
 +------------------------------------+------------------------------+
 ; 1 Async. clear                     ; 4                            ;
-; 1 Clock                            ; 21                           ;
-; 1 Clock enable                     ; 2                            ;
-; 1 Sync. clear                      ; 1                            ;
+; 1 Clock                            ; 22                           ;
 +------------------------------------+------------------------------+
 
 
 +-----------------------------------------------------------------------------+
 ; LAB Signals Sourced                                                         ;
 +----------------------------------------------+------------------------------+
-; Number of Signals Sourced  (Average = 11.82) ; Number of LABs  (Total = 95) ;
+; Number of Signals Sourced  (Average = 12.03) ; Number of LABs  (Total = 93) ;
 +----------------------------------------------+------------------------------+
 ; 0                                            ; 0                            ;
 ; 1                                            ; 1                            ;
-; 2                                            ; 2                            ;
-; 3                                            ; 2                            ;
-; 4                                            ; 4                            ;
-; 5                                            ; 4                            ;
-; 6                                            ; 6                            ;
-; 7                                            ; 13                           ;
-; 8                                            ; 2                            ;
-; 9                                            ; 2                            ;
-; 10                                           ; 8                            ;
-; 11                                           ; 3                            ;
-; 12                                           ; 2                            ;
-; 13                                           ; 1                            ;
-; 14                                           ; 7                            ;
-; 15                                           ; 4                            ;
-; 16                                           ; 19                           ;
-; 17                                           ; 2                            ;
-; 18                                           ; 1                            ;
-; 19                                           ; 3                            ;
+; 2                                            ; 4                            ;
+; 3                                            ; 4                            ;
+; 4                                            ; 6                            ;
+; 5                                            ; 1                            ;
+; 6                                            ; 2                            ;
+; 7                                            ; 12                           ;
+; 8                                            ; 0                            ;
+; 9                                            ; 1                            ;
+; 10                                           ; 6                            ;
+; 11                                           ; 4                            ;
+; 12                                           ; 3                            ;
+; 13                                           ; 2                            ;
+; 14                                           ; 3                            ;
+; 15                                           ; 5                            ;
+; 16                                           ; 22                           ;
+; 17                                           ; 4                            ;
+; 18                                           ; 4                            ;
+; 19                                           ; 2                            ;
 ; 20                                           ; 3                            ;
-; 21                                           ; 3                            ;
-; 22                                           ; 1                            ;
-; 23                                           ; 0                            ;
+; 21                                           ; 1                            ;
+; 22                                           ; 0                            ;
+; 23                                           ; 2                            ;
 ; 24                                           ; 1                            ;
-; 25                                           ; 1                            ;
 +----------------------------------------------+------------------------------+
 
 
 +--------------------------------------------------------------------------------+
 ; LAB Signals Sourced Out                                                        ;
 +-------------------------------------------------+------------------------------+
-; Number of Signals Sourced Out  (Average = 7.35) ; Number of LABs  (Total = 95) ;
+; Number of Signals Sourced Out  (Average = 7.45) ; Number of LABs  (Total = 93) ;
 +-------------------------------------------------+------------------------------+
 ; 0                                               ; 0                            ;
-; 1                                               ; 6                            ;
-; 2                                               ; 6                            ;
-; 3                                               ; 10                           ;
-; 4                                               ; 7                            ;
-; 5                                               ; 10                           ;
-; 6                                               ; 6                            ;
-; 7                                               ; 10                           ;
+; 1                                               ; 5                            ;
+; 2                                               ; 11                           ;
+; 3                                               ; 5                            ;
+; 4                                               ; 5                            ;
+; 5                                               ; 11                           ;
+; 6                                               ; 7                            ;
+; 7                                               ; 7                            ;
 ; 8                                               ; 3                            ;
-; 9                                               ; 4                            ;
-; 10                                              ; 8                            ;
-; 11                                              ; 6                            ;
+; 9                                               ; 3                            ;
+; 10                                              ; 11                           ;
+; 11                                              ; 5                            ;
 ; 12                                              ; 5                            ;
-; 13                                              ; 3                            ;
-; 14                                              ; 7                            ;
-; 15                                              ; 1                            ;
-; 16                                              ; 3                            ;
+; 13                                              ; 5                            ;
+; 14                                              ; 8                            ;
+; 15                                              ; 0                            ;
+; 16                                              ; 2                            ;
 +-------------------------------------------------+------------------------------+
 
 
 +-----------------------------------------------------------------------------+
 ; LAB Distinct Inputs                                                         ;
 +----------------------------------------------+------------------------------+
-; Number of Distinct Inputs  (Average = 18.75) ; Number of LABs  (Total = 95) ;
+; Number of Distinct Inputs  (Average = 19.78) ; Number of LABs  (Total = 93) ;
 +----------------------------------------------+------------------------------+
 ; 0                                            ; 0                            ;
 ; 1                                            ; 0                            ;
-; 2                                            ; 2                            ;
-; 3                                            ; 1                            ;
-; 4                                            ; 2                            ;
-; 5                                            ; 10                           ;
-; 6                                            ; 1                            ;
+; 2                                            ; 1                            ;
+; 3                                            ; 0                            ;
+; 4                                            ; 3                            ;
+; 5                                            ; 6                            ;
+; 6                                            ; 2                            ;
 ; 7                                            ; 1                            ;
-; 8                                            ; 2                            ;
-; 9                                            ; 2                            ;
-; 10                                           ; 1                            ;
+; 8                                            ; 3                            ;
+; 9                                            ; 4                            ;
+; 10                                           ; 0                            ;
 ; 11                                           ; 2                            ;
-; 12                                           ; 5                            ;
-; 13                                           ; 4                            ;
+; 12                                           ; 3                            ;
+; 13                                           ; 2                            ;
 ; 14                                           ; 3                            ;
-; 15                                           ; 2                            ;
+; 15                                           ; 3                            ;
 ; 16                                           ; 3                            ;
 ; 17                                           ; 1                            ;
-; 18                                           ; 1                            ;
+; 18                                           ; 5                            ;
 ; 19                                           ; 2                            ;
-; 20                                           ; 4                            ;
-; 21                                           ; 4                            ;
-; 22                                           ; 4                            ;
+; 20                                           ; 3                            ;
+; 21                                           ; 1                            ;
+; 22                                           ; 2                            ;
 ; 23                                           ; 1                            ;
 ; 24                                           ; 3                            ;
-; 25                                           ; 5                            ;
-; 26                                           ; 4                            ;
-; 27                                           ; 2                            ;
-; 28                                           ; 4                            ;
-; 29                                           ; 2                            ;
-; 30                                           ; 4                            ;
-; 31                                           ; 6                            ;
-; 32                                           ; 5                            ;
+; 25                                           ; 6                            ;
+; 26                                           ; 3                            ;
+; 27                                           ; 3                            ;
+; 28                                           ; 5                            ;
+; 29                                           ; 4                            ;
+; 30                                           ; 1                            ;
+; 31                                           ; 8                            ;
+; 32                                           ; 7                            ;
 ; 33                                           ; 2                            ;
 +----------------------------------------------+------------------------------+
 
@@ -2050,11 +2045,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------+---------------------------------+-------------------+
 ; Source Clock(s)                 ; Destination Clock(s)            ; Delay Added in ns ;
 +---------------------------------+---------------------------------+-------------------+
-; second:inst2|q,I/O              ; second:inst2|q                  ; 22.4              ;
-; second:inst2|q,Low_sw_an[0],I/O ; second:inst2|q                  ; 18.6              ;
-; I/O                             ; Low_sw_an[0]                    ; 16.6              ;
-; I/O                             ; second:inst2|q                  ; 7.8               ;
-; I/O                             ; second:inst2|q,Low_sw_an[0],Clk ; 6.7               ;
+; second:inst2|q,I/O              ; second:inst2|q                  ; 25.6              ;
+; I/O                             ; Low_sw_an[0]                    ; 19.4              ;
+; second:inst2|q,Low_sw_an[0],I/O ; second:inst2|q                  ; 18.2              ;
+; I/O                             ; second:inst2|q                  ; 9.3               ;
+; I/O                             ; second:inst2|q,Low_sw_an[0],Clk ; 9.0               ;
+; second:inst2|q                  ; second:inst2|q,Low_sw_an[0],Clk ; 2.6               ;
+; Clk                             ; Clk                             ; 2.2               ;
 +---------------------------------+---------------------------------+-------------------+
 Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
 This will disable optimization of problematic paths and expose them for further analysis using the TimeQuest Timing Analyzer.
@@ -2065,86 +2062,65 @@ This will disable optimization of problematic paths and expose them for further 
 +-------------------------------------------------------+-----------------------------------------------------+-------------------+
 ; Source Register                                       ; Destination Register                                ; Delay Added in ns ;
 +-------------------------------------------------------+-----------------------------------------------------+-------------------+
-; Low_sw_an[0]                                          ; controller:inst|Controller_state.con_play~_emulated ; 2.495             ;
-; controller:inst|Controller_state.con_active~1         ; controller:inst|Joy[3]~_emulated                    ; 1.842             ;
-; controller:inst|Controller_state.con_active~_emulated ; controller:inst|Joy[3]~_emulated                    ; 1.842             ;
-; Low_sw_an[2]                                          ; controller:inst|Joy[3]~_emulated                    ; 1.842             ;
-; Low_sw_an[1]                                          ; controller:inst|Joy[3]~_emulated                    ; 1.842             ;
-; controller:inst|Joy[3]~_emulated                      ; controller:inst|Joy[1]~_emulated                    ; 1.416             ;
-; controller:inst|Joy[2]~_emulated                      ; controller:inst|Joy[1]~_emulated                    ; 1.416             ;
-; controller:inst|Joy[0]~_emulated                      ; controller:inst|Joy[1]~_emulated                    ; 1.416             ;
-; controller:inst|Joy[1]~_emulated                      ; controller:inst|Joy[1]~_emulated                    ; 1.416             ;
-; controller:inst|Joy[3]~1                              ; controller:inst|Joy[1]~_emulated                    ; 1.416             ;
-; controller:inst|Joy[2]~6                              ; controller:inst|Joy[1]~_emulated                    ; 1.416             ;
-; controller:inst|Joy[0]~16                             ; controller:inst|Joy[1]~_emulated                    ; 1.416             ;
-; controller:inst|Joy[1]~11                             ; controller:inst|Joy[1]~_emulated                    ; 1.416             ;
-; controller:inst|Stomach[0]~_emulated                  ; controller:inst|Stomach[2]~_emulated                ; 1.244             ;
-; controller:inst|Stomach[3]~_emulated                  ; controller:inst|Stomach[2]~_emulated                ; 1.088             ;
-; controller:inst|Stomach[2]~_emulated                  ; controller:inst|Stomach[2]~_emulated                ; 1.088             ;
-; controller:inst|Stomach[1]~_emulated                  ; controller:inst|Stomach[2]~_emulated                ; 1.088             ;
-; controller:inst|Stomach[3]~1                          ; controller:inst|Stomach[2]~_emulated                ; 1.088             ;
-; controller:inst|Stomach[2]~6                          ; controller:inst|Stomach[2]~_emulated                ; 1.088             ;
-; controller:inst|Stomach[0]~16                         ; controller:inst|Stomach[2]~_emulated                ; 1.088             ;
-; controller:inst|Stomach[1]~11                         ; controller:inst|Stomach[2]~_emulated                ; 1.088             ;
-; second:inst2|q                                        ; second:inst2|q                                      ; 1.042             ;
-; controller:inst|Controller_state.con_play~_emulated   ; controller:inst|Controller_state.con_play~_emulated ; 0.998             ;
-; controller:inst|Controller_state.con_play~1           ; controller:inst|Controller_state.con_play~_emulated ; 0.998             ;
-; controller:inst|time[2]                               ; controller:inst|Controller_state.con_feed~_emulated ; 0.986             ;
-; controller:inst|Controller_state.con_feed~_emulated   ; controller:inst|Controller_state.con_feed~_emulated ; 0.754             ;
-; controller:inst|Controller_state.con_feed~1           ; controller:inst|Controller_state.con_feed~_emulated ; 0.754             ;
-; controller:inst|minute[3]                             ; controller:inst|Vga_choose[0]                       ; 0.565             ;
-; controller:inst|minute[2]                             ; controller:inst|Vga_choose[0]                       ; 0.565             ;
-; controller:inst|minute[0]                             ; controller:inst|Vga_choose[0]                       ; 0.565             ;
-; controller:inst|minute[1]                             ; controller:inst|Vga_choose[0]                       ; 0.565             ;
-; second:inst2|time[25]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[6]                                  ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[5]                                  ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[4]                                  ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[3]                                  ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[2]                                  ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[1]                                  ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[7]                                  ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[8]                                  ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[9]                                  ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[10]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[11]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[15]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[12]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[13]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[14]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[16]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[17]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[18]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[23]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[19]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[20]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[21]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[22]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[24]                                 ; second:inst2|q                                      ; 0.520             ;
-; second:inst2|time[0]                                  ; second:inst2|q                                      ; 0.520             ;
-; controller:inst|time[0]                               ; vga_out:inst7|Vga_rgb[0]                            ; 0.265             ;
-; controller:inst|time[1]                               ; vga_out:inst7|Vga_rgb[0]                            ; 0.265             ;
-; vga_out:inst7|Vga_vsync_cnt[9]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_vsync_cnt[8]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_vsync_cnt[6]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_vsync_cnt[5]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_vsync_cnt[4]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_vsync_cnt[3]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_vsync_cnt[2]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_vsync_cnt[1]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_vsync_cnt[7]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_hsync_cnt[10]                       ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_hsync_cnt[8]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_hsync_cnt[7]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_hsync_cnt[6]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_hsync_cnt[5]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_hsync_cnt[4]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_hsync_cnt[3]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_hsync_cnt[2]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_hsync_cnt[9]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
-; vga_out:inst7|Vga_hsync_cnt[1]                        ; vga_out:inst7|Vga_rgb[0]                            ; 0.054             ;
+; Low_sw_an[0]                                          ; controller:inst|Stomach[0]~16                       ; 2.622             ;
+; second:inst2|q                                        ; second:inst2|q                                      ; 2.188             ;
+; controller:inst|Controller_state.con_active~_emulated ; controller:inst|Vga_choose[0]                       ; 2.026             ;
+; Low_sw_an[2]                                          ; controller:inst|Vga_choose[0]                       ; 2.026             ;
+; Low_sw_an[1]                                          ; controller:inst|Vga_choose[0]                       ; 2.026             ;
+; controller:inst|Controller_state.con_active~1         ; controller:inst|Vga_choose[0]                       ; 2.026             ;
+; controller:inst|Joy[0]~_emulated                      ; controller:inst|Joy[1]~_emulated                    ; 1.890             ;
+; controller:inst|Joy[1]~_emulated                      ; controller:inst|Joy[1]~_emulated                    ; 1.757             ;
+; controller:inst|Joy[3]~_emulated                      ; controller:inst|Joy[1]~_emulated                    ; 1.756             ;
+; controller:inst|Stomach[1]~_emulated                  ; controller:inst|Stomach[2]~_emulated                ; 1.652             ;
+; controller:inst|Stomach[2]~_emulated                  ; controller:inst|Stomach[2]~_emulated                ; 1.553             ;
+; controller:inst|Joy[0]~16                             ; controller:inst|Joy[1]~_emulated                    ; 1.406             ;
+; controller:inst|Joy[1]~11                             ; controller:inst|Joy[1]~_emulated                    ; 1.384             ;
+; controller:inst|Stomach[3]~_emulated                  ; controller:inst|Stomach[2]~_emulated                ; 1.381             ;
+; controller:inst|Joy[3]~1                              ; controller:inst|Joy[1]~_emulated                    ; 1.333             ;
+; controller:inst|Joy[2]~_emulated                      ; controller:inst|Joy[1]~_emulated                    ; 1.259             ;
+; controller:inst|Joy[2]~6                              ; controller:inst|Joy[1]~_emulated                    ; 1.259             ;
+; controller:inst|Stomach[1]~11                         ; controller:inst|Stomach[2]~_emulated                ; 1.164             ;
+; controller:inst|Stomach[0]~_emulated                  ; controller:inst|Stomach[2]~_emulated                ; 1.120             ;
+; second:inst2|time[25]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[6]                                  ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[5]                                  ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[4]                                  ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[3]                                  ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[2]                                  ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[1]                                  ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[7]                                  ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[8]                                  ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[9]                                  ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[10]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[11]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[15]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[12]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[13]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[14]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[16]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[17]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[18]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[23]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[19]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[20]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[21]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[22]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[24]                                 ; second:inst2|q                                      ; 1.094             ;
+; second:inst2|time[0]                                  ; second:inst2|q                                      ; 1.094             ;
+; controller:inst|Stomach[3]~1                          ; controller:inst|Stomach[2]~_emulated                ; 1.089             ;
+; controller:inst|Stomach[2]~6                          ; controller:inst|Stomach[2]~_emulated                ; 1.089             ;
+; controller:inst|Stomach[0]~16                         ; controller:inst|Stomach[2]~_emulated                ; 1.089             ;
+; controller:inst|Controller_state.con_feed~_emulated   ; controller:inst|Controller_state.con_feed~_emulated ; 1.004             ;
+; controller:inst|Controller_state.con_play~_emulated   ; controller:inst|Controller_state.con_play~_emulated ; 1.004             ;
+; controller:inst|Controller_state.con_feed~1           ; controller:inst|Controller_state.con_feed~_emulated ; 1.004             ;
+; controller:inst|Controller_state.con_play~1           ; controller:inst|Controller_state.con_play~_emulated ; 1.004             ;
+; controller:inst|time[2]                               ; controller:inst|Controller_state.con_feed~_emulated ; 0.935             ;
+; controller:inst|minute[3]                             ; controller:inst|Stomach[3]~_emulated                ; 0.293             ;
+; controller:inst|minute[2]                             ; controller:inst|Stomach[3]~_emulated                ; 0.293             ;
+; controller:inst|minute[0]                             ; controller:inst|Stomach[3]~_emulated                ; 0.293             ;
+; controller:inst|minute[1]                             ; controller:inst|Stomach[3]~_emulated                ; 0.293             ;
 +-------------------------------------------------------+-----------------------------------------------------+-------------------+
-Note: This table only shows the top 78 path(s) that have the largest delay added for hold.
+Note: This table only shows the top 57 path(s) that have the largest delay added for hold.
 
 
 +-----------------+
@@ -2172,67 +2148,67 @@ Critical Warning (332012): Synopsys Design Constraints File file not found: 'dig
 Info (332144): No user constrained base clocks found in the design
 Warning (332125): Found combinational loop of 28 nodes
     Warning (332126): Node "inst|Stomach[3]~2|combout"
-    Warning (332126): Node "inst|Stomach~54|datac"
-    Warning (332126): Node "inst|Stomach~54|combout"
+    Warning (332126): Node "inst|Stomach~52|datac"
+    Warning (332126): Node "inst|Stomach~52|combout"
     Warning (332126): Node "inst|Stomach[3]~2|datac"
-    Warning (332126): Node "inst|Stomach~53|dataa"
-    Warning (332126): Node "inst|Stomach~53|combout"
+    Warning (332126): Node "inst|Stomach~51|dataa"
+    Warning (332126): Node "inst|Stomach~51|combout"
     Warning (332126): Node "inst|Stomach[0]~17|datac"
     Warning (332126): Node "inst|Stomach[0]~17|combout"
-    Warning (332126): Node "inst|Stomach~54|datab"
-    Warning (332126): Node "inst|Stomach~56|datad"
-    Warning (332126): Node "inst|Stomach~56|combout"
+    Warning (332126): Node "inst|Stomach~52|datab"
+    Warning (332126): Node "inst|Stomach~54|datad"
+    Warning (332126): Node "inst|Stomach~54|combout"
     Warning (332126): Node "inst|Stomach[1]~12|datac"
     Warning (332126): Node "inst|Stomach[1]~12|combout"
-    Warning (332126): Node "inst|Stomach~54|dataa"
-    Warning (332126): Node "inst|Stomach~55|dataa"
-    Warning (332126): Node "inst|Stomach~55|combout"
+    Warning (332126): Node "inst|Stomach~52|dataa"
+    Warning (332126): Node "inst|Stomach~53|dataa"
+    Warning (332126): Node "inst|Stomach~53|combout"
     Warning (332126): Node "inst|Stomach[2]~7|datac"
     Warning (332126): Node "inst|Stomach[2]~7|combout"
-    Warning (332126): Node "inst|Stomach~53|datab"
-    Warning (332126): Node "inst|Stomach~56|datab"
-    Warning (332126): Node "inst|Stomach~55|datad"
-    Warning (332126): Node "inst|Stomach~54|datad"
-    Warning (332126): Node "inst|Stomach~56|datac"
-    Warning (332126): Node "inst|Stomach~53|datac"
+    Warning (332126): Node "inst|Stomach~51|datab"
+    Warning (332126): Node "inst|Stomach~54|datab"
     Warning (332126): Node "inst|Stomach~53|datad"
-    Warning (332126): Node "inst|Stomach~55|datab"
-    Warning (332126): Node "inst|Stomach~56|dataa"
-    Warning (332126): Node "inst|Stomach~55|datac"
+    Warning (332126): Node "inst|Stomach~52|datad"
+    Warning (332126): Node "inst|Stomach~54|datac"
+    Warning (332126): Node "inst|Stomach~51|datac"
+    Warning (332126): Node "inst|Stomach~51|datad"
+    Warning (332126): Node "inst|Stomach~53|datab"
+    Warning (332126): Node "inst|Stomach~54|dataa"
+    Warning (332126): Node "inst|Stomach~53|datac"
 Warning (332125): Found combinational loop of 28 nodes
     Warning (332126): Node "inst|Joy[3]~2|combout"
-    Warning (332126): Node "inst|Joy~57|datac"
-    Warning (332126): Node "inst|Joy~57|combout"
-    Warning (332126): Node "inst|Joy[3]~2|datac"
-    Warning (332126): Node "inst|Joy~54|dataa"
+    Warning (332126): Node "inst|Joy~54|datac"
     Warning (332126): Node "inst|Joy~54|combout"
+    Warning (332126): Node "inst|Joy[3]~2|datac"
+    Warning (332126): Node "inst|Joy~51|dataa"
+    Warning (332126): Node "inst|Joy~51|combout"
     Warning (332126): Node "inst|Joy[0]~17|datac"
     Warning (332126): Node "inst|Joy[0]~17|combout"
-    Warning (332126): Node "inst|Joy~57|datab"
-    Warning (332126): Node "inst|Joy~55|datad"
-    Warning (332126): Node "inst|Joy~55|combout"
+    Warning (332126): Node "inst|Joy~54|datab"
+    Warning (332126): Node "inst|Joy~52|datad"
+    Warning (332126): Node "inst|Joy~52|combout"
     Warning (332126): Node "inst|Joy[1]~12|datac"
     Warning (332126): Node "inst|Joy[1]~12|combout"
-    Warning (332126): Node "inst|Joy~57|dataa"
-    Warning (332126): Node "inst|Joy~56|dataa"
-    Warning (332126): Node "inst|Joy~56|combout"
+    Warning (332126): Node "inst|Joy~54|dataa"
+    Warning (332126): Node "inst|Joy~53|dataa"
+    Warning (332126): Node "inst|Joy~53|combout"
     Warning (332126): Node "inst|Joy[2]~7|datac"
     Warning (332126): Node "inst|Joy[2]~7|combout"
-    Warning (332126): Node "inst|Joy~55|datac"
-    Warning (332126): Node "inst|Joy~54|datac"
-    Warning (332126): Node "inst|Joy~56|datad"
-    Warning (332126): Node "inst|Joy~57|datad"
-    Warning (332126): Node "inst|Joy~55|datab"
-    Warning (332126): Node "inst|Joy~54|datab"
+    Warning (332126): Node "inst|Joy~52|datac"
+    Warning (332126): Node "inst|Joy~51|datac"
+    Warning (332126): Node "inst|Joy~53|datad"
     Warning (332126): Node "inst|Joy~54|datad"
-    Warning (332126): Node "inst|Joy~56|datab"
-    Warning (332126): Node "inst|Joy~55|dataa"
-    Warning (332126): Node "inst|Joy~56|datac"
+    Warning (332126): Node "inst|Joy~52|datab"
+    Warning (332126): Node "inst|Joy~51|datab"
+    Warning (332126): Node "inst|Joy~51|datad"
+    Warning (332126): Node "inst|Joy~53|datab"
+    Warning (332126): Node "inst|Joy~52|dataa"
+    Warning (332126): Node "inst|Joy~53|datac"
 Warning (332125): Found combinational loop of 4 nodes
-    Warning (332126): Node "inst|Controller_state.con_active~2|combout"
-    Warning (332126): Node "inst|Controller_state.con_active~6|dataa"
     Warning (332126): Node "inst|Controller_state.con_active~6|combout"
     Warning (332126): Node "inst|Controller_state.con_active~2|datad"
+    Warning (332126): Node "inst|Controller_state.con_active~2|combout"
+    Warning (332126): Node "inst|Controller_state.con_active~6|dataa"
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
@@ -2242,8 +2218,8 @@ Info (176353): Automatically promoted node second:inst2|q
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
         Info (176357): Destination node controller:inst|Controller_state.con_active~_emulated
-        Info (176357): Destination node second:inst2|q~0
-Info (176353): Automatically promoted node controller:inst|Joy[3]~52 
+        Info (176357): Destination node second:inst2|q~5
+Info (176353): Automatically promoted node controller:inst|Joy[3]~50 
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
         Info (176357): Destination node controller:inst|Joy[3]~0
@@ -2254,7 +2230,7 @@ Info (176353): Automatically promoted node controller:inst|Joy[3]~52
         Info (176357): Destination node controller:inst|Controller_state.con_play~2
         Info (176357): Destination node controller:inst|Controller_state.con_play~0
         Info (176357): Destination node controller:inst|Controller_state.con_play~1
-Info (176353): Automatically promoted node controller:inst|Stomach[3]~51 
+Info (176353): Automatically promoted node controller:inst|Stomach[3]~50 
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
         Info (176357): Destination node controller:inst|Stomach[3]~0
@@ -2268,7 +2244,7 @@ Info (176353): Automatically promoted node controller:inst|Stomach[3]~51
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:02
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
 Info (170191): Fitter placement operations beginning
@@ -2276,11 +2252,11 @@ Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:02
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 3% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 12% of the available device resources in the region that extends from location X11_Y0 to location X22_Y11
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:03
+    Info (170196): Router estimated peak interconnect usage is 9% of the available device resources in the region that extends from location X11_Y0 to location X22_Y11
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:04
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 1.98 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 1.55 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -2288,10 +2264,10 @@ Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info (144001): Generated suppressed messages file C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/output_files/digimon.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 66 warnings
-    Info: Peak virtual memory: 1347 megabytes
-    Info: Processing ended: Mon Feb 26 20:45:49 2018
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:14
+    Info: Peak virtual memory: 1338 megabytes
+    Info: Processing ended: Mon Feb 26 21:30:27 2018
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:15
 
 
 +----------------------------+

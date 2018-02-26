@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Mon Feb 26 20:45:36 2018
+Analysis & Synthesis Status : Successful - Mon Feb 26 21:30:13 2018
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Full Version
 Revision Name : digimon
 Top-level Entity Name : digimon
 Family : Cyclone IV E
-Total logic elements : 1,259
-    Total combinational functions : 1,256
+Total logic elements : 1,255
+    Total combinational functions : 1,252
     Dedicated logic registers : 77
 Total registers : 77
 Total pins : 14

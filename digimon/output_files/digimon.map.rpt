@@ -1,5 +1,5 @@
 Analysis & Synthesis report for digimon
-Mon Feb 26 20:45:36 2018
+Mon Feb 26 21:30:13 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
 
 
@@ -44,13 +44,13 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Feb 26 20:45:36 2018       ;
+; Analysis & Synthesis Status        ; Successful - Mon Feb 26 21:30:13 2018       ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
 ; Revision Name                      ; digimon                                     ;
 ; Top-level Entity Name              ; digimon                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 1,259                                       ;
-;     Total combinational functions  ; 1,256                                       ;
+; Total logic elements               ; 1,255                                       ;
+;     Total combinational functions  ; 1,252                                       ;
 ;     Dedicated logic registers      ; 77                                          ;
 ; Total registers                    ; 77                                          ;
 ; Total pins                         ; 14                                          ;
@@ -183,16 +183,16 @@ applicable agreement for further details.
 +---------------------------------------------+-------------------------+
 ; Resource                                    ; Usage                   ;
 +---------------------------------------------+-------------------------+
-; Estimated Total logic elements              ; 1,259                   ;
+; Estimated Total logic elements              ; 1,255                   ;
 ;                                             ;                         ;
-; Total combinational functions               ; 1256                    ;
+; Total combinational functions               ; 1252                    ;
 ; Logic element usage by number of LUT inputs ;                         ;
-;     -- 4 input functions                    ; 575                     ;
+;     -- 4 input functions                    ; 572                     ;
 ;     -- 3 input functions                    ; 374                     ;
-;     -- <=2 input functions                  ; 307                     ;
+;     -- <=2 input functions                  ; 306                     ;
 ;                                             ;                         ;
 ; Logic elements by mode                      ;                         ;
-;     -- normal mode                          ; 876                     ;
+;     -- normal mode                          ; 872                     ;
 ;     -- arithmetic mode                      ; 380                     ;
 ;                                             ;                         ;
 ; Total registers                             ; 77                      ;
@@ -203,7 +203,7 @@ applicable agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0                       ;
 ; Maximum fan-out node                        ; vga_out:inst7|offset[5] ;
 ; Maximum fan-out                             ; 117                     ;
-; Total fan-out                               ; 4216                    ;
+; Total fan-out                               ; 4208                    ;
 ; Average fan-out                             ; 3.10                    ;
 +---------------------------------------------+-------------------------+
 
@@ -213,10 +213,10 @@ applicable agreement for further details.
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name      ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------+--------------+
-; |digimon                   ; 1256 (0)          ; 77 (0)       ; 0           ; 0            ; 0       ; 0         ; 14   ; 0            ; |digimon                 ; work         ;
-;    |controller:inst|       ; 87 (87)           ; 22 (22)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|controller:inst ; work         ;
+; |digimon                   ; 1252 (0)          ; 77 (0)       ; 0           ; 0            ; 0       ; 0         ; 14   ; 0            ; |digimon                 ; work         ;
+;    |controller:inst|       ; 86 (86)           ; 22 (22)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|controller:inst ; work         ;
 ;    |second:inst2|          ; 65 (65)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|second:inst2    ; work         ;
-;    |vga_out:inst7|         ; 1104 (1104)       ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|vga_out:inst7   ; work         ;
+;    |vga_out:inst7|         ; 1101 (1101)       ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|vga_out:inst7   ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -252,9 +252,9 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 77    ;
-; Number of registers using Synchronous Clear  ; 1     ;
+; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 15    ;
+; Number of registers using Asynchronous Clear ; 22    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 15    ;
 ; Number of registers using Preset             ; 0     ;
@@ -277,7 +277,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:09     ;
+; Top            ; 00:00:10     ;
 +----------------+--------------+
 
 
@@ -287,7 +287,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
-    Info: Processing started: Mon Feb 26 20:45:25 2018
+    Info: Processing started: Mon Feb 26 21:30:01 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off digimon -c digimon
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 2 design units, including 1 entities, in source file vga_out.vhd
@@ -499,9 +499,9 @@ Info (12128): Elaborating entity "controller" for hierarchy "controller:inst"
 Warning (10492): VHDL Process Statement warning at controller.vhd(72): signal "Controller_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at controller.vhd(74): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at controller.vhd(75): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at controller.vhd(81): signal "Controller_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at controller.vhd(83): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at controller.vhd(84): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(79): signal "Controller_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(80): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(81): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (10018): Can't recognize finite state machine "Controller_state" because it has a complex reset state
 Info (12128): Elaborating entity "second" for hierarchy "second:inst2"
 Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
@@ -523,14 +523,14 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1276 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1272 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 10 output pins
-    Info (21061): Implemented 1262 logic cells
+    Info (21061): Implemented 1258 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 202 warnings
     Info: Peak virtual memory: 601 megabytes
-    Info: Processing ended: Mon Feb 26 20:45:37 2018
+    Info: Processing ended: Mon Feb 26 21:30:13 2018
     Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Total CPU time (on all processors): 00:00:12
 
 

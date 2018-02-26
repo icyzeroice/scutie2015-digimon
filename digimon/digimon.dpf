@@ -22,21 +22,9 @@
 		</pin>
 		<pin name="VGA_hsync" source="Pin Planner" >
 		</pin>
-		<pin name="sw3" source="Pin Planner" >
-		</pin>
-		<pin name="sw2" source="Pin Planner" >
-		</pin>
-		<pin name="sw1" source="Pin Planner" >
-		</pin>
 		<pin name="led_show" source="Pin Planner" >
 		</pin>
 		<pin name="low_rst_an" source="Pin Planner" >
-		</pin>
-		<pin name="low_sw_an[0]" source="Pin Planner" >
-		</pin>
-		<pin name="low_sw_an[2]" source="Pin Planner" >
-		</pin>
-		<pin name="low_sw_an[1]" source="Pin Planner" >
 		</pin>
 	</pin_info>
 	<buses>

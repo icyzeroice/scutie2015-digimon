@@ -3,8 +3,8 @@ use ieee.std_logic_1164.ALL;
 use ieee.std_logic_arith.ALL;
 
 entity controller is
-   port(Second        :in std_logic;--用于播放动画的延迟的时钟,1秒钟1正脉冲
-	   Low_sw_an     :in std_logic_vector (2 downto 0 );
+   port(Second       :in std_logic;--用于播放动画的延迟的时钟,1秒钟1正脉冲
+	   Low_sw_an      :in std_logic_vector (2 downto 0 );
 	  
 	   Vga_choose_n   : out integer range 0 to 9;
       Joy_n          : out integer range 0 to 10;
@@ -60,11 +60,13 @@ process(Reset, Second, Feed, Play)
 	variable minute:integer range 0 TO 14;
 	variable time:integer range 0 TO 5;
 begin
-	if Reset = '1' then 
+	if Reset = '1' then
 		--参数初始化
 		Joy <= 5;
 		Stomach <= 5;
 		Controller_state <= con_active;
+		time := 0;
+		minute := 0;
 		--播放初始化动画
 		Vga_choose <= ACTIVE_ONE;
 	elsif Controller_state = con_active and Feed = '1' then
@@ -83,8 +85,8 @@ begin
 	elsif rising_edge(Second) then
 		--根据时间掉欢乐度和饱食度
 		if Controller_state = con_active then
-			Minute:=Minute+1;
-			if Minute = 14 then
+			minute:=minute+1;
+			if minute = 14 then
 				if Joy > 0 and Stomach > 0 then 
 					Joy <= Joy - 1;
 					Stomach <= Stomach - 1;
@@ -94,7 +96,7 @@ begin
 					--等待reset
 					Vga_choose <= DEAD_ONE;
 				end if;
-				Minute := 0;
+				minute := 0;
 			end if;
 		elsif Controller_state = con_feed then
 			time:=time+1;

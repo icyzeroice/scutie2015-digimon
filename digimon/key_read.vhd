@@ -4,9 +4,9 @@ USE IEEE.std_logic_unsigned.ALL;
 ENTITY key_read IS
 	PORT(clk:IN std_logic;
 		 key:IN std_logic;
-	     low_rst_an: out std_logic
-		);
+	     low_rst_an: out std_logic);
 END ENTITY;
+
 ARCHITECTURE nan OF key_read IS
 signal key_rst:std_logic;
 signal key_rst_r:std_logic;
