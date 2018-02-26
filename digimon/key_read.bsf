@@ -20,9 +20,9 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 200 128)
+	(rect 16 16 176 96)
 	(text "key_read" (rect 5 0 43 12)(font "Arial" ))
-	(text "inst" (rect 8 96 20 108)(font "Arial" ))
+	(text "inst" (rect 8 64 20 76)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -33,32 +33,18 @@ applicable agreement for further details.
 	(port
 		(pt 0 48)
 		(input)
-		(text "sw1" (rect 0 0 14 12)(font "Arial" ))
-		(text "sw1" (rect 21 43 35 55)(font "Arial" ))
+		(text "key" (rect 0 0 15 12)(font "Arial" ))
+		(text "key" (rect 21 43 36 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 1))
 	)
 	(port
-		(pt 0 64)
-		(input)
-		(text "sw2" (rect 0 0 15 12)(font "Arial" ))
-		(text "sw2" (rect 21 59 36 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64)(line_width 1))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "sw3" (rect 0 0 15 12)(font "Arial" ))
-		(text "sw3" (rect 21 75 36 87)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80)(line_width 1))
-	)
-	(port
-		(pt 184 32)
+		(pt 160 32)
 		(output)
-		(text "low_sw_an[2..0]" (rect 0 0 63 12)(font "Arial" ))
-		(text "low_sw_an[2..0]" (rect 100 27 163 39)(font "Arial" ))
-		(line (pt 184 32)(pt 168 32)(line_width 3))
+		(text "low_rst_an" (rect 0 0 43 12)(font "Arial" ))
+		(text "low_rst_an" (rect 96 27 139 39)(font "Arial" ))
+		(line (pt 160 32)(pt 144 32)(line_width 1))
 	)
 	(drawing
-		(rectangle (rect 16 16 168 96)(line_width 1))
+		(rectangle (rect 16 16 144 64)(line_width 1))
 	)
 )

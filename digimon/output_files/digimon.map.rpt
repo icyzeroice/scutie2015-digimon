@@ -1,5 +1,5 @@
 Analysis & Synthesis report for digimon
-Sun Feb 25 20:08:06 2018
+Mon Feb 26 20:45:36 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
 
 
@@ -13,8 +13,8 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. Removed Registers Triggering Further Register Optimizations
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
  10. General Register Statistics
  11. Multiplexer Restructuring Statistics (Restructuring Performed)
  12. Elapsed Time Per Partition
@@ -44,15 +44,15 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Feb 25 20:08:06 2018       ;
+; Analysis & Synthesis Status        ; Successful - Mon Feb 26 20:45:36 2018       ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
 ; Revision Name                      ; digimon                                     ;
 ; Top-level Entity Name              ; digimon                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 176                                         ;
-;     Total combinational functions  ; 174                                         ;
-;     Dedicated logic registers      ; 28                                          ;
-; Total registers                    ; 28                                          ;
+; Total logic elements               ; 1,259                                       ;
+;     Total combinational functions  ; 1,256                                       ;
+;     Dedicated logic registers      ; 77                                          ;
+; Total registers                    ; 77                                          ;
 ; Total pins                         ; 14                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -157,11 +157,12 @@ applicable agreement for further details.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   0.0%      ;
+;     Processors 2-4         ; < 0.1%      ;
+;     Processors 5-8         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -172,88 +173,77 @@ applicable agreement for further details.
 +----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------+---------+
 ; vga_out.vhd                      ; yes             ; User VHDL File                     ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/vga_out.vhd    ;         ;
 ; controller.vhd                   ; yes             ; User VHDL File                     ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/controller.vhd ;         ;
+; second.vhd                       ; yes             ; User VHDL File                     ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/second.vhd     ;         ;
 ; digimon.bdf                      ; yes             ; User Block Diagram/Schematic File  ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/digimon.bdf    ;         ;
-; second.vhd                       ; yes             ; Auto-Found VHDL File               ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/second.vhd     ;         ;
-; key_read.vhd                     ; yes             ; Auto-Found VHDL File               ; C:/Users/ZIV3/Documents/Programming/scutie2015-digimon/digimon/key_read.vhd   ;         ;
 +----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                 ;
-+---------------------------------------------+-------------------------------+
-; Resource                                    ; Usage                         ;
-+---------------------------------------------+-------------------------------+
-; Estimated Total logic elements              ; 176                           ;
-;                                             ;                               ;
-; Total combinational functions               ; 174                           ;
-; Logic element usage by number of LUT inputs ;                               ;
-;     -- 4 input functions                    ; 119                           ;
-;     -- 3 input functions                    ; 25                            ;
-;     -- <=2 input functions                  ; 30                            ;
-;                                             ;                               ;
-; Logic elements by mode                      ;                               ;
-;     -- normal mode                          ; 155                           ;
-;     -- arithmetic mode                      ; 19                            ;
-;                                             ;                               ;
-; Total registers                             ; 28                            ;
-;     -- Dedicated logic registers            ; 28                            ;
-;     -- I/O registers                        ; 0                             ;
-;                                             ;                               ;
-; I/O pins                                    ; 14                            ;
-; Embedded Multiplier 9-bit elements          ; 0                             ;
-; Maximum fan-out node                        ; vga_out:inst|Vga_hsync_cnt[6] ;
-; Maximum fan-out                             ; 28                            ;
-; Total fan-out                               ; 684                           ;
-; Average fan-out                             ; 2.97                          ;
-+---------------------------------------------+-------------------------------+
++-----------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                           ;
++---------------------------------------------+-------------------------+
+; Resource                                    ; Usage                   ;
++---------------------------------------------+-------------------------+
+; Estimated Total logic elements              ; 1,259                   ;
+;                                             ;                         ;
+; Total combinational functions               ; 1256                    ;
+; Logic element usage by number of LUT inputs ;                         ;
+;     -- 4 input functions                    ; 575                     ;
+;     -- 3 input functions                    ; 374                     ;
+;     -- <=2 input functions                  ; 307                     ;
+;                                             ;                         ;
+; Logic elements by mode                      ;                         ;
+;     -- normal mode                          ; 876                     ;
+;     -- arithmetic mode                      ; 380                     ;
+;                                             ;                         ;
+; Total registers                             ; 77                      ;
+;     -- Dedicated logic registers            ; 77                      ;
+;     -- I/O registers                        ; 0                       ;
+;                                             ;                         ;
+; I/O pins                                    ; 14                      ;
+; Embedded Multiplier 9-bit elements          ; 0                       ;
+; Maximum fan-out node                        ; vga_out:inst7|offset[5] ;
+; Maximum fan-out                             ; 117                     ;
+; Total fan-out                               ; 4216                    ;
+; Average fan-out                             ; 3.10                    ;
++---------------------------------------------+-------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                           ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name   ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
-; |digimon                   ; 174 (0)           ; 28 (0)       ; 0           ; 0            ; 0       ; 0         ; 14   ; 0            ; |digimon              ; work         ;
-;    |vga_out:inst|          ; 174 (174)         ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|vga_out:inst ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                              ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name      ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------+--------------+
+; |digimon                   ; 1256 (0)          ; 77 (0)       ; 0           ; 0            ; 0       ; 0         ; 14   ; 0            ; |digimon                 ; work         ;
+;    |controller:inst|       ; 87 (87)           ; 22 (22)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|controller:inst ; work         ;
+;    |second:inst2|          ; 65 (65)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|second:inst2    ; work         ;
+;    |vga_out:inst7|         ; 1104 (1104)       ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |digimon|vga_out:inst7   ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+--------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                         ;
-+----------------------------------------------+---------------------------------------------+
-; Register name                                ; Reason for Removal                          ;
-+----------------------------------------------+---------------------------------------------+
-; controller:inst4|Joy[0]                      ; Stuck at VCC due to stuck port preset       ;
-; controller:inst4|Stomach[3]                  ; Stuck at GND due to stuck port clear        ;
-; controller:inst4|Stomach[2]                  ; Stuck at VCC due to stuck port preset       ;
-; controller:inst4|Stomach[1]                  ; Stuck at GND due to stuck port clear        ;
-; controller:inst4|Stomach[0]                  ; Stuck at VCC due to stuck port preset       ;
-; controller:inst4|Controller_state.con_active ; Stuck at VCC due to stuck port preset       ;
-; controller:inst4|Joy[3]                      ; Stuck at GND due to stuck port clear        ;
-; controller:inst4|Joy[2]                      ; Stuck at VCC due to stuck port preset       ;
-; controller:inst4|Joy[1]                      ; Stuck at GND due to stuck port clear        ;
-; controller:inst4|minute[0..5]                ; Stuck at GND due to stuck port clock_enable ;
-; vga_out:inst|Vga_rgb[2..4]                   ; Stuck at GND due to stuck port data_in      ;
-; controller:inst4|Controller_state.con_feed   ; Stuck at GND due to stuck port clear        ;
-; controller:inst4|Controller_state.con_play   ; Stuck at GND due to stuck port clear        ;
-; second:inst3|q                               ; Lost fanout                                 ;
-; second:inst3|time[0..25]                     ; Lost fanout                                 ;
-; Total Number of Removed Registers = 47       ;                                             ;
-+----------------------------------------------+---------------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                               ;
++----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------+------------------------+
+; vga_out:inst7|offset[5]                            ; GND                 ; yes                    ;
+; vga_out:inst7|offset[4]                            ; GND                 ; yes                    ;
+; vga_out:inst7|offset[2]                            ; GND                 ; yes                    ;
+; vga_out:inst7|offset[3]                            ; GND                 ; yes                    ;
+; vga_out:inst7|offset[1]                            ; GND                 ; yes                    ;
+; Number of user-specified and inferred latches = 5  ;                     ;                        ;
++----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                   ;
-+----------------------------------------------+--------------------------+-------------------------------------------------------------------------------------+
-; Register name                                ; Reason for Removal       ; Registers Removed due to This Register                                              ;
-+----------------------------------------------+--------------------------+-------------------------------------------------------------------------------------+
-; controller:inst4|Controller_state.con_active ; Stuck at VCC             ; controller:inst4|Joy[3], controller:inst4|Joy[2], controller:inst4|Joy[1],          ;
-;                                              ; due to stuck port preset ; controller:inst4|minute[4], controller:inst4|minute[3], controller:inst4|minute[2], ;
-;                                              ;                          ; controller:inst4|minute[1], controller:inst4|minute[0]                              ;
-; controller:inst4|Joy[0]                      ; Stuck at VCC             ; second:inst3|q                                                                      ;
-;                                              ; due to stuck port preset ;                                                                                     ;
-+----------------------------------------------+--------------------------+-------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; vga_out:inst7|Vga_rgb[2..4]           ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 3 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -261,23 +251,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 28    ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 77    ;
+; Number of registers using Synchronous Clear  ; 1     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 15    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 15    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                       ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output             ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |digimon|vga_out:inst|Vga_vsync_cnt[9] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |digimon|vga_out:inst7|Vga_vsync_cnt[4] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |digimon|controller:inst|time[0]        ;
+; 3:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |digimon|second:inst2|time[10]          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
 
 
 +-------------------------------+
@@ -285,7 +277,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:09     ;
 +----------------+--------------+
 
 
@@ -295,7 +287,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
-    Info: Processing started: Sun Feb 25 20:08:04 2018
+    Info: Processing started: Mon Feb 26 20:45:25 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off digimon -c digimon
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 2 design units, including 1 entities, in source file vga_out.vhd
@@ -304,79 +296,241 @@ Info (12021): Found 2 design units, including 1 entities, in source file vga_out
 Info (12021): Found 2 design units, including 1 entities, in source file controller.vhd
     Info (12022): Found design unit 1: controller-nan
     Info (12023): Found entity 1: controller
+Info (12021): Found 2 design units, including 1 entities, in source file second.vhd
+    Info (12022): Found design unit 1: second-behav
+    Info (12023): Found entity 1: second
+Info (12021): Found 2 design units, including 1 entities, in source file key_read.vhd
+    Info (12022): Found design unit 1: key_read-nan
+    Info (12023): Found entity 1: key_read
+Info (12021): Found 2 design units, including 1 entities, in source file key_test.vhd
+    Info (12022): Found design unit 1: key_test-behave
+    Info (12023): Found entity 1: key_test
 Info (12021): Found 1 design units, including 1 entities, in source file digimon.bdf
     Info (12023): Found entity 1: digimon
 Info (12127): Elaborating entity "digimon" for the top level hierarchy
-Info (12128): Elaborating entity "vga_out" for hierarchy "vga_out:inst"
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(100): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(102): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(155): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(161): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(167): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(173): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(179): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(185): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(191): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(197): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(203): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(209): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(267): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(273): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(279): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(285): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(291): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(297): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(303): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at vga_out.vhd(309): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "vga_out" for hierarchy "vga_out:inst7"
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(136): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(138): signal "Vga_hsync_cnt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(202): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(208): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(214): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(220): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(226): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(232): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(238): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(244): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(250): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(256): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at vga_out.vhd(315): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at vga_out.vhd(321): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Info (12128): Elaborating entity "controller" for hierarchy "controller:inst4"
-Warning (10492): VHDL Process Statement warning at controller.vhd(75): signal "Controller_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at controller.vhd(78): signal "Feed" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at controller.vhd(79): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at controller.vhd(80): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at controller.vhd(86): signal "Play" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at controller.vhd(87): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at controller.vhd(88): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at controller.vhd(113): signal "Controller_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at controller.vhd(134): signal "Controller_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at controller.vhd(61): inferring latch(es) for signal or variable "time", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "time[0]" at controller.vhd(65)
-Info (10041): Inferred latch for "time[1]" at controller.vhd(65)
-Info (10041): Inferred latch for "time[2]" at controller.vhd(65)
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(327): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(333): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(339): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(345): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(351): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(357): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(363): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(369): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(384): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(386): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(389): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(391): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(393): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(395): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(398): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(400): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(402): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(404): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(407): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(409): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(411): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(413): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(416): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(418): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(420): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(422): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(425): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(427): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(429): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(431): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(434): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(436): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(438): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(440): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(443): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(445): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(448): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(450): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(453): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(455): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(458): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(460): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(463): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(465): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(467): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(469): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(472): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(474): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(476): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(478): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(481): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(483): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(486): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(488): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(491): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(493): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(496): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(498): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(501): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(503): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(506): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(509): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(512): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(514): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(517): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(519): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(522): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(524): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(526): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(528): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(531): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(533): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(535): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(537): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(539): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(541): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(543): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(545): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(548): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(550): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(553): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(555): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(557): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(559): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(562): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(564): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(566): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(568): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(571): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(573): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(576): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(578): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(581): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(583): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(586): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(588): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(591): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(593): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(595): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(597): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(600): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(602): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(604): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(606): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(609): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(611): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(613): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(615): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(618): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(620): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(622): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(624): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(627): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(629): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(631): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(633): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(636): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(638): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(640): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(642): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(645): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(647): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(652): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(654): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(656): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(658): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(660): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(662): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(666): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(668): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(670): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(672): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(674): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(676): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(717): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(719): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(721): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(723): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(725): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(729): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(731): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(733): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(735): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(737): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(739): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(741): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(745): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(747): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(749): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(751): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(755): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(757): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(760): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(762): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(765): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(768): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(771): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(774): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(777): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(779): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(788): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(790): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(792): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(794): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at vga_out.vhd(796): signal "Vga_choose" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at vga_out.vhd(169): inferring latch(es) for signal or variable "offset", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "offset[0]" at vga_out.vhd(788)
+Info (10041): Inferred latch for "offset[1]" at vga_out.vhd(788)
+Info (10041): Inferred latch for "offset[2]" at vga_out.vhd(788)
+Info (10041): Inferred latch for "offset[3]" at vga_out.vhd(788)
+Info (10041): Inferred latch for "offset[4]" at vga_out.vhd(788)
+Info (10041): Inferred latch for "offset[5]" at vga_out.vhd(788)
+Info (12128): Elaborating entity "controller" for hierarchy "controller:inst"
+Warning (10492): VHDL Process Statement warning at controller.vhd(72): signal "Controller_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(74): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(75): signal "Stomach" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(81): signal "Controller_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(83): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at controller.vhd(84): signal "Joy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (10018): Can't recognize finite state machine "Controller_state" because it has a complex reset state
-Warning (12125): Using design file second.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: second-behav
-    Info (12023): Found entity 1: second
-Info (12128): Elaborating entity "second" for hierarchy "second:inst3"
-Warning (12125): Using design file key_read.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: key_read-ked_dec
-    Info (12023): Found entity 1: key_read
-Info (12128): Elaborating entity "key_read" for hierarchy "key_read:inst2"
-Warning (10541): VHDL Signal Declaration warning at key_read.vhd(17): used implicit default value for signal "low_sw_r" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (14025): LATCH primitive "controller:inst4|time[2]" is permanently disabled
-Warning (14025): LATCH primitive "controller:inst4|time[0]" is permanently disabled
-Warning (14025): LATCH primitive "controller:inst4|time[1]" is permanently disabled
+Info (12128): Elaborating entity "second" for hierarchy "second:inst2"
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "controller:inst|Joy[3]" is converted into an equivalent circuit using register "controller:inst|Joy[3]~_emulated" and latch "controller:inst|Joy[3]~1"
+    Warning (13310): Register "controller:inst|Joy[2]" is converted into an equivalent circuit using register "controller:inst|Joy[2]~_emulated" and latch "controller:inst|Joy[2]~6"
+    Warning (13310): Register "controller:inst|Joy[1]" is converted into an equivalent circuit using register "controller:inst|Joy[1]~_emulated" and latch "controller:inst|Joy[1]~11"
+    Warning (13310): Register "controller:inst|Joy[0]" is converted into an equivalent circuit using register "controller:inst|Joy[0]~_emulated" and latch "controller:inst|Joy[0]~16"
+    Warning (13310): Register "controller:inst|Stomach[3]" is converted into an equivalent circuit using register "controller:inst|Stomach[3]~_emulated" and latch "controller:inst|Stomach[3]~1"
+    Warning (13310): Register "controller:inst|Stomach[2]" is converted into an equivalent circuit using register "controller:inst|Stomach[2]~_emulated" and latch "controller:inst|Stomach[2]~6"
+    Warning (13310): Register "controller:inst|Stomach[1]" is converted into an equivalent circuit using register "controller:inst|Stomach[1]~_emulated" and latch "controller:inst|Stomach[1]~11"
+    Warning (13310): Register "controller:inst|Stomach[0]" is converted into an equivalent circuit using register "controller:inst|Stomach[0]~_emulated" and latch "controller:inst|Stomach[0]~16"
+    Warning (13310): Register "controller:inst|Controller_state.con_active" is converted into an equivalent circuit using register "controller:inst|Controller_state.con_active~_emulated" and latch "controller:inst|Controller_state.con_active~1"
+    Warning (13310): Register "controller:inst|Controller_state.con_feed" is converted into an equivalent circuit using register "controller:inst|Controller_state.con_feed~_emulated" and latch "controller:inst|Controller_state.con_feed~1"
+    Warning (13310): Register "controller:inst|Controller_state.con_play" is converted into an equivalent circuit using register "controller:inst|Controller_state.con_play~_emulated" and latch "controller:inst|Controller_state.con_play~1"
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "VGA_RGB_out[4]" is stuck at GND
-    Warning (13410): Pin "VGA_RGB_out[3]" is stuck at GND
-    Warning (13410): Pin "VGA_RGB_out[2]" is stuck at GND
+    Warning (13410): Pin "Vga_rgb[4]" is stuck at GND
+    Warning (13410): Pin "Vga_rgb[3]" is stuck at GND
+    Warning (13410): Pin "Vga_rgb[2]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 27 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 3 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "sw1"
-    Warning (15610): No output dependent on input pin "sw2"
-    Warning (15610): No output dependent on input pin "sw3"
-Info (21057): Implemented 191 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1276 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 10 output pins
-    Info (21061): Implemented 177 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 46 warnings
-    Info: Peak virtual memory: 585 megabytes
-    Info: Processing ended: Sun Feb 25 20:08:06 2018
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info (21061): Implemented 1262 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 202 warnings
+    Info: Peak virtual memory: 601 megabytes
+    Info: Processing ended: Mon Feb 26 20:45:37 2018
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:11
 
 

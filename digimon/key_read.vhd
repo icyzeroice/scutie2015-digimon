@@ -1,62 +1,60 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
+USE IEEE.std_logic_unsigned.ALL;
+ENTITY key_read IS
+	PORT(clk:IN std_logic;
+		 key:IN std_logic;
+	     low_rst_an: out std_logic
+		);
+END ENTITY;
+ARCHITECTURE nan OF key_read IS
+signal key_rst:std_logic;
+signal key_rst_r:std_logic;
+signal key_rst_an:std_logic;
+signal low_rst:std_logic;
+signal low_rst_r:std_logic;
+signal cnt:std_logic_vector(19 DOWNTO 0);
 
-entity key_read is
-   port (clk             : in std_logic ;
-        sw1 ,sw2 ,sw3    : in std_logic ;
-        low_sw_an        : out std_logic_vector (2 downto 0 ) 
-   ) ;
-end entity ;
-	
-architecture ked_dec of key_read is
-   signal key_rst : std_logic_vector (2 downto 0) ;
-   signal key_rst_an : std_logic_vector (2 downto 0 ) ;
-   signal key_rst_r :std_logic_vector (2 downto 0 ) ;
-   signal low_sw : std_logic_vector (2 downto 0) ;
-   signal low_sw_r :std_logic_vector (2 downto 0 ) ;  
-   signal cnt : std_logic_vector (19 downto 0) ;
-	
-   begin
-	
-   process (clk)
-      begin 
-      if clk'event and clk = '1' then 
-         key_rst <= sw3&sw2&sw1 ;
-      end if ;
-   end process ;
-	
-   process(clk)
-      begin
-      if clk'event and clk = '1' then 
-         key_rst_r <= key_rst ;
-      end if ;
-   end process ;
-	
-   key_rst_an<= key_rst_r and not key_rst ;
-	
-   process (clk )
-      begin
-      if clk'event and clk = '1' then 
-         if  key_rst_an = "000"  then 
-            cnt <= cnt +  '1' ;
-         else 
-		    cnt <= (others => '0') ;
-		 end if ;
-      end if ;
-   end process ;
-	
-   process (clk)
-      begin
-      if clk'event and clk = '1'  then 
-         if cnt = "11111111111111111111" then 
-            low_sw <= sw3&sw2&sw1 ;
-         else 
-		    null ;
-         end if ;
-      end if ;
-   end process ;
-	
-   low_sw_an <= low_sw_r and not low_sw ;
-	
-end ked_dec ;
+BEGIN
+PROCESS(clk)
+	BEGIN
+	if clk'event and clk='1'THEN
+		key_rst<=key;
+	end if;
+END PROCESS;
+PROCESS(clk)
+	BEGIN
+	if clk'event and clk='1'THEN
+		key_rst_r<=key_rst;
+	end if;
+END PROCESS;
+key_rst_an<=NOT key_rst_r AND key_rst;
+PROCESS(clk)
+	BEGIN
+	if clk'event and clk='1'THEN
+		if key_rst_an='0'then
+			cnt <= cnt + '1';
+		else
+			cnt<=(others=>'0');
+		end if;
+	end if;
+END PROCESS;
+PROCESS(clk)
+	BEGIN
+	if clk'event and clk='1'THEN
+		if cnt="11111111111111111111"then
+			low_rst<=key;
+		else
+			null;
+		end if;
+	end if;
+END PROCESS;
+PROCESS(clk)
+	BEGIN
+	if clk'event and clk='1'THEN
+		low_rst_r<=low_rst;
+	end if;
+END PROCESS;
+low_rst_an<=NOT low_rst_r AND low_rst;
+
+END nan;

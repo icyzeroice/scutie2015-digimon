@@ -380,9 +380,8 @@ begin
 	  
 	  --宠物主体
 	  
-	  elsif Vga_choose = DEAD_ONE then
-	  --1
-	     if Vga_hsync_cnt >= H_ACTIVE_MIN + 28*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 31*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 18*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 19*STATE_LEN then  
+		 
+	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 28*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 31*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 18*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 19*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
 		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 49*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 52*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 18*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 19*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
@@ -647,38 +646,6 @@ begin
 	        Vga_rgb_n <= Vga_rgb_show;
 		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 49*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 52*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 55*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 56*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
-			
-		 end if;
-		 
-	  elsif Vga_choose /= DEAD_ONE then
-	     --左眼缺口
-	     if Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 25*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 37*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 38*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow;
-         elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 21*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 26*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 38*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 39*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow;
-	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 21*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 27*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 39*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 41*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow; 
-	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 28*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow; 
-	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 23*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 28*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 42*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 43*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow; 
-	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 25*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 27*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 43*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 44*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow; 
-	  
-	     --右眼缺口
-	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 55*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 37*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 38*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow;
-	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 54*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 59*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 38*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 39*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow;
-	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 53*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 59*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 39*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 41*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow; 
-	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 52*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
-            Vga_rgb_n <= Vga_rgb_unshow; 
-	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 52*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 57*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 42*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 43*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow; 
-	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 53*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 55*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 43*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 44*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow; 
-		 end if;
 	  
 		 
 	     --1
@@ -712,47 +679,29 @@ begin
 	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 14*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 66*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 41*STATE_LEN then  
 	     Vga_rgb_n <= Vga_rgb_show;
 	  --宠物主体
-	     
-		 
-	  -- 苹果 	 
-	  elsif Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE then
-	     
-		 --缺口two
-		 if Vga_choose = FEED_TWO and Vga_hsync_cnt >= H_ACTIVE_MIN + 70*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 8*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 9*STATE_LEN then  
+	  
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 63*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 10*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_choose = FEED_TWO and Vga_hsync_cnt >= H_ACTIVE_MIN + 69*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 9*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 10*STATE_LEN then  
+		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 64*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 10*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 12*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_choose = FEED_TWO and Vga_hsync_cnt >= H_ACTIVE_MIN + 68*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 10*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then  
+		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 65*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 14*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_choose = FEED_TWO and Vga_hsync_cnt >= H_ACTIVE_MIN + 69*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 13*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 14*STATE_LEN then  
+		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 66*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 14*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 15*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_choose = FEED_TWO and Vga_hsync_cnt >= H_ACTIVE_MIN + 70*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 14*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 15*STATE_LEN then  
+		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 67*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 15*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 16*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow;
-		
-		 --缺口three
-		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 63*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 10*STATE_LEN then  
+		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 68*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 16*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 17*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 64*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 10*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 12*STATE_LEN then  
+		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 70*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 17*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 19*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 65*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 14*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 66*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 14*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 15*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 67*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 15*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 16*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 68*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 16*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 17*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 70*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 17*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 19*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_unshow;
-		 
-		 --头上的支
-	     elsif Vga_choose /= FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 66*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 68*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 3*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 4*STATE_LEN then  
+	  
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 66*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 68*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 3*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 4*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
-	     elsif Vga_choose /= FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 65*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 68*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then  
+	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 65*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 68*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
-	     elsif Vga_choose /= FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 65*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 67*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 5*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 6*STATE_LEN then  
+	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 65*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 67*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 5*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 6*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
-	     elsif Vga_choose /= FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 64*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 65*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 6*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 7*STATE_LEN then  
+	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 64*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 65*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 6*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 7*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
 		 --头上的支
 		 
@@ -782,8 +731,6 @@ begin
 	        Vga_rgb_n <= Vga_rgb_show;
 	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 66*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 69*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 19*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 20*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
-		 end if;
-	  -- 苹果 	 
 	  
       else
          Vga_rgb_n <= Vga_rgb_unshow;

@@ -15,6 +15,23 @@
 -- Vertical timing information
 --    sync pluse       : 3
 --    back porch       : 21
+------------------------------------------------------------------------------
+-- @name: VGA Display Module 800 * 600 @75Hz (50MHz)
+-- @description: Fetch data from SDRAM using Qsys SDRAM IP in certain address,
+--               and then cast them on the screen through VGA Display Module
+--               that we write.
+------------------------------------------------------------------------------
+-- The standard we are using: 
+-- Clock frequencies   : 50MHz
+-- Horizonal timing information
+--    sync pluse       : 80
+--    back porch       : 160
+--    active           : 800
+--    front porch      : 16
+--    all lines        : 1056
+-- Vertical timing information
+--    sync pluse       : 3
+--    back porch       : 21
 --    active           : 600
 --    front porch      : 1
 --    all lines        : 625
@@ -39,6 +56,22 @@ entity vga_out is
 end entity;
 
 architecture behave of vga_out is
+
+   constant ACTIVE_ONE   : integer := 0;
+
+   constant PLAY_ONE     : integer := 1;
+   constant PLAY_TWO     : integer := 2;
+   constant PLAY_THREE   : integer := 3;
+   constant PLAY_FOUR    : integer := 4;
+
+   constant FEED_ONE     : integer := 5;
+   constant FEED_TWO     : integer := 6;
+   constant FEED_THREE   : integer := 7;
+   constant FEED_FOUR    : integer := 8;
+
+   constant DEAD_ONE     : integer := 9;
+   
+   
 
    constant H_SYNC_PULSE_MAX   : integer := 80;
    constant H_ACTIVE_MIN       : integer := 240;
@@ -66,7 +99,7 @@ architecture behave of vga_out is
    signal Vga_rgb_n    : std_logic_vector (7 downto 0);
 begin
 
---  ±–ÚµÁ¬∑,”√¿¥∏¯hsync_cnt,vsync_cnt,vga_vsync,vga_hsync,vga_rgbºƒ¥Ê∆˜∏≥÷µ
+-- Êó∂Â∫èÁîµË∑Ø,Áî®Êù•Áªôhsync_cnt,vsync_cnt,vga_vsync,vga_hsync,vga_rgbÂØÑÂ≠òÂô®ËµãÂÄº
    process(Clk, Rst)
    begin
       if rising_edge(clk) then
@@ -86,60 +119,61 @@ begin
       end if;
    end process;
 
--- ◊È∫œµÁ¬∑,ÀÆ∆Ω…®√Ë
+-- ÁªÑÂêàÁîµË∑Ø,Ê∞¥Âπ≥Êâ´Êèè
    process(Vga_hsync_cnt)
    begin
-      if(Vga_hsync_cnt = H_MAX) then			--≈–∂œÀÆ∆Ω…®√Ë ±–Ú    80+160+800+16 = 1056
-         Vga_hsync_cnt_n <= 0;	--»Áπ˚ÀÆ∆Ω…®√ËÕÍ±œ,º∆ ˝∆˜Ω´ª·±ª«Â¡„
+      if(Vga_hsync_cnt = H_MAX) then			--Âà§Êñ≠Ê∞¥Âπ≥Êâ´ÊèèÊó∂Â∫è    80+160+800+16 = 1056
+         Vga_hsync_cnt_n <= 0;	--Â¶ÇÊûúÊ∞¥Âπ≥Êâ´ÊèèÂÆåÊØï,ËÆ°Êï∞Âô®Â∞Ü‰ºöË¢´Ê∏ÖÈõ∂
       else
-         Vga_hsync_cnt_n <= Vga_hsync_cnt + 1;		--»Áπ˚ÀÆ∆Ω√ª”–…®√ËÕÍ±œ,º∆ ˝∆˜ºÃ–¯¿€º”
+         Vga_hsync_cnt_n <= Vga_hsync_cnt + 1;		--Â¶ÇÊûúÊ∞¥Âπ≥Ê≤°ÊúâÊâ´ÊèèÂÆåÊØï,ËÆ°Êï∞Âô®ÁªßÁª≠Á¥ØÂä†
       end if;
    end process;
 
 
--- ◊È∫œµÁ¬∑,¥π÷±…®√Ë
+-- ÁªÑÂêàÁîµË∑Ø,ÂûÇÁõ¥Êâ´Êèè
    process(Vga_vsync_cnt)
    begin
-      if((Vga_vsync_cnt = V_MAX) and (Vga_hsync_cnt = H_MAX)) then --≈–∂œ¥π÷±…®√Ë ±–Ú 3+21+600+1=625
-         Vga_vsync_cnt_n <= 0;					--»Áπ˚¥π÷±…®√ËÕÍ±œ,º∆ ˝∆˜Ω´ª·±ª«Â¡„
-      elsif(Vga_hsync_cnt = H_MAX)	then	--≈–∂œÀÆ∆Ω…®√Ë ±–Ú
-	     Vga_vsync_cnt_n <= Vga_vsync_cnt + 1;	--»Áπ˚ÀÆ∆Ω…®√ËÕÍ±œ,º∆ ˝∆˜ºÃ–¯¿€º”
+      if((Vga_vsync_cnt = V_MAX) and (Vga_hsync_cnt = H_MAX)) then --Âà§Êñ≠ÂûÇÁõ¥Êâ´ÊèèÊó∂Â∫è 3+21+600+1=625
+         Vga_vsync_cnt_n <= 0;					--Â¶ÇÊûúÂûÇÁõ¥Êâ´ÊèèÂÆåÊØï,ËÆ°Êï∞Âô®Â∞Ü‰ºöË¢´Ê∏ÖÈõ∂
+      elsif(Vga_hsync_cnt = H_MAX)	then	--Âà§Êñ≠Ê∞¥Âπ≥Êâ´ÊèèÊó∂Â∫è
+	     Vga_vsync_cnt_n <= Vga_vsync_cnt + 1;	--Â¶ÇÊûúÊ∞¥Âπ≥Êâ´ÊèèÂÆåÊØï,ËÆ°Êï∞Âô®ÁªßÁª≠Á¥ØÂä†
       else
-	     Vga_vsync_cnt_n <= Vga_vsync_cnt;			--∑Ò‘Ú,º∆ ˝∆˜Ω´±£≥÷≤ª±‰
+	     Vga_vsync_cnt_n <= Vga_vsync_cnt;			--Âê¶Âàô,ËÆ°Êï∞Âô®Â∞Ü‰øùÊåÅ‰∏çÂèò
       end if;
    end process;
 
---◊È∫œµÁ¬∑£¨Ω´HSYNC_A«¯”Ú÷√0,HSYNC_B+HSYNC_C+HSYNC_D÷√1
+--ÁªÑÂêàÁîµË∑ØÔºåÂ∞ÜHSYNC_AÂå∫ÂüüÁΩÆ0,HSYNC_B+HSYNC_C+HSYNC_DÁΩÆ1
    process(Vga_hsync_cnt)
    begin
-      if(Vga_hsync_cnt < H_SYNC_PULSE_MAX)	then			--≈–∂œÀÆ∆Ω…®√Ë ±–Ú
-         Vga_hsync_n <= '0';						--»Áπ˚‘⁄HSYNC_A«¯”Ú,ƒ«√¥÷√0
+      if(Vga_hsync_cnt < H_SYNC_PULSE_MAX)	then			--Âà§Êñ≠Ê∞¥Âπ≥Êâ´ÊèèÊó∂Â∫è
+         Vga_hsync_n <= '0';						--Â¶ÇÊûúÂú®HSYNC_AÂå∫Âüü,ÈÇ£‰πàÁΩÆ0
       else
-         Vga_hsync_n <= '1';						--»Áπ˚≤ª‘⁄HSYNC_A«¯”Ú,ƒ«√¥÷√1
+         Vga_hsync_n <= '1';						--Â¶ÇÊûú‰∏çÂú®HSYNC_AÂå∫Âüü,ÈÇ£‰πàÁΩÆ1
       end if;
    end process;
 
---◊È∫œµÁ¬∑£¨Ω´VSYNC_A«¯”Ú÷√0,VSYNC_P+VSYNC_Q+VSYNC_R÷√1
+--ÁªÑÂêàÁîµË∑ØÔºåÂ∞ÜVSYNC_AÂå∫ÂüüÁΩÆ0,VSYNC_P+VSYNC_Q+VSYNC_RÁΩÆ1
    process(Vga_vsync_cnt)
    begin
-      if(Vga_vsync_cnt < V_SYNC_PULSE_MAX)	then			--≈–∂œÀÆ∆Ω…®√Ë ±–Ú
-         Vga_vsync_n <= '0';						--»Áπ˚‘⁄VSYNC_O«¯”Ú,ƒ«√¥÷√0
+      if(Vga_vsync_cnt < V_SYNC_PULSE_MAX)	then			--Âà§Êñ≠Ê∞¥Âπ≥Êâ´ÊèèÊó∂Â∫è
+         Vga_vsync_n <= '0';						--Â¶ÇÊûúÂú®VSYNC_OÂå∫Âüü,ÈÇ£‰πàÁΩÆ0
       else
-         Vga_vsync_n <= '1';						--»Áπ˚≤ª‘⁄VSYNC_O«¯”Ú,ƒ«√¥÷√1
+         Vga_vsync_n <= '1';						--Â¶ÇÊûú‰∏çÂú®VSYNC_OÂå∫Âüü,ÈÇ£‰πàÁΩÆ1
       end if;
    end process;
    
 --Vga_choose
 --Joy
 --Stomach
---◊È∫œµÁ¬∑,”√”⁄Õº∞∏
+--ÁªÑÂêàÁîµË∑Ø,Áî®‰∫éÂõæÊ°à
    process(Vga_hsync_cnt, Vga_vsync_cnt)
+   variable offset:integer range -30 TO 30;
    begin
       --
-	  --≥ËŒÔ◊¥Ã¨¿∏
+	  --ÂÆ†Áâ©Áä∂ÊÄÅÊ†è
 	  --
 	  
-	  --ª∂¿÷∂»Õº±Í,Œ™∞Æ–ƒ
+	  --Ê¨¢‰πêÂ∫¶ÂõæÊ†á,‰∏∫Áà±ÂøÉ
 	  if Vga_hsync_cnt >= H_ACTIVE_MIN + 3*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 5*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 2*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 3*STATE_LEN then   
 	     Vga_rgb_n <= Vga_rgb_show;
 	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 6*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 8*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 2*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 3*STATE_LEN then   
@@ -153,7 +187,7 @@ begin
 	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 5*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 6*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 8*STATE_LEN then   
 	     Vga_rgb_n <= Vga_rgb_show;
 	  
-	  --ª∂¿÷∂»±ﬂøÚ
+	  --Ê¨¢‰πêÂ∫¶ËæπÊ°Ü
 	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 11*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 3*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 4*STATE_LEN then   
 	     Vga_rgb_n <= Vga_rgb_show;
 	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 11*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then   
@@ -219,14 +253,14 @@ begin
 		    Vga_rgb_n <= Vga_rgb_unshow;
 		 end if;
 	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 21*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 22*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then  
-	     if Joy >= 10 then
+	     if Joy = 10 then
 	        Vga_rgb_n <= Vga_rgb_show;
 		 else
 		    Vga_rgb_n <= Vga_rgb_unshow;
 		 end if;
 		
 
-      --º¢∂ˆ∂»Õº±Í,Œ™◊Ï∞Õ
+      --È••È•øÂ∫¶ÂõæÊ†á,‰∏∫Âò¥Â∑¥
       elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 4*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 9*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 10*STATE_LEN then   
 	     Vga_rgb_n <= Vga_rgb_show;
 		 
@@ -265,7 +299,7 @@ begin
 	     Vga_rgb_n <= Vga_rgb_show;
       	  
 		  
-	  --º¢∂ˆ∂»±ﬂøÚ
+	  --È••È•øÂ∫¶ËæπÊ°Ü
 	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 11*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 11*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 12*STATE_LEN then   
 	     Vga_rgb_n <= Vga_rgb_show;
 	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 11*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then   
@@ -332,7 +366,7 @@ begin
 		    Vga_rgb_n <= Vga_rgb_unshow;
 		 end if;
 	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 21*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 22*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then  
-	     if Stomach >= 10 then
+	     if Stomach = 10 then
 	        Vga_rgb_n <= Vga_rgb_show;
 		 else
 		    Vga_rgb_n <= Vga_rgb_unshow;
@@ -341,14 +375,427 @@ begin
 			
 			
 	  --
-	  --≥ËŒÔœ‘ æ«¯
+	  --ÂÆ†Áâ©ÊòæÁ§∫Âå∫
 	  --	
 	  
+	  --ÂÆ†Áâ©‰∏ª‰Ωì
+	  --deaD_ONE
+	  --1
+	     elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 28*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 31*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 18*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 19*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 49*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 52*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 18*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 19*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 --2
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 27*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 28*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 19*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 20*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 31*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 32*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 19*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 20*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 48*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 19*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 20*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 52*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 53*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 19*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 20*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+			--3
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 27*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 28*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 20*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 21*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 32*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 20*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 21*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 47*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 48*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 20*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 21*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 52*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 53*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 20*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 21*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+			--4
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 26*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 27*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 21*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 22*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 33*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 34*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 21*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 22*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 46*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 47*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 21*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 22*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 53*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 54*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 21*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 22*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+			--5
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 26*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 27*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 22*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 23*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 27*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 34*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 22*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 23*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 46*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 53*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 22*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 23*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 53*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 54*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 22*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 23*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+			--6
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 24*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 26*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 24*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 26*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 34*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 24*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 46*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 54*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 24*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 54*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 24*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+			--7
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 24*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 24*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 25*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 24*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 24*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 25*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 47*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 24*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 25*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 56*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 24*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 25*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+			--8
+	     elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 25*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 26*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 47*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 25*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 26*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 --9
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 32*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 26*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 27*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 48*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 26*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 27*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--10
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 27*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 28*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 47*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 27*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 28*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--11
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 23*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 34*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 28*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 29*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 46*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 57*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 28*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 29*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--12
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 24*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 29*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 29*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 30*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 30*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 35*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 29*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 30*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 45*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 50*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 29*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 30*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 51*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 29*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 30*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--13
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 25*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 27*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 30*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 31*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 31*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 36*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 30*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 31*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 44*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 30*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 31*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 53*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 55*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 30*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 31*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--14   Ê†áËÆ∞1
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 32*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 37*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 31*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 32*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 43*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 48*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 31*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 32*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 --15
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 33*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 38*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 32*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 33*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 42*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 47*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 32*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 33*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 --16
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 34*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 39*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 34*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 41*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 46*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 34*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 --17  Ê†áËÆ∞2
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 35*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 38*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 34*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 35*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 40*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 45*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 34*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 35*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--18
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 36*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 37*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 35*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 36*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 39*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 44*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 35*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 36*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--19
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 38*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 43*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 36*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 37*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--20
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 37*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 42*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 37*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 38*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--21
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 36*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 38*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 39*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 43*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 44*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 38*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 39*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--22  Ê†áËÆ∞2
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 35*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 40*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 39*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 40*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 42*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 45*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 39*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 40*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--23 ÁúºÁùõ1  
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 20*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 29*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 40*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 41*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 34*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 39*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 40*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 41*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 41*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 46*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 40*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 41*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 51*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 60*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 40*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 41*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--24 ÁúºÁùõ2
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 21*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 22*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 24*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 25*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 27*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 28*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 33*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 38*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 42*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 47*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 52*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 53*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 55*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 58*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 59*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--25
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 32*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 37*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 42*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 43*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 43*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 48*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 42*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 43*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 --26
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 25*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 27*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 43*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 44*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 31*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 36*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 43*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 44*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 44*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 43*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 44*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 53*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 55*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 43*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 44*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--27
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 24*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 29*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 44*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 45*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 30*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 35*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 44*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 45*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 45*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 50*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 44*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 45*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 51*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 44*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 45*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--28
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 23*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 34*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 45*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 46*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 46*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 57*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 45*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 46*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--29
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 46*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 47*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 47*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 46*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 47*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--30
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 32*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 47*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 48*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 48*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 47*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 48*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 --31
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 48*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 49*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 47*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 48*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 49*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+			--30
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 24*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 50*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 24*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 50*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 47*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 50*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 56*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 50*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+			--31
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 24*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 26*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 50*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 51*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 26*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 34*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 50*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 51*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 46*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 54*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 50*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 51*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 54*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 50*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 51*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+			--32
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 26*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 27*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 51*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 52*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 27*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 34*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 51*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 52*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 46*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 53*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 51*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 52*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 53*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 54*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 51*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 52*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 --33
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 26*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 27*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 52*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 53*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 33*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 34*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 52*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 53*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 46*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 47*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 52*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 53*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 53*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 54*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 52*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 53*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 --34
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 27*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 28*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 53*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 54*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 32*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 53*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 54*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 47*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 48*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 53*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 54*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 52*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 53*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 53*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 54*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+			--35
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 27*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 28*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 54*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 55*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 31*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 32*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 54*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 55*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 48*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 54*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 55*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 52*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 53*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 54*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 55*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+			--36
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 28*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 31*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 55*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 56*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 elsif Vga_choose = DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 49*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 52*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 55*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 56*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 
+	  --Vga_choose /= DEAD_ONE then
+	     --Â∑¶ÁúºÁº∫Âè£
+	     elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 25*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 37*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 38*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+         elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 21*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 26*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 38*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 39*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+	     elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 21*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 27*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 39*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 41*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow; 
+	     elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 28*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow; 
+	     elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 23*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 28*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 42*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 43*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow; 
+	     elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 25*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 27*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 43*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 44*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow; 
+	  
+	     --Âè≥ÁúºÁº∫Âè£
+	     elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 55*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 37*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 38*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+	     elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 54*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 59*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 38*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 39*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+	     elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 53*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 59*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 39*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 41*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow; 
+	     elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 52*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
+            Vga_rgb_n <= Vga_rgb_unshow; 
+	     elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 52*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 57*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 42*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 43*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow; 
+	     elsif Vga_choose /= DEAD_ONE and Vga_hsync_cnt >= H_ACTIVE_MIN + 53*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 55*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 43*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 44*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow; 
+	  
+		 
+	     --1
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 32*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 48*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 22*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 52*STATE_LEN then  
+	     Vga_rgb_n <= Vga_rgb_show;
+		 --2
+      elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 27*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 53*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 23*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 51*STATE_LEN then  
+	     Vga_rgb_n <= Vga_rgb_show;
+		--3
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 24*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 24*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 50*STATE_LEN then  
+	     Vga_rgb_n <= Vga_rgb_show;
+		--4
+      elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 21*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 59*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 25*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 49*STATE_LEN then  
+	     Vga_rgb_n <= Vga_rgb_show;
+		--5
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 19*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 61*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 26*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 48*STATE_LEN then  
+	     Vga_rgb_n <= Vga_rgb_show;
+		--6
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 18*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 62*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 27*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 47*STATE_LEN then  
+	     Vga_rgb_n <= Vga_rgb_show;
+		--7
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 17*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 63*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 28*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 46*STATE_LEN then  
+	     Vga_rgb_n <= Vga_rgb_show;
+		--8
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 16*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 64*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 29*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 45*STATE_LEN then  
+	     Vga_rgb_n <= Vga_rgb_show;
+		--9
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 15*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 65*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 31*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 43*STATE_LEN then  
+	     Vga_rgb_n <= Vga_rgb_show;
+		--10
+	  elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 14*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 66*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 41*STATE_LEN then  
+	     Vga_rgb_n <= Vga_rgb_show;
+	  --ÂÆ†Áâ©‰∏ª‰Ωì
+	     
+		 
+	  -- ËãπÊûú 	 
+	  --(Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE) and then
+	     
+		 --Áº∫Âè£two
+		 elsif Vga_choose = FEED_TWO and Vga_hsync_cnt >= H_ACTIVE_MIN + 70*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 8*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 9*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = FEED_TWO and Vga_hsync_cnt >= H_ACTIVE_MIN + 69*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 9*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 10*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = FEED_TWO and Vga_hsync_cnt >= H_ACTIVE_MIN + 68*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 10*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 13*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = FEED_TWO and Vga_hsync_cnt >= H_ACTIVE_MIN + 69*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 13*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 14*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = FEED_TWO and Vga_hsync_cnt >= H_ACTIVE_MIN + 70*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 14*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 15*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		
+		 --Áº∫Âè£three
+		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 63*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 10*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 64*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 10*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 12*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 65*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 12*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 14*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 66*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 14*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 15*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 67*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 15*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 16*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 68*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 16*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 17*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 elsif Vga_choose = FEED_THREE and Vga_hsync_cnt >= H_ACTIVE_MIN + 70*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 17*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 19*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_unshow;
+		 
+		 --Â§¥‰∏äÁöÑÊîØ
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO) and  Vga_hsync_cnt >= H_ACTIVE_MIN + 66*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 68*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 3*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 4*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO) and Vga_hsync_cnt >= H_ACTIVE_MIN + 65*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 68*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 4*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 5*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO) and Vga_hsync_cnt >= H_ACTIVE_MIN + 65*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 67*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 5*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 6*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO) and Vga_hsync_cnt >= H_ACTIVE_MIN + 64*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 65*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 6*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 7*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 --Â§¥‰∏äÁöÑÊîØ
+		 
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE) and Vga_hsync_cnt >= H_ACTIVE_MIN + 58*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 63*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 8*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE) and Vga_hsync_cnt >= H_ACTIVE_MIN + 66*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 71*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 7*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 8*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE) and Vga_hsync_cnt >= H_ACTIVE_MIN + 57*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 64*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 8*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 9*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE) and Vga_hsync_cnt >= H_ACTIVE_MIN + 65*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 72*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 8*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 9*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE) and Vga_hsync_cnt >= H_ACTIVE_MIN + 56*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 73*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 9*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 15*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE) and Vga_hsync_cnt >= H_ACTIVE_MIN + 57*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 72*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 15*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 17*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE) and Vga_hsync_cnt >= H_ACTIVE_MIN + 58*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 71*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 17*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 18*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE) and Vga_hsync_cnt >= H_ACTIVE_MIN + 59*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 70*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 18*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 19*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+		 
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE) and Vga_hsync_cnt >= H_ACTIVE_MIN + 60*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 63*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 19*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 20*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+	     elsif (Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE) and Vga_hsync_cnt >= H_ACTIVE_MIN + 66*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 69*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 19*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 20*STATE_LEN then  
+	        Vga_rgb_n <= Vga_rgb_show;
+	  -- ËãπÊûú 	 
 	  
       else
          Vga_rgb_n <= Vga_rgb_unshow;
       end if;
 	  
+	  --Vga_choose  offset
+	  if Vga_choose = DEAD_ONE or Vga_choose = ACTIVE_ONE or Vga_choose = FEED_ONE or Vga_choose = FEED_TWO or Vga_choose = FEED_THREE or Vga_choose = FEED_FOUR then
+	     offset := 0;
+	  elsif Vga_choose = PLAY_ONE then
+	     offset := -30;
+	  elsif Vga_choose = PLAY_TWO then
+	     offset := 0;
+	  elsif Vga_choose = PLAY_THREE then
+	     offset := 30;
+	  elsif Vga_choose = PLAY_FOUR then
+	     offset := 0;
+	  end if;
    end process;
    
 end behave;
