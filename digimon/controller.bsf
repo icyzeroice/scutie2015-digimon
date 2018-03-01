@@ -26,23 +26,16 @@ applicable agreement for further details.
 	(port
 		(pt 0 32)
 		(input)
-		(text "Clk" (rect 0 0 12 12)(font "Arial" ))
-		(text "Clk" (rect 21 27 33 39)(font "Arial" ))
+		(text "Second" (rect 0 0 29 12)(font "Arial" ))
+		(text "Second" (rect 21 27 50 39)(font "Arial" ))
 		(line (pt 0 32)(pt 16 32)(line_width 1))
 	)
 	(port
 		(pt 0 48)
 		(input)
-		(text "Second" (rect 0 0 29 12)(font "Arial" ))
-		(text "Second" (rect 21 43 50 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48)(line_width 1))
-	)
-	(port
-		(pt 0 64)
-		(input)
 		(text "Low_sw_an[2..0]" (rect 0 0 68 12)(font "Arial" ))
-		(text "Low_sw_an[2..0]" (rect 21 59 89 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64)(line_width 3))
+		(text "Low_sw_an[2..0]" (rect 21 43 89 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
 	)
 	(port
 		(pt 256 32)

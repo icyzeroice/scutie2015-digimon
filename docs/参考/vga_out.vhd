@@ -436,7 +436,7 @@ begin
 	        Vga_rgb_n <= Vga_rgb_show;
 		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 24*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 24*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 25*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 27*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 24*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 25*STATE_LEN then  
+		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 47*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 24*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 25*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow;
 		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 56*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 24*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 25*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
@@ -593,7 +593,7 @@ begin
 	        Vga_rgb_n <= Vga_rgb_show;
 		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 24*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 33*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 50*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow;
-		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 27*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 50*STATE_LEN then  
+		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 47*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 56*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 50*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow;
 		 elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 56*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 49*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 50*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
@@ -661,7 +661,7 @@ begin
 	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 22*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 28*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow; 
 	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 23*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 28*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 42*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 43*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_show; 
+	        Vga_rgb_n <= Vga_rgb_unshow; 
 	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 25*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 27*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 43*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 44*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow; 
 	  
@@ -675,7 +675,7 @@ begin
 	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 52*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 58*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 41*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 42*STATE_LEN then  
             Vga_rgb_n <= Vga_rgb_unshow; 
 	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 52*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 57*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 42*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 43*STATE_LEN then  
-	        Vga_rgb_n <= Vga_rgb_show; 
+	        Vga_rgb_n <= Vga_rgb_unshow; 
 	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 53*STATE_LEN + offset and Vga_hsync_cnt < H_ACTIVE_MIN + 55*STATE_LEN + offset and Vga_vsync_cnt >= V_ACTIVE_MIN + 43*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 44*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_unshow; 
 		 end if;
@@ -775,7 +775,7 @@ begin
 	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 58*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 71*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 17*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 18*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
 		 
-	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 59*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 72*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 18*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 19*STATE_LEN then  
+	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 59*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 70*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 18*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 19*STATE_LEN then  
 	        Vga_rgb_n <= Vga_rgb_show;
 		 
 	     elsif Vga_hsync_cnt >= H_ACTIVE_MIN + 60*STATE_LEN and Vga_hsync_cnt < H_ACTIVE_MIN + 63*STATE_LEN and Vga_vsync_cnt >= V_ACTIVE_MIN + 19*STATE_LEN and Vga_vsync_cnt < V_ACTIVE_MIN + 20*STATE_LEN then  

@@ -53,21 +53,24 @@ set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulati
 set_global_assignment -name VHDL_FILE vga_out.vhd
 set_global_assignment -name VHDL_FILE controller.vhd
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_global_assignment -name BDF_FILE digimon.bdf
-set_location_assignment PIN_D1 -to VGA_RGB_out[7]
-set_location_assignment PIN_C2 -to VGA_RGB_out[6]
-set_location_assignment PIN_B1 -to VGA_RGB_out[5]
-set_location_assignment PIN_D3 -to VGA_RGB_out[4]
-set_location_assignment PIN_C3 -to VGA_RGB_out[3]
-set_location_assignment PIN_D4 -to VGA_RGB_out[2]
-set_location_assignment PIN_F3 -to VGA_RGB_out[1]
-set_location_assignment PIN_J6 -to VGA_RGB_out[0]
-set_location_assignment PIN_D5 -to VGA_vsync
-set_location_assignment PIN_E5 -to VGA_hsync
-set_location_assignment PIN_L4 -to sw3
-set_location_assignment PIN_M2 -to sw2
-set_location_assignment PIN_M1 -to sw1
 set_location_assignment PIN_E1 -to Clk
+set_global_assignment -name VHDL_FILE second.vhd
+set_global_assignment -name VHDL_FILE key_read.vhd
+set_global_assignment -name VHDL_FILE key_test.vhd
+set_global_assignment -name BDF_FILE digimon.bdf
+set_location_assignment PIN_D1 -to Vga_rgb[7]
+set_location_assignment PIN_C2 -to Vga_rgb[6]
+set_location_assignment PIN_B1 -to Vga_rgb[5]
+set_location_assignment PIN_D3 -to Vga_rgb[4]
+set_location_assignment PIN_C3 -to Vga_rgb[3]
+set_location_assignment PIN_D4 -to Vga_rgb[2]
+set_location_assignment PIN_F3 -to Vga_rgb[1]
+set_location_assignment PIN_J6 -to Vga_rgb[0]
+set_location_assignment PIN_D5 -to Vga_vsync
+set_location_assignment PIN_E5 -to Vga_hsync
+set_location_assignment PIN_L4 -to Low_sw_an[2]
+set_location_assignment PIN_M2 -to Low_sw_an[1]
+set_location_assignment PIN_M1 -to Low_sw_an[0]
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

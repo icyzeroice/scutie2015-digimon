@@ -1,5 +1,5 @@
 Flow report for digimon
-Sun Feb 25 20:08:23 2018
+Mon Feb 26 21:30:39 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
 
 
@@ -40,17 +40,17 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sun Feb 25 20:08:23 2018       ;
+; Flow Status                        ; Successful - Mon Feb 26 21:30:39 2018       ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
 ; Revision Name                      ; digimon                                     ;
 ; Top-level Entity Name              ; digimon                                     ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE6F17C8                                 ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 174 / 6,272 ( 3 % )                         ;
-;     Total combinational functions  ; 174 / 6,272 ( 3 % )                         ;
-;     Dedicated logic registers      ; 28 / 6,272 ( < 1 % )                        ;
-; Total registers                    ; 28                                          ;
+; Total logic elements               ; 1,255 / 6,272 ( 20 % )                      ;
+;     Total combinational functions  ; 1,252 / 6,272 ( 20 % )                      ;
+;     Dedicated logic registers      ; 77 / 6,272 ( 1 % )                          ;
+; Total registers                    ; 77                                          ;
 ; Total pins                         ; 14 / 180 ( 8 % )                            ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 276,480 ( 0 % )                         ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/25/2018 20:08:04 ;
+; Start date & time ; 02/26/2018 21:30:01 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; digimon             ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                           ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 141812759305104.151956048405256 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 141812759305104.151965180106224 ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                            ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim (VHDL)                 ; <None>        ; --          ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                            ; --            ; --          ; eda_simulation ;
@@ -94,12 +94,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:02     ; 1.0                     ; 585 MB              ; 00:00:02                           ;
-; Fitter                    ; 00:00:05     ; 2.2                     ; 1327 MB             ; 00:00:06                           ;
-; Assembler                 ; 00:00:01     ; 1.0                     ; 520 MB              ; 00:00:01                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 593 MB              ; 00:00:02                           ;
-; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 471 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:11     ; --                      ; --                  ; 00:00:12                           ;
+; Analysis & Synthesis      ; 00:00:11     ; 1.0                     ; 601 MB              ; 00:00:12                           ;
+; Fitter                    ; 00:00:12     ; 2.4                     ; 1338 MB             ; 00:00:14                           ;
+; Assembler                 ; 00:00:01     ; 1.0                     ; 516 MB              ; 00:00:01                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.3                     ; 612 MB              ; 00:00:04                           ;
+; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 487 MB              ; 00:00:02                           ;
+; Total                     ; 00:00:30     ; --                      ; --                  ; 00:00:33                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
